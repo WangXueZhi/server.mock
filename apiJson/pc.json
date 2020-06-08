@@ -1,0 +1,5135 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0",
+      "title": "浙江贵仁信息科技有限公司模型云门户网站接口文档"
+    },
+    "host": "dev.cloud.keepsoft.net:30090",
+    "basePath": "/",
+    "tags": [{
+      "name": "menu-controller",
+      "description": "系统：菜单管理"
+    }, {
+      "name": "user-controller",
+      "description": "用户信息相关接口"
+    }, {
+      "name": "history-record-controller",
+      "description": "历史记录"
+    }, {
+      "name": "comsumer-apply-controller",
+      "description": "用户试用申请控制器"
+    }, {
+      "name": "message-controller",
+      "description": "消息管理"
+    }, {
+      "name": "area-controller",
+      "description": "区域相关接口，省市县接口"
+    }, {
+      "name": "news-controller",
+      "description": "新闻查询接口"
+    }, {
+      "name": "online-controller",
+      "description": "系统：在线用户管理"
+    }, {
+      "name": "bills-controller",
+      "description": "账单管理"
+    }, {
+      "name": "operation-handler",
+      "description": "Operation Handler"
+    }, {
+      "name": "products-controller",
+      "description": "门户商品管理"
+    }, {
+      "name": "buy-controller",
+      "description": "购买相关接口"
+    }, {
+      "name": "orders-controller",
+      "description": "订单管理"
+    }, {
+      "name": "dict-controller",
+      "description": "系统：字典管理"
+    }, {
+      "name": "web-mvc-endpoint-handler-mapping",
+      "description": "Web Mvc Endpoint Handler Mapping"
+    }, {
+      "name": "visits-controller",
+      "description": "系统:访问记录管理"
+    }, {
+      "name": "feedback-controller",
+      "description": "Feedback Controller"
+    }, {
+      "name": "index-controller",
+      "description": "控制台首页"
+    }, {
+      "name": "limit-controller",
+      "description": "系统：限流测试管理"
+    }, {
+      "name": "storage-management-controller",
+      "description": "存储管理"
+    }, {
+      "name": "example-controller",
+      "description": "案例查询接口"
+    }, {
+      "name": "role-controller",
+      "description": "系统：角色管理"
+    }, {
+      "name": "authentication-controller",
+      "description": "系统：系统授权接口"
+    }],
+    "paths": {
+      "/auth/info": {
+        "get": {
+          "tags": ["authentication-controller"],
+          "summary": "获取用户信息",
+          "operationId": "getUserInfoUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/buy/customprice": {
+        "get": {
+          "tags": ["buy-controller"],
+          "summary": "下单前，查询自定义商品价格",
+          "operationId": "customPriceUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "name": "cpu",
+            "in": "query",
+            "description": "cpu",
+            "required": false,
+            "type": "ref"
+          }, {
+            "name": "memory",
+            "in": "query",
+            "description": "内存",
+            "required": false,
+            "type": "ref"
+          }, {
+            "name": "storage",
+            "in": "query",
+            "description": "存储",
+            "required": false,
+            "type": "ref"
+          }, {
+            "name": "gpu",
+            "in": "query",
+            "description": "GPU",
+            "required": false,
+            "type": "ref"
+          }, {
+            "name": "months",
+            "in": "query",
+            "description": "月数",
+            "required": true,
+            "type": "ref"
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              },
+              "responseSchema": {
+                "type": "object"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/buy/productinfo": {
+        "get": {
+          "tags": ["buy-controller"],
+          "summary": "下单前，查询商品信息",
+          "operationId": "productInfoUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "name": "productId",
+            "in": "query",
+            "description": "商品ID",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ProductInfo",
+                "originalRef": "ProductInfo"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ProductInfo",
+                "originalRef": "ProductInfo"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/limit": {
+        "get": {
+          "tags": ["limit-controller"],
+          "summary": "测试",
+          "operationId": "testLimitUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "responseSchema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/feedback/upload": {
+        "post": {
+          "tags": ["feedback-controller"],
+          "summary": "上传意见反馈附件",
+          "operationId": "uploadUsingPOST",
+          "consumes": ["multipart/form-data"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "name": "file",
+            "in": "formData",
+            "description": "file",
+            "required": true,
+            "type": "file"
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              },
+              "responseSchema": {
+                "type": "object"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/auth/online/{key}": {
+        "delete": {
+          "tags": ["online-controller"],
+          "summary": "踢出用户",
+          "operationId": "deleteUsingDELETE_2",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "name": "key",
+            "in": "path",
+            "description": "key",
+            "required": true,
+            "type": "string"
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/index/products": {
+        "get": {
+          "tags": ["index-controller"],
+          "summary": "查询已开通的产品和资源监控",
+          "operationId": "productsUsingGET_1",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/开通产品和资源监控的对象模型",
+                "originalRef": "开通产品和资源监控的对象模型"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/开通产品和资源监控的对象模型",
+                "originalRef": "开通产品和资源监控的对象模型"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/orders/pay": {
+        "post": {
+          "tags": ["orders-controller"],
+          "summary": "支付订单",
+          "operationId": "payUsingPOST",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "model",
+            "description": "model",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/order支付的对象模型",
+              "originalRef": "order支付的对象模型"
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              },
+              "responseSchema": {
+                "type": "object"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/comsumerapply/info": {
+        "get": {
+          "tags": ["comsumer-apply-controller"],
+          "summary": "获取试用申请相关信息，用于试用申请页刷新",
+          "operationId": "getUsersUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              },
+              "responseSchema": {
+                "type": "object"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/portal/news": {
+        "get": {
+          "tags": ["news-controller"],
+          "summary": "查询新闻列表",
+          "description": "不需要登录即可访问",
+          "operationId": "listUsingGET_1",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/NewsDTO",
+                  "originalRef": "NewsDTO"
+                }
+              },
+              "responseSchema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/NewsDTO",
+                  "originalRef": "NewsDTO"
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/messages/tagreadall": {
+        "post": {
+          "tags": ["message-controller"],
+          "summary": "标记全部已读",
+          "operationId": "tagReadAllUsingPOST",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              },
+              "responseSchema": {
+                "type": "object"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/actuator/health/{component}": {
+        "get": {
+          "tags": ["operation-handler"],
+          "summary": "handle",
+          "operationId": "handleUsingGET_1",
+          "consumes": ["application/json"],
+          "produces": ["application/json", "application/vnd.spring-boot.actuator.v2+json"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "body",
+            "description": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              },
+              "responseSchema": {
+                "type": "object"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/areas": {
+        "get": {
+          "tags": ["area-controller"],
+          "summary": "根据父ID获取子区域。parentId为0时，则为省份数据",
+          "operationId": "getByParentIdUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "name": "parentId",
+            "in": "query",
+            "description": "parentId",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/SysArea对象",
+                  "originalRef": "SysArea对象"
+                }
+              },
+              "responseSchema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/SysArea对象",
+                  "originalRef": "SysArea对象"
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/menus/tree": {
+        "get": {
+          "tags": ["menu-controller"],
+          "summary": "返回全部的菜单",
+          "operationId": "getMenuTreeUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/orders/cancel": {
+        "post": {
+          "tags": ["orders-controller"],
+          "summary": "取消订单",
+          "operationId": "cancelUsingPOST",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "model",
+            "description": "model",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/orders取消操作的对象模型",
+              "originalRef": "orders取消操作的对象模型"
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              },
+              "responseSchema": {
+                "type": "object"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/auth/online/download": {
+        "get": {
+          "tags": ["online-controller"],
+          "summary": "导出数据",
+          "operationId": "downloadUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "name": "filter",
+            "in": "query",
+            "description": "filter",
+            "required": false,
+            "type": "string"
+          }],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/roles/all": {
+        "get": {
+          "tags": ["role-controller"],
+          "summary": "返回全部的角色",
+          "operationId": "getAllUsingGET_1",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/auth/login": {
+        "post": {
+          "tags": ["authentication-controller"],
+          "summary": "登录授权",
+          "operationId": "loginUsingPOST",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "authUser",
+            "description": "authUser",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AuthUser",
+              "originalRef": "AuthUser"
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/AuthInfo",
+                "originalRef": "AuthInfo"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/AuthInfo",
+                "originalRef": "AuthInfo"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/comsumerapply/pcapply": {
+        "get": {
+          "tags": ["comsumer-apply-controller"],
+          "summary": "PC端用户试用申请",
+          "operationId": "tryapplyUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              },
+              "responseSchema": {
+                "type": "object"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/roles": {
+        "get": {
+          "tags": ["role-controller"],
+          "summary": "查询角色",
+          "operationId": "getRolesUsingGET_1",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "name": "startTime.nanos",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }, {
+            "name": "endTime.nanos",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }, {
+            "name": "blurry",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        },
+        "post": {
+          "tags": ["role-controller"],
+          "summary": "新增角色",
+          "operationId": "createUsingPOST_3",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "resources",
+            "description": "resources",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Role",
+              "originalRef": "Role"
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        },
+        "put": {
+          "tags": ["role-controller"],
+          "summary": "修改角色",
+          "operationId": "updateUsingPUT_2",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "resources",
+            "description": "resources",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Role",
+              "originalRef": "Role"
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/dict": {
+        "get": {
+          "tags": ["dict-controller"],
+          "summary": "查询字典",
+          "operationId": "getDictsUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "name": "blurry",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        },
+        "post": {
+          "tags": ["dict-controller"],
+          "summary": "新增字典",
+          "operationId": "createUsingPOST",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "resources",
+            "description": "resources",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Dict",
+              "originalRef": "Dict"
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        },
+        "put": {
+          "tags": ["dict-controller"],
+          "summary": "修改字典",
+          "operationId": "updateUsingPUT",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "resources",
+            "description": "resources",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Dict",
+              "originalRef": "Dict"
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/portal/products/list": {
+        "get": {
+          "tags": ["products-controller"],
+          "summary": "查询商品列表",
+          "description": "不需要登录即可访问",
+          "operationId": "listUsingGET_2",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              },
+              "responseSchema": {
+                "type": "object"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/portal/examples": {
+        "get": {
+          "tags": ["example-controller"],
+          "summary": "查询案例列表",
+          "description": "不需要登录即可访问",
+          "operationId": "listUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/ExampleDTO",
+                  "originalRef": "ExampleDTO"
+                }
+              },
+              "responseSchema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/ExampleDTO",
+                  "originalRef": "ExampleDTO"
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/visits": {
+        "post": {
+          "tags": ["visits-controller"],
+          "summary": "创建访问记录",
+          "operationId": "createUsingPOST_4",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/feedback": {
+        "post": {
+          "tags": ["feedback-controller"],
+          "summary": "提交意见反馈",
+          "operationId": "createUsingPOST_1",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "resources",
+            "description": "resources",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/意见反馈提交时的对象",
+              "originalRef": "意见反馈提交时的对象"
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              },
+              "responseSchema": {
+                "type": "object"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/actuator/health": {
+        "get": {
+          "tags": ["operation-handler"],
+          "summary": "handle",
+          "operationId": "handleUsingGET_2",
+          "consumes": ["application/json"],
+          "produces": ["application/json", "application/vnd.spring-boot.actuator.v2+json"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "body",
+            "description": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              },
+              "responseSchema": {
+                "type": "object"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/menus/build": {
+        "get": {
+          "tags": ["menu-controller"],
+          "summary": "获取前端所需菜单",
+          "operationId": "buildMenusUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/roles/{id}": {
+        "get": {
+          "tags": ["role-controller"],
+          "summary": "获取单个role",
+          "operationId": "getRolesUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/auth/chgpwd/code": {
+        "post": {
+          "tags": ["authentication-controller"],
+          "summary": "获取修改密码时的短信验证码",
+          "operationId": "getChgPwdCodeUsingPOST",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "getCodeInfo",
+            "description": "getCodeInfo",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/忘记密码修改时获取短信验证码的对象模型",
+              "originalRef": "忘记密码修改时获取短信验证码的对象模型"
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              },
+              "responseSchema": {
+                "type": "object"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/history/stop": {
+        "post": {
+          "tags": ["history-record-controller"],
+          "summary": "停止计算任务",
+          "operationId": "stopUsingPOST",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "task",
+            "description": "task",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/McOffLineCalculation对象",
+              "originalRef": "McOffLineCalculation对象"
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/auth/regist/code": {
+        "get": {
+          "tags": ["authentication-controller"],
+          "summary": "获取注册时的短信验证码",
+          "operationId": "getRegistCodeUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "name": "phone",
+            "in": "query",
+            "description": "phone",
+            "required": true,
+            "type": "string"
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              },
+              "responseSchema": {
+                "type": "object"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/auth/code": {
+        "get": {
+          "tags": ["authentication-controller"],
+          "summary": "获取图形验证码",
+          "description": "uuid在登录时需要带过来",
+          "operationId": "getCodeUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ImgResult",
+                "originalRef": "ImgResult"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ImgResult",
+                "originalRef": "ImgResult"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/buy/productprice": {
+        "get": {
+          "tags": ["buy-controller"],
+          "summary": "下单前，查询商品价格",
+          "operationId": "productPriceUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "name": "productId",
+            "in": "query",
+            "description": "商品ID",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }, {
+            "name": "specs",
+            "in": "query",
+            "description": "规格codes，逗号隔开，例如：1,2, 逗号结尾，无须切掉末位逗号，只有模型存在该参数",
+            "required": false,
+            "type": "string"
+          }, {
+            "name": "months",
+            "in": "query",
+            "description": "月数",
+            "required": true,
+            "type": "ref"
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/询价时返回的价格对象",
+                "originalRef": "询价时返回的价格对象"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/询价时返回的价格对象",
+                "originalRef": "询价时返回的价格对象"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/portal/products/tree": {
+        "get": {
+          "tags": ["products-controller"],
+          "summary": "查询商品树",
+          "description": "不需要登录即可访问",
+          "operationId": "treesUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/TreeNode",
+                  "originalRef": "TreeNode"
+                }
+              },
+              "responseSchema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/TreeNode",
+                  "originalRef": "TreeNode"
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/auth/online": {
+        "get": {
+          "tags": ["online-controller"],
+          "summary": "查询在线用户",
+          "operationId": "getAllUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "name": "filter",
+            "in": "query",
+            "description": "filter",
+            "required": false,
+            "type": "string"
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/messages/tagread": {
+        "post": {
+          "tags": ["message-controller"],
+          "summary": "标记已读",
+          "operationId": "tagreadUsingPOST",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "ids",
+            "description": "ids",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              },
+              "responseSchema": {
+                "type": "object"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/roles/menu": {
+        "put": {
+          "tags": ["role-controller"],
+          "summary": "修改角色菜单",
+          "operationId": "updateMenuUsingPUT",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "resources",
+            "description": "resources",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Role",
+              "originalRef": "Role"
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/orders/list": {
+        "get": {
+          "tags": ["orders-controller"],
+          "summary": "查询订单列表",
+          "operationId": "ordersUsingGET_2",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "name": "pageNo",
+            "in": "query",
+            "description": "页码",
+            "required": true,
+            "type": "ref"
+          }, {
+            "name": "pageSize",
+            "in": "query",
+            "description": "页尺寸",
+            "required": true,
+            "type": "ref"
+          }, {
+            "name": "beginDate",
+            "in": "query",
+            "description": "开始日期，yyyy-MM-dd",
+            "required": false,
+            "type": "string"
+          }, {
+            "name": "endDate",
+            "in": "query",
+            "description": "结束日期，yyyy-MM-dd",
+            "required": false,
+            "type": "string"
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/IPage«McOrders对象»",
+                "originalRef": "IPage«McOrders对象»"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/IPage«McOrders对象»",
+                "originalRef": "IPage«McOrders对象»"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/menus": {
+        "get": {
+          "tags": ["menu-controller"],
+          "summary": "查询菜单",
+          "operationId": "getMenusUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "name": "startTime.nanos",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }, {
+            "name": "endTime.nanos",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }, {
+            "name": "blurry",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        },
+        "post": {
+          "tags": ["menu-controller"],
+          "summary": "新增菜单",
+          "operationId": "createUsingPOST_2",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "resources",
+            "description": "resources",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Menu",
+              "originalRef": "Menu"
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        },
+        "put": {
+          "tags": ["menu-controller"],
+          "summary": "修改菜单",
+          "operationId": "updateUsingPUT_1",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "resources",
+            "description": "resources",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Menu",
+              "originalRef": "Menu"
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/auth/forgetchg": {
+        "post": {
+          "tags": ["authentication-controller"],
+          "summary": "用户忘记密码时修改密码",
+          "operationId": "forgetToChgUsingPOST",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "info",
+            "description": "info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/忘记密码修改时的对象模型",
+              "originalRef": "忘记密码修改时的对象模型"
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              },
+              "responseSchema": {
+                "type": "object"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/actuator/health/{component}/{instance}": {
+        "get": {
+          "tags": ["operation-handler"],
+          "summary": "handle",
+          "operationId": "handleUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["application/json", "application/vnd.spring-boot.actuator.v2+json"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "body",
+            "description": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              },
+              "responseSchema": {
+                "type": "object"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/actuator": {
+        "get": {
+          "tags": ["web-mvc-endpoint-handler-mapping"],
+          "summary": "links",
+          "operationId": "linksUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["application/json", "application/vnd.spring-boot.actuator.v2+json"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/definitions/Link",
+                    "originalRef": "Link"
+                  }
+                }
+              },
+              "responseSchema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/definitions/Link",
+                    "originalRef": "Link"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/messages/deleteall": {
+        "post": {
+          "tags": ["message-controller"],
+          "summary": "删除全部的记录",
+          "operationId": "deleteUsingPOST_1",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              },
+              "responseSchema": {
+                "type": "object"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/bills/list": {
+        "get": {
+          "tags": ["bills-controller"],
+          "summary": "查询账单列表",
+          "operationId": "ordersUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "name": "pageNo",
+            "in": "query",
+            "description": "页码",
+            "required": true,
+            "type": "ref"
+          }, {
+            "name": "pageSize",
+            "in": "query",
+            "description": "页尺寸",
+            "required": true,
+            "type": "ref"
+          }, {
+            "name": "beginDate",
+            "in": "query",
+            "description": "开始日期，yyyy-MM-dd",
+            "required": false,
+            "type": "string"
+          }, {
+            "name": "endDate",
+            "in": "query",
+            "description": "结束日期，yyyy-MM-dd",
+            "required": false,
+            "type": "string"
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/IPage«McOrders对象»",
+                "originalRef": "IPage«McOrders对象»"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/IPage«McOrders对象»",
+                "originalRef": "IPage«McOrders对象»"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/messages/list": {
+        "get": {
+          "tags": ["message-controller"],
+          "summary": "查询消息列表",
+          "operationId": "ordersUsingGET_1",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "name": "pageNo",
+            "in": "query",
+            "description": "页码",
+            "required": true,
+            "type": "ref"
+          }, {
+            "name": "pageSize",
+            "in": "query",
+            "description": "页尺寸",
+            "required": true,
+            "type": "ref"
+          }, {
+            "name": "status",
+            "in": "query",
+            "description": "状态：1：未读；2：已读",
+            "required": false,
+            "type": "ref"
+          }, {
+            "name": "beginDate",
+            "in": "query",
+            "description": "开始日期，yyyy-MM-dd",
+            "required": false,
+            "type": "string"
+          }, {
+            "name": "endDate",
+            "in": "query",
+            "description": "结束日期，yyyy-MM-dd",
+            "required": false,
+            "type": "string"
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/IPage«PortalMessage对象»",
+                "originalRef": "IPage«PortalMessage对象»"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/IPage«PortalMessage对象»",
+                "originalRef": "IPage«PortalMessage对象»"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/roles/level": {
+        "get": {
+          "tags": ["role-controller"],
+          "summary": "获取用户级别",
+          "operationId": "getLevelUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/dict/{id}": {
+        "delete": {
+          "tags": ["dict-controller"],
+          "summary": "删除字典",
+          "operationId": "deleteUsingDELETE",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/auth/verifycode": {
+        "post": {
+          "tags": ["authentication-controller"],
+          "summary": "使用token进行登录授权，token有效期5s",
+          "operationId": "tokenLoginUsingPOST",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "map",
+            "description": "map",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              },
+              "responseSchema": {
+                "type": "object"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/storage/childlist": {
+        "get": {
+          "tags": ["storage-management-controller"],
+          "summary": "查询存储列表",
+          "operationId": "childlistUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "name": "pIdx",
+            "in": "query",
+            "description": "项目的idx",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          }, {
+            "name": "simIdx",
+            "in": "query",
+            "description": "模拟的idx",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          }, {
+            "name": "beginDate",
+            "in": "query",
+            "description": "开始日期，yyyy-MM-dd",
+            "required": false,
+            "type": "string"
+          }, {
+            "name": "endDate",
+            "in": "query",
+            "description": "结束日期，yyyy-MM-dd",
+            "required": false,
+            "type": "string"
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/存储管理中的对象模型",
+                  "originalRef": "存储管理中的对象模型"
+                }
+              },
+              "responseSchema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/存储管理中的对象模型",
+                  "originalRef": "存储管理中的对象模型"
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/comsumerapply/code": {
+        "get": {
+          "tags": ["comsumer-apply-controller"],
+          "summary": "获取试用申请时的短信验证码",
+          "operationId": "getRegistCodeUsingGET_1",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "name": "phone",
+            "in": "query",
+            "description": "phone",
+            "required": true,
+            "type": "string"
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              },
+              "responseSchema": {
+                "type": "object"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/auth/chgpwd": {
+        "post": {
+          "tags": ["authentication-controller"],
+          "summary": "当前登录用户修改密码",
+          "operationId": "chgPwdUsingPOST",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "info",
+            "description": "info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/修改密码时的对象模型",
+              "originalRef": "修改密码时的对象模型"
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/comsumerapply/submit": {
+        "post": {
+          "tags": ["comsumer-apply-controller"],
+          "summary": "用户提交试用申请",
+          "operationId": "submitUsingPOST",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "register",
+            "description": "register",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/H5注册用户时的对象模型",
+              "originalRef": "H5注册用户时的对象模型"
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              },
+              "responseSchema": {
+                "type": "object"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/messages/delete": {
+        "post": {
+          "tags": ["message-controller"],
+          "summary": "删除单条或者多条记录",
+          "operationId": "deleteUsingPOST",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "ids",
+            "description": "ids",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              },
+              "responseSchema": {
+                "type": "object"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/portal/news/{id}": {
+        "get": {
+          "tags": ["news-controller"],
+          "summary": "根据ID查看某个新闻",
+          "description": "不需要登录即可访问",
+          "operationId": "getByIdUsingGET_1",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/NewsDTO",
+                "originalRef": "NewsDTO"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/NewsDTO",
+                "originalRef": "NewsDTO"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/users/current": {
+        "get": {
+          "tags": ["user-controller"],
+          "summary": "获取当前用户的信息",
+          "operationId": "getUsersUsingGET_1",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              },
+              "responseSchema": {
+                "type": "object"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        },
+        "post": {
+          "tags": ["user-controller"],
+          "summary": "修改用户信息",
+          "operationId": "updateUsingPOST",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "resources",
+            "description": "resources",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/修改用户信息的对象模型",
+              "originalRef": "修改用户信息的对象模型"
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              },
+              "responseSchema": {
+                "type": "object"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/history/list": {
+        "get": {
+          "tags": ["history-record-controller"],
+          "summary": "查询历史列表",
+          "operationId": "productsUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "name": "pageNo",
+            "in": "query",
+            "description": "页码",
+            "required": true,
+            "type": "ref"
+          }, {
+            "name": "pageSize",
+            "in": "query",
+            "description": "页尺寸",
+            "required": true,
+            "type": "ref"
+          }, {
+            "name": "beginDate",
+            "in": "query",
+            "description": "开始日期，yyyy-MM-dd",
+            "required": false,
+            "type": "string"
+          }, {
+            "name": "endDate",
+            "in": "query",
+            "description": "结束日期，yyyy-MM-dd",
+            "required": false,
+            "type": "string"
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Page«任务记录的对象模型»",
+                "originalRef": "Page«任务记录的对象模型»"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/Page«任务记录的对象模型»",
+                "originalRef": "Page«任务记录的对象模型»"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/index/taskmonitor": {
+        "get": {
+          "tags": ["index-controller"],
+          "summary": "任务监控",
+          "operationId": "taskMonitorUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/首页任务监控的对象模型",
+                  "originalRef": "首页任务监控的对象模型"
+                }
+              },
+              "responseSchema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/首页任务监控的对象模型",
+                  "originalRef": "首页任务监控的对象模型"
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/actuator/info": {
+        "get": {
+          "tags": ["operation-handler"],
+          "summary": "handle",
+          "operationId": "handleUsingGET_3",
+          "consumes": ["application/json"],
+          "produces": ["application/json", "application/vnd.spring-boot.actuator.v2+json"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "body",
+            "description": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              },
+              "responseSchema": {
+                "type": "object"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/orders/renewprice": {
+        "get": {
+          "tags": ["orders-controller"],
+          "summary": "续费价格查询",
+          "operationId": "productPriceUsingGET_1",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "name": "orderNo",
+            "in": "query",
+            "description": "订单号",
+            "required": true,
+            "type": "string"
+          }, {
+            "name": "months",
+            "in": "query",
+            "description": "月数",
+            "required": true,
+            "type": "ref"
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/询价时返回的价格对象",
+                "originalRef": "询价时返回的价格对象"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/询价时返回的价格对象",
+                "originalRef": "询价时返回的价格对象"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/menus/{id}": {
+        "delete": {
+          "tags": ["menu-controller"],
+          "summary": "删除菜单",
+          "operationId": "deleteUsingDELETE_1",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/auth/logout": {
+        "delete": {
+          "tags": ["authentication-controller"],
+          "summary": "退出登录",
+          "operationId": "logoutUsingDELETE",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ResponseEntity",
+                "originalRef": "ResponseEntity"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/auth/regist": {
+        "post": {
+          "tags": ["authentication-controller"],
+          "summary": "注册用户",
+          "operationId": "registUsingPOST",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "register",
+            "description": "register",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/注册用户时的对象模型",
+              "originalRef": "注册用户时的对象模型"
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              },
+              "responseSchema": {
+                "type": "object"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/portal/examples/{id}": {
+        "get": {
+          "tags": ["example-controller"],
+          "summary": "根据ID查看某个案例",
+          "description": "不需要登录即可访问",
+          "operationId": "getByIdUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ExampleDTO",
+                "originalRef": "ExampleDTO"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ExampleDTO",
+                "originalRef": "ExampleDTO"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/buy/confirm": {
+        "post": {
+          "tags": ["buy-controller"],
+          "summary": "确认订单",
+          "operationId": "confirmOrdersUsingPOST",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "ordersConfirmModel",
+            "description": "ordersConfirmModel",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/orders确认操作的对象模型",
+              "originalRef": "orders确认操作的对象模型"
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/McOrders对象",
+                "originalRef": "McOrders对象"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/McOrders对象",
+                "originalRef": "McOrders对象"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/feedback/code": {
+        "get": {
+          "tags": ["feedback-controller"],
+          "summary": "获取意见反馈的图形验证码",
+          "description": "uuid在提交意见反馈时需要带过来",
+          "operationId": "getCodeUsingGET_1",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ImgResult",
+                "originalRef": "ImgResult"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/ImgResult",
+                "originalRef": "ImgResult"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/orders/upgradeprice": {
+        "get": {
+          "tags": ["orders-controller"],
+          "summary": "升级价格查询",
+          "operationId": "upgradepriceUsingGET",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "name": "months",
+            "in": "query",
+            "description": "months",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }, {
+            "name": "specs",
+            "in": "query",
+            "description": "规格IDs，逗号隔开。只有模型存在该参数",
+            "required": false,
+            "type": "string"
+          }, {
+            "name": "orderNo",
+            "in": "query",
+            "description": "订单号",
+            "required": true,
+            "type": "string"
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/询价时返回的价格对象",
+                "originalRef": "询价时返回的价格对象"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/询价时返回的价格对象",
+                "originalRef": "询价时返回的价格对象"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/storage/list": {
+        "get": {
+          "tags": ["storage-management-controller"],
+          "summary": "查询存储列表",
+          "operationId": "productsUsingGET_2",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "name": "pageNo",
+            "in": "query",
+            "description": "页码",
+            "required": true,
+            "type": "ref"
+          }, {
+            "name": "pageSize",
+            "in": "query",
+            "description": "页尺寸",
+            "required": true,
+            "type": "ref"
+          }, {
+            "name": "beginDate",
+            "in": "query",
+            "description": "开始日期，yyyy-MM-dd",
+            "required": false,
+            "type": "string"
+          }, {
+            "name": "endDate",
+            "in": "query",
+            "description": "结束日期，yyyy-MM-dd",
+            "required": false,
+            "type": "string"
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Page«存储管理中的对象模型»",
+                "originalRef": "Page«存储管理中的对象模型»"
+              },
+              "responseSchema": {
+                "$ref": "#/definitions/Page«存储管理中的对象模型»",
+                "originalRef": "Page«存储管理中的对象模型»"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/api/storage/delete": {
+        "post": {
+          "tags": ["storage-management-controller"],
+          "summary": "删除模拟对应的存储文件",
+          "operationId": "deleteUsingPOST_2",
+          "consumes": ["application/json"],
+          "produces": ["*/*"],
+          "parameters": [{
+            "name": "Authorization",
+            "in": "header",
+            "description": "token",
+            "required": true,
+            "type": "string",
+            "default": "Bearer "
+          }, {
+            "in": "body",
+            "name": "simIdxs",
+            "description": "simIdxs",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          }],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object"
+              },
+              "responseSchema": {
+                "type": "object"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          },
+          "deprecated": false
+        }
+      }
+    },
+    "definitions": {
+      "McOrders对象": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string",
+            "description": "[{type:1,value:1},{type:2,value:2},{type:3,value:1},{type:4,value:72}] Type 1:cpu;2:memory;3:storage;4:GPU;91:model Value单位: cpu核，内存Gi,存储 M,模型 模型应用ID"
+          },
+          "createTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "detail": {
+            "type": "string",
+            "description": "明细"
+          },
+          "duration": {
+            "type": "integer",
+            "format": "int32",
+            "description": "时长数"
+          },
+          "durationUnit": {
+            "type": "integer",
+            "format": "int32",
+            "description": "时长单位，1:日；2：月；3：年"
+          },
+          "effectiveState": {
+            "type": "integer",
+            "format": "int32",
+            "description": "生效状态：1：已生效；2：未生效"
+          },
+          "orderNo": {
+            "type": "string",
+            "description": "订单号，GR0+类型+yyyyMMdd+8为随机字符串(英文大写+数字)"
+          },
+          "payChannel": {
+            "type": "integer",
+            "format": "int32",
+            "description": "支付通道:1:支付宝"
+          },
+          "payPrice": {
+            "type": "number",
+            "description": "支付金额"
+          },
+          "payTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "商品ID"
+          },
+          "realPrice": {
+            "type": "number",
+            "description": "真实价格，结算时使用的价格"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "description": "状态：0:删除；1：待支付；2：已支付；3：已取消；4：超时取消"
+          },
+          "type": {
+            "type": "integer",
+            "format": "int32",
+            "description": "1：云计算；2：云存储；3：云模型"
+          },
+          "uid": {
+            "type": "string"
+          }
+        }
+      },
+      "Page«任务记录的对象模型»": {
+        "type": "object",
+        "properties": {
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/OrderItem",
+              "originalRef": "OrderItem"
+            }
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/任务记录的对象模型",
+              "originalRef": "任务记录的对象模型"
+            }
+          },
+          "searchCount": {
+            "type": "boolean"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "IPage«PortalMessage对象»": {
+        "type": "object",
+        "properties": {
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/PortalMessage对象",
+              "originalRef": "PortalMessage对象"
+            }
+          },
+          "searchCount": {
+            "type": "boolean"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "修改用户信息的对象模型": {
+        "type": "object",
+        "properties": {
+          "city": {
+            "type": "string",
+            "description": "所属地市"
+          },
+          "province": {
+            "type": "string",
+            "description": "所属省份"
+          },
+          "userDingTalk": {
+            "type": "string",
+            "description": "钉钉账号"
+          },
+          "userEmail": {
+            "type": "string",
+            "description": "电子邮箱"
+          },
+          "userName": {
+            "type": "string",
+            "description": "用户姓名"
+          },
+          "userWechat": {
+            "type": "string",
+            "description": "微信"
+          }
+        }
+      },
+      "IPage«McOrders对象»": {
+        "type": "object",
+        "properties": {
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/McOrders对象",
+              "originalRef": "McOrders对象"
+            }
+          },
+          "searchCount": {
+            "type": "boolean"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "AuthUser": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "uuid": {
+            "type": "string"
+          }
+        }
+      },
+      "order支付的对象模型": {
+        "type": "object",
+        "properties": {
+          "orderNo": {
+            "type": "string"
+          }
+        }
+      },
+      "忘记密码修改时的对象模型": {
+        "type": "object",
+        "properties": {
+          "password": {
+            "type": "string",
+            "description": "新密码"
+          },
+          "smsCode": {
+            "type": "string",
+            "description": "手机验证码"
+          },
+          "userAccount": {
+            "type": "string",
+            "description": "用户帐号"
+          },
+          "userMobile": {
+            "type": "string",
+            "description": "手机号码"
+          }
+        }
+      },
+      "Timestamp": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "day": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hours": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "minutes": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "month": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nanos": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "seconds": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "time": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "timezoneOffset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "year": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "ExampleDTO": {
+        "type": "object",
+        "properties": {
+          "brief": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "cover": {
+            "type": "string"
+          },
+          "createTime": {
+            "$ref": "#/definitions/Timestamp",
+            "originalRef": "Timestamp"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string"
+          },
+          "useProduct": {
+            "type": "string"
+          }
+        }
+      },
+      "SysFeedback对象": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string",
+            "description": "反馈建议"
+          },
+          "pics": {
+            "type": "string",
+            "description": "图片地址，多张图片用逗号隔开"
+          },
+          "processStatus": {
+            "type": "integer",
+            "format": "int32",
+            "description": "处理状态1:未读;2：已读"
+          },
+          "processTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "处理时间"
+          },
+          "readStatus": {
+            "type": "integer",
+            "format": "int32",
+            "description": "阅读状态1:未读;2：已读"
+          },
+          "suggestion": {
+            "type": "string",
+            "description": "建议方案"
+          },
+          "type": {
+            "type": "integer",
+            "format": "int32",
+            "description": "1：功能建议；2：产品缺陷；3：投诉反馈"
+          },
+          "uid": {
+            "type": "string",
+            "description": "用户ID"
+          },
+          "version": {
+            "type": "string",
+            "description": "版本"
+          }
+        }
+      },
+      "McUserVerify对象": {
+        "type": "object",
+        "properties": {
+          "days": {
+            "type": "integer",
+            "format": "int32",
+            "description": "试用资源时长"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "models": {
+            "type": "string",
+            "description": "试用时的模型，用逗号隔开"
+          },
+          "nextTime": {
+            "type": "string",
+            "description": "下次开放的时间"
+          },
+          "open": {
+            "type": "integer",
+            "format": "int32",
+            "description": "0：未开放；1：开放"
+          },
+          "resources": {
+            "type": "string",
+            "description": "试用时的资源"
+          },
+          "verify": {
+            "type": "integer",
+            "format": "int32",
+            "description": "0:不需要审核；1：需要审核"
+          }
+        }
+      },
+      "意见反馈提交时的对象": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "图形验证码"
+          },
+          "feedback": {
+            "$ref": "#/definitions/SysFeedback对象",
+            "originalRef": "SysFeedback对象"
+          },
+          "uuid": {
+            "type": "string",
+            "description": "获取图形验证码时，获得的uuid"
+          }
+        }
+      },
+      "忘记密码修改时获取短信验证码的对象模型": {
+        "type": "object",
+        "properties": {
+          "userAccount": {
+            "type": "string",
+            "description": "用户账号"
+          },
+          "userMobile": {
+            "type": "string",
+            "description": "手机号码"
+          }
+        }
+      },
+      "SysArea对象": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "description": "地址id"
+          },
+          "latitude": {
+            "type": "number",
+            "format": "float",
+            "description": "维度"
+          },
+          "level": {
+            "type": "integer",
+            "format": "int32",
+            "description": "标准"
+          },
+          "longitude": {
+            "type": "number",
+            "format": "float",
+            "description": "经度"
+          },
+          "name": {
+            "type": "string",
+            "description": "地址名称"
+          },
+          "parentId": {
+            "type": "integer",
+            "format": "int32",
+            "description": "地址id"
+          },
+          "shortName": {
+            "type": "string",
+            "description": "短名称"
+          },
+          "sort": {
+            "type": "integer",
+            "format": "int32",
+            "description": "类别"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "description": "状态"
+          }
+        }
+      },
+      "TreeNode": {
+        "type": "object",
+        "properties": {
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/TreeNode",
+              "originalRef": "TreeNode"
+            }
+          },
+          "detail": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "pid": {
+            "type": "string"
+          },
+          "saleStatus": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "存储管理中的对象模型": {
+        "type": "object",
+        "properties": {
+          "beginDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "hasChildren": {
+            "type": "boolean"
+          },
+          "projectIdx": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "projectName": {
+            "type": "string"
+          },
+          "simIdx": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "simName": {
+            "type": "string"
+          },
+          "statu": {
+            "type": "string"
+          },
+          "taskIdx": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "Page«存储管理中的对象模型»": {
+        "type": "object",
+        "properties": {
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/OrderItem",
+              "originalRef": "OrderItem"
+            }
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/存储管理中的对象模型",
+              "originalRef": "存储管理中的对象模型"
+            }
+          },
+          "searchCount": {
+            "type": "boolean"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "ImgResult": {
+        "type": "object",
+        "properties": {
+          "img": {
+            "type": "string"
+          },
+          "uuid": {
+            "type": "string"
+          }
+        }
+      },
+      "首页任务监控的对象模型": {
+        "type": "object",
+        "properties": {
+          "idx": {
+            "type": "integer",
+            "format": "int64",
+            "description": "模拟的idx"
+          },
+          "nm": {
+            "type": "string",
+            "description": "模拟名称"
+          },
+          "statu": {
+            "type": "string",
+            "description": "状态,0:队列中；1：已开始；5：已停止；8：失败；9：成功"
+          },
+          "taskIdx": {
+            "type": "integer",
+            "format": "int64",
+            "description": "任务idx"
+          }
+        }
+      },
+      "询价时返回的价格对象": {
+        "type": "object",
+        "properties": {
+          "displayPrice": {
+            "type": "number",
+            "format": "double",
+            "description": "原价"
+          },
+          "price": {
+            "type": "number",
+            "format": "double",
+            "description": "结算时的价格"
+          },
+          "retrieveDays": {
+            "type": "integer",
+            "format": "int64",
+            "description": "退补的天数"
+          },
+          "retrievePrice": {
+            "type": "number",
+            "format": "double",
+            "description": "退补的价格"
+          }
+        }
+      },
+      "任务记录的对象模型": {
+        "type": "object",
+        "properties": {
+          "ctime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "idx": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "modelName": {
+            "type": "string"
+          },
+          "nm": {
+            "type": "string"
+          },
+          "remark": {
+            "type": "string"
+          },
+          "res": {
+            "type": "string"
+          },
+          "statu": {
+            "type": "string"
+          }
+        }
+      },
+      "Menu": {
+        "type": "object",
+        "properties": {
+          "cache": {
+            "type": "boolean"
+          },
+          "component": {
+            "type": "string",
+            "description": "组件"
+          },
+          "componentName": {
+            "type": "string"
+          },
+          "createTime": {
+            "description": "创建日期",
+            "$ref": "#/definitions/Timestamp",
+            "originalRef": "Timestamp"
+          },
+          "hidden": {
+            "type": "boolean"
+          },
+          "icon": {
+            "type": "string",
+            "description": "图标"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "iframe": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string",
+            "description": "菜单名称"
+          },
+          "path": {
+            "type": "string",
+            "description": "链接地址"
+          },
+          "permission": {
+            "type": "string"
+          },
+          "pid": {
+            "type": "integer",
+            "format": "int64",
+            "description": "上级菜单ID"
+          },
+          "sort": {
+            "type": "integer",
+            "format": "int64",
+            "description": "排序"
+          },
+          "type": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "McModelApplication对象": {
+        "type": "object",
+        "properties": {
+          "categoryIds": {
+            "type": "string",
+            "description": "分类ids,逗号隔开"
+          },
+          "categoryNames": {
+            "type": "string",
+            "description": "分类名称,逗号隔开"
+          },
+          "idx": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "mvx": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nm": {
+            "type": "string"
+          },
+          "par": {
+            "type": "string"
+          },
+          "remark": {
+            "type": "string"
+          },
+          "temp": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "orders取消操作的对象模型": {
+        "type": "object",
+        "properties": {
+          "orderNo": {
+            "type": "string"
+          }
+        }
+      },
+      "McProduct对象": {
+        "type": "object",
+        "properties": {
+          "categoryId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "商品分类的ID"
+          },
+          "content": {
+            "type": "string",
+            "description": "[{type:1,time:1,timeUnit:’m’,value:1},{type:2,time:15,timeUnit:’d’,value:2},{type:3,time:1,timeUnit:’y’,value:1},{type:4,time:1,timeUnit:’y’,value:72}] Type 1:cpu;2:memory;3:storage;4:GPU;91:model timeUnit：d/m/y 日/月/年 Value单位: cpu核，内存Gi,存储 M,模型 模型应用ID"
+          },
+          "createTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "description": {
+            "type": "string",
+            "description": "商品描述"
+          },
+          "detailDesc": {
+            "type": "string",
+            "description": "商品的详细描述"
+          },
+          "displayPrice": {
+            "type": "number",
+            "description": "展示用的价格，原价格。促销场景中，可能有打折后的价格"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "minDurationUnit": {
+            "type": "integer",
+            "format": "int32",
+            "description": "最小时长单位，1:日；2：月；3：年"
+          },
+          "name": {
+            "type": "string"
+          },
+          "pic": {
+            "type": "string",
+            "description": "宝贝图片"
+          },
+          "realPrice": {
+            "type": "number",
+            "description": "真实价格，结算时使用的价格"
+          },
+          "saleStatus": {
+            "type": "integer",
+            "format": "int32",
+            "description": "销售状态，1：推荐；2：热门"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "description": "状态：1：未上架状态；2：上架状态；0：删除"
+          },
+          "type": {
+            "type": "integer",
+            "format": "int64",
+            "description": "1：云计算；2：云存储；3：云模型"
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "version": {
+            "type": "string",
+            "description": "商品的版本，当前只有模型有"
+          }
+        }
+      },
+      "orders确认操作的对象模型": {
+        "type": "object",
+        "properties": {
+          "cpu": {
+            "type": "integer",
+            "format": "int32",
+            "description": "自定义CPU数量"
+          },
+          "custom": {
+            "type": "integer",
+            "format": "int32",
+            "description": "是否自定义，1：是；2：不是"
+          },
+          "gpu": {
+            "type": "integer",
+            "format": "int32",
+            "description": "自定义GPU数量"
+          },
+          "memory": {
+            "type": "integer",
+            "format": "int32",
+            "description": "自定义内存大小"
+          },
+          "months": {
+            "type": "integer",
+            "format": "int32",
+            "description": "月数"
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "商品ID"
+          },
+          "realPrice": {
+            "type": "number",
+            "description": "真实价格，结算时使用的价格。前端必须传该参数，后端会做价格验证，是否一致"
+          },
+          "specs": {
+            "type": "string",
+            "description": "模型的功能模块。"
+          },
+          "storage": {
+            "type": "integer",
+            "format": "int32",
+            "description": "自定义存储大小"
+          },
+          "type": {
+            "type": "integer",
+            "format": "int32",
+            "description": "1：云计算；2：云存储；3：云模型"
+          }
+        }
+      },
+      "ProductInfo": {
+        "type": "object",
+        "properties": {
+          "product": {
+            "$ref": "#/definitions/McProduct对象",
+            "originalRef": "McProduct对象"
+          },
+          "specs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/ProductSpecs对象",
+              "originalRef": "ProductSpecs对象"
+            }
+          }
+        }
+      },
+      "修改密码时的对象模型": {
+        "type": "object",
+        "properties": {
+          "oldPassword": {
+            "type": "string",
+            "description": "原始密码"
+          },
+          "password": {
+            "type": "string",
+            "description": "新密码"
+          }
+        }
+      },
+      "AuthInfo": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          },
+          "user": {
+            "$ref": "#/definitions/JwtUser",
+            "originalRef": "JwtUser"
+          },
+          "userVerify": {
+            "$ref": "#/definitions/McUserVerify对象",
+            "originalRef": "McUserVerify对象"
+          }
+        }
+      },
+      "Map«string,Link»": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/definitions/Link",
+          "originalRef": "Link"
+        }
+      },
+      "开通产品和资源监控的对象模型": {
+        "type": "object",
+        "properties": {
+          "cpu": {
+            "type": "string",
+            "description": "开通的总cpu数量"
+          },
+          "memory": {
+            "type": "string",
+            "description": "开通的总内存，单位G"
+          },
+          "modelApplications": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/McModelApplication对象",
+              "originalRef": "McModelApplication对象"
+            }
+          },
+          "storage": {
+            "type": "string",
+            "description": "开通的总存储，单位G"
+          },
+          "usingCpu": {
+            "type": "string",
+            "description": "正在使用的cpu数量"
+          },
+          "usingMemory": {
+            "type": "string",
+            "description": "正在使用的内存数量"
+          },
+          "usingStorage": {
+            "type": "string",
+            "description": "正在使用的存储，单位G"
+          }
+        }
+      },
+      "NewsDTO": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string"
+          },
+          "createTime": {
+            "$ref": "#/definitions/Timestamp",
+            "originalRef": "Timestamp"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "publishDate": {
+            "$ref": "#/definitions/Timestamp",
+            "originalRef": "Timestamp"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string"
+          }
+        }
+      },
+      "Role": {
+        "type": "object",
+        "properties": {
+          "createTime": {
+            "description": "创建日期",
+            "$ref": "#/definitions/Timestamp",
+            "originalRef": "Timestamp"
+          },
+          "dataScope": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "level": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "menus": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Menu",
+              "originalRef": "Menu"
+            }
+          },
+          "name": {
+            "type": "string",
+            "description": "名称"
+          },
+          "permission": {
+            "type": "string"
+          },
+          "remark": {
+            "type": "string",
+            "description": "备注"
+          }
+        }
+      },
+      "ResponseEntity": {
+        "type": "object",
+        "properties": {
+          "body": {
+            "type": "object"
+          },
+          "statusCode": {
+            "type": "string",
+            "enum": ["100 CONTINUE", "101 SWITCHING_PROTOCOLS", "102 PROCESSING", "103 CHECKPOINT", "200 OK", "201 CREATED", "202 ACCEPTED", "203 NON_AUTHORITATIVE_INFORMATION", "204 NO_CONTENT", "205 RESET_CONTENT", "206 PARTIAL_CONTENT", "207 MULTI_STATUS", "208 ALREADY_REPORTED", "226 IM_USED", "300 MULTIPLE_CHOICES", "301 MOVED_PERMANENTLY", "302 FOUND", "302 MOVED_TEMPORARILY", "303 SEE_OTHER", "304 NOT_MODIFIED", "305 USE_PROXY", "307 TEMPORARY_REDIRECT", "308 PERMANENT_REDIRECT", "400 BAD_REQUEST", "401 UNAUTHORIZED", "402 PAYMENT_REQUIRED", "403 FORBIDDEN", "404 NOT_FOUND", "405 METHOD_NOT_ALLOWED", "406 NOT_ACCEPTABLE", "407 PROXY_AUTHENTICATION_REQUIRED", "408 REQUEST_TIMEOUT", "409 CONFLICT", "410 GONE", "411 LENGTH_REQUIRED", "412 PRECONDITION_FAILED", "413 PAYLOAD_TOO_LARGE", "413 REQUEST_ENTITY_TOO_LARGE", "414 URI_TOO_LONG", "414 REQUEST_URI_TOO_LONG", "415 UNSUPPORTED_MEDIA_TYPE", "416 REQUESTED_RANGE_NOT_SATISFIABLE", "417 EXPECTATION_FAILED", "418 I_AM_A_TEAPOT", "419 INSUFFICIENT_SPACE_ON_RESOURCE", "420 METHOD_FAILURE", "421 DESTINATION_LOCKED", "422 UNPROCESSABLE_ENTITY", "423 LOCKED", "424 FAILED_DEPENDENCY", "426 UPGRADE_REQUIRED", "428 PRECONDITION_REQUIRED", "429 TOO_MANY_REQUESTS", "431 REQUEST_HEADER_FIELDS_TOO_LARGE", "451 UNAVAILABLE_FOR_LEGAL_REASONS", "500 INTERNAL_SERVER_ERROR", "501 NOT_IMPLEMENTED", "502 BAD_GATEWAY", "503 SERVICE_UNAVAILABLE", "504 GATEWAY_TIMEOUT", "505 HTTP_VERSION_NOT_SUPPORTED", "506 VARIANT_ALSO_NEGOTIATES", "507 INSUFFICIENT_STORAGE", "508 LOOP_DETECTED", "509 BANDWIDTH_LIMIT_EXCEEDED", "510 NOT_EXTENDED", "511 NETWORK_AUTHENTICATION_REQUIRED"]
+          },
+          "statusCodeValue": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "McOffLineCalculation对象": {
+        "type": "object",
+        "properties": {
+          "ctd": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dknm": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "ep": {
+            "type": "string"
+          },
+          "etd": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "idx": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "image": {
+            "type": "string"
+          },
+          "ispv": {
+            "type": "string"
+          },
+          "plcd": {
+            "type": "string"
+          },
+          "res": {
+            "type": "string"
+          },
+          "rlcd": {
+            "type": "string"
+          },
+          "statu": {
+            "type": "string"
+          },
+          "std": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "tp": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "unm": {
+            "type": "string"
+          }
+        }
+      },
+      "ProductSpecs对象": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "规格编码"
+          },
+          "createTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "创建时间"
+          },
+          "description": {
+            "type": "string",
+            "description": "规格描述"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "label": {
+            "type": "string",
+            "description": "显示用的名称"
+          },
+          "productId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "产品ID"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "description": "0:已删除;1:正常"
+          }
+        }
+      },
+      "Dict": {
+        "type": "object",
+        "properties": {
+          "createTime": {
+            "$ref": "#/definitions/Timestamp",
+            "originalRef": "Timestamp"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "remark": {
+            "type": "string"
+          }
+        }
+      },
+      "OrderItem": {
+        "type": "object",
+        "properties": {
+          "asc": {
+            "type": "boolean"
+          },
+          "column": {
+            "type": "string"
+          }
+        }
+      },
+      "Collection": {
+        "type": "object"
+      },
+      "JwtUser": {
+        "type": "object",
+        "properties": {
+          "avatar": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "createTime": {
+            "$ref": "#/definitions/Timestamp",
+            "originalRef": "Timestamp"
+          },
+          "dept": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "job": {
+            "type": "string"
+          },
+          "needVerify": {
+            "type": "boolean"
+          },
+          "nickname": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "province": {
+            "type": "string"
+          },
+          "roles": {
+            "$ref": "#/definitions/Collection",
+            "originalRef": "Collection"
+          },
+          "status": {
+            "type": "string"
+          },
+          "tryExpireDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "tryStatus": {
+            "type": "integer",
+            "format": "int32",
+            "description": "-1:未提交;0:待审核；1：有试用权限；2：未通过"
+          },
+          "username": {
+            "type": "string"
+          }
+        }
+      },
+      "PortalMessage对象": {
+        "type": "object",
+        "properties": {
+          "createTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "description": "状态：1：未读；2：已读"
+          },
+          "title": {
+            "type": "string",
+            "description": "标题"
+          },
+          "type": {
+            "type": "integer",
+            "format": "int32",
+            "description": "消息类型"
+          },
+          "uid": {
+            "type": "string",
+            "description": "用户ID"
+          }
+        }
+      },
+      "H5注册用户时的对象模型": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "验证码"
+          },
+          "phone": {
+            "type": "string",
+            "description": "手机号码"
+          },
+          "username": {
+            "type": "string",
+            "description": "联系人姓名"
+          }
+        }
+      },
+      "注册用户时的对象模型": {
+        "type": "object",
+        "properties": {
+          "city": {
+            "type": "string",
+            "description": "市"
+          },
+          "code": {
+            "type": "string",
+            "description": "验证码"
+          },
+          "email": {
+            "type": "string",
+            "description": "电子邮箱"
+          },
+          "nickname": {
+            "type": "string",
+            "description": "联系人姓名"
+          },
+          "organizName": {
+            "type": "string",
+            "description": "所属单位"
+          },
+          "password": {
+            "type": "string",
+            "description": "密码"
+          },
+          "phone": {
+            "type": "string",
+            "description": "手机号码"
+          },
+          "province": {
+            "type": "string",
+            "description": "省"
+          },
+          "userDepartment": {
+            "type": "string",
+            "description": "所属部门"
+          },
+          "userDingTalk": {
+            "type": "string",
+            "description": "钉钉账号"
+          },
+          "userWechat": {
+            "type": "string",
+            "description": "微信"
+          },
+          "username": {
+            "type": "string",
+            "description": "用户名"
+          }
+        }
+      },
+      "Link": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string"
+          },
+          "templated": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+  
