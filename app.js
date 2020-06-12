@@ -3,7 +3,7 @@ const app = new Koa()
 const views = require('koa-views')
 const json = require('koa-json')
 const onerror = require('koa-onerror')
-const bodyparser = require('koa-bodyparser')
+const koaBody = require('koa-body')
 const logger = require('koa-logger')
 const morgan = require('koa-morgan')
 const session = require('koa-generic-session')
@@ -17,8 +17,8 @@ const fs = require('fs')
 onerror(app)
 
 // middlewares
-app.use(bodyparser({
-  enableTypes: ['json', 'form', 'text']
+app.use(koaBody({
+  multipart: true
 }))
 app.use(json())
 app.use(logger())
@@ -89,7 +89,7 @@ const checkRequest = function (ctx, requestInfo) {
     checkInfo.msg = '方法不匹配'
     return checkInfo
   }
-
+  console.log(ctx.request.body)
   if (requestData.consumes[0]!==ctx.request.header['content-type']) {
     checkInfo.msg = 'content-type不匹配'
     return checkInfo
