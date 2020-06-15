@@ -10,6 +10,9 @@ const session = require('koa-generic-session')
 const redisStore = require('koa-redis')
 const path = require('path')
 const fs = require('fs')
+const {
+  cleanEmptyInArray
+} = require('./utils/array')
 
 // const { REDIS_CONF } = require('./conf/db')
 
@@ -73,9 +76,68 @@ app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)
 });
 
-const checkRequest = function (ctx, requestInfo) {
-  
+// 解析配置文件里的参数
+const parseParameInJson = function (parameters, isRequired) {
+  const querys = []
+  const bodys = []
+  const headers = []
+  const paths = []
+  parameters.forEach(parame => {
+    if (isRequired && !parame.required) {
+      return
+    }
+    parame.in === "header" && headers.push(parame);
+    (parame.in === "body" || parame.in === "formData") && bodys.push(parame);
+    parame.in === "query" && querys.push(parame);
+    parame.in === "path" && paths.push(parame);
+  });
+  return {
+    querys,
+    bodys,
+    headers,
+    paths
+  }
+}
 
+// 检查参数
+const checkParameters = function (ctx, parameters) {
+  const checkInfo = {
+    valid: false,
+    msg: ''
+  }
+
+  // mock不需要检查header
+  const {
+    querys,
+    bodys
+  } = parseParameInJson(parameters, true)
+
+  // 配置中没有参数直接返回成功
+  if (!querys.length && !bodys.length) {
+    checkInfo.valid = true
+    return checkInfo
+  }
+
+  if (querys.length) {
+    for (let i = 0; i < querys.length; i++) {
+      if (!ctx.request.query[querys[i].name]) {
+        checkInfo.msg = `缺少必须参数-${querys[i].name}`
+        return checkInfo
+      }
+    }
+  }
+
+  if (bodys.length) {
+    for (let i = 0; i < bodys.length; i++) {
+      if (!ctx.request.body[bodys[i].name]) {
+        checkInfo.msg = `缺少必须参数-${bodys[i].name}`
+        return checkInfo
+      }
+    }
+  }
+}
+
+const checkRequest = function (ctx, requestInfo) {
   const method = ctx.request.method.toLowerCase()
 
   const checkInfo = {
@@ -84,27 +146,100 @@ const checkRequest = function (ctx, requestInfo) {
   }
 
   const requestData = requestInfo[method]
-
   if (!requestData) {
     checkInfo.msg = '方法不匹配'
     return checkInfo
   }
-  console.log(ctx.request.body)
-  if (requestData.consumes[0]!==ctx.request.header['content-type']) {
+  if (requestData.consumes[0] !== ctx.request.header['content-type']) {
     checkInfo.msg = 'content-type不匹配'
     return checkInfo
-  }  
+  }
+
+  const checkResult = checkParameters(ctx, requestData.parameters)
+  if (!checkResult.valid) {
+    return checkResult
+  }
 
   checkInfo.valid = true
   return checkInfo
 }
 
-app.use(async (ctx, next) => {
-  const {
-    cleanEmptyInArray
-  } = require('./utils/array')
+/**
+ * 根据swagger版本转换数据
+ * @param { Object } data 
+ * @returns { Object } 转换后的数据
+ */
+const transformDataBySwaggerVersion = function (data) {
+  let apisArr = []
+  if (data.swagger === '2.0') {
+    // swagger2
+    // 转换对象数据为数组数据
+    for (const path in data.paths) {
+      const item = data.paths[path]
+      for (const method in item) {
+        apisArr.push({
+          path,
+          method,
+          ...item[method]
+        })
+      }
+    }
+  } else {
+    // swagger3
+    data.forEach(item => {
+      apisArr.push(...item.list)
+    })
+  }
 
-  const pathArr = cleanEmptyInArray(ctx.request.url.split("/"))
+  return apisArr
+}
+
+// 匹配restful接口
+const matchRestfulUrl = function (path, jsonObject) {
+  const pathArr = cleanEmptyInArray(path.split("/"))
+  let paths = transformDataBySwaggerVersion(jsonObject)
+
+  // 过滤出符合条件的接口
+  paths = paths.filter(item => {
+    return item.path.indexOf(`/${pathArr[0]}/`) == 0
+  })
+
+  let maxMatchArr = []
+  let maxMatchNum = 0
+
+  // 遍历出符合的url
+  paths.forEach((item, index) => {
+    const urlArr = cleanEmptyInArray(item.path.split("/"))
+    let matchNum = 0
+    const matchArr = []
+    urlArr.forEach((item, index) => {
+      if (item == pathArr[index]) {
+        matchNum++
+      }
+      matchArr.push(item)
+    })
+    if (matchNum > maxMatchNum) {
+      maxMatchArr = matchArr
+      maxMatchNum = matchNum
+    }
+    if (matchNum == maxMatchNum && matchArr.length > maxMatchArr.length) {
+      maxMatchArr = matchArr
+      maxMatchNum = matchNum
+    }
+  })
+
+  // 检测是否是符合restful风格
+  const matchedUrl = maxMatchArr.join("/")
+  if (matchedUrl.includes('{') && matchedUrl.includes('}')) {
+    return `/${matchedUrl}`
+  } else {
+    return null
+  }
+}
+
+app.use(async (ctx, next) => {
+  const realRequestUrl = cleanEmptyInArray(ctx.request.url.split("?"))[0]
+  const pathArr = cleanEmptyInArray(realRequestUrl.split("/"))
   const [projectName, ...projectApiPath] = pathArr
   const projectApiFilePath = path.resolve(__dirname, `./apiJson/${projectName}.json`);
 
@@ -118,17 +253,31 @@ app.use(async (ctx, next) => {
 
     // 传入的路由
     const path = `/${projectApiPath.join("/")}`
+
+    // 匹配接口是否存在
+    let matchedPath = ''
     if (paths[path]) {
       console.log('接口存在')
-      const checkData = checkRequest(ctx, paths[path])
-      if(!checkData.valid){
+      matchedPath = path
+    } else {
+      console.log('接口不存在, 匹配restful接口')
+      // 检查restful接口
+      const matchResult = matchRestfulUrl(path, JSON.parse(fileContent))
+      if (matchResult) {
+        matchedPath = matchResult
+      }
+    }
+    if (matchedPath) {
+      const checkData = checkRequest(ctx, paths[matchedPath])
+      if (!checkData.valid) {
         console.log(checkData.msg)
       }
+      // 接口检查符合，开始处理返回的数据
     } else {
       console.log('接口不存在')
     }
   } else {
-    console.log('不存在')
+    console.log('项目不存在')
   }
   console.log(ctx.request.method)
   await next()
