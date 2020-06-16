@@ -13,8 +13,7 @@ const fs = require('fs')
 const {
   cleanEmptyInArray
 } = require('./utils/array')
-
-// const { REDIS_CONF } = require('./conf/db')
+const Mock = require('mockjs')
 
 // error handler
 onerror(app)
@@ -26,10 +25,6 @@ app.use(koaBody({
 app.use(json())
 app.use(logger())
 // app.use(require('koa-static')(__dirname + '/public'))
-
-// app.use(views(__dirname + '/views', {
-//   extension: 'pug'
-// }))
 
 // logger
 app.use(async (ctx, next) => {
@@ -70,6 +65,10 @@ if (ENV !== 'production') {
 //     all: `${REDIS_CONF.host}:${REDIS_CONF.port}`
 //   })
 // }))
+
+app.use(views(__dirname + '/views', {
+  extension: 'pug'
+}))
 
 // error-handling
 app.on('error', (err, ctx) => {
@@ -135,14 +134,19 @@ const checkParameters = function (ctx, parameters) {
       }
     }
   }
+
+  checkInfo.valid = true
+  return checkInfo
 }
 
+// 检测请求体是否符合接口要求
 const checkRequest = function (ctx, requestInfo) {
   const method = ctx.request.method.toLowerCase()
 
   const checkInfo = {
     valid: false,
-    msg: ''
+    msg: '',
+    data: null
   }
 
   const requestData = requestInfo[method]
@@ -156,11 +160,13 @@ const checkRequest = function (ctx, requestInfo) {
   }
 
   const checkResult = checkParameters(ctx, requestData.parameters)
+  console.log(checkResult)
   if (!checkResult.valid) {
     return checkResult
   }
 
   checkInfo.valid = true
+  checkInfo.data = requestData
   return checkInfo
 }
 
@@ -237,6 +243,82 @@ const matchRestfulUrl = function (path, jsonObject) {
   }
 }
 
+// 创建mock数据
+const creatMock = function (prop) {
+  if (prop.type == 'object') {
+    return {}
+  }
+  if (prop.type == 'string') {
+    if (prop.format == 'date-time') {
+      return Mock.Random.datetime('yyyy-MM-dd HH:mm:ss')
+    }
+    return Mock.Random.word()
+  }
+  if (prop.type == 'integer') {
+    if (prop.format == 'int16') {
+      return Mock.mock({
+        'key|-32768-32767': 1
+      })['key']
+    }
+    if (prop.format == 'int32') {
+      return Mock.mock({
+        'key|-2147483648-2147483647': 1
+      })['key']
+    }
+    if (prop.format == 'int64') {
+      return Mock.mock({
+        'key|-9223372036854775808-9223372036854775807': 1
+      })['key']
+    }
+  }
+  if (prop.type == 'number') {
+    if (prop.format == 'float' || prop.format == 'double') {
+      return Mock.mock({
+        'key|1-100.1-10': 1,
+      })['key']
+    }
+    if (prop.format == 'double') {
+      return Mock.mock({
+        'key|1-100.1-10': 1,
+      })['key']
+    }
+    return Mock.mock({
+      'key|1-2147483647': 1
+    })['key']
+  }
+  return "未匹配数据类型"
+}
+
+// 获取属性定义并解析prop
+const getResDefinitions = function (originalRef, jsonObject) {
+  const propertiesList = jsonObject.definitions[originalRef].properties
+  let properties = {}
+  for (let key in propertiesList) {
+    properties[key] = parseProp(propertiesList[key], jsonObject)
+  }
+  return properties
+}
+
+// 解析prop
+const parseProp = function (prop, jsonObject) {
+  if (prop.originalRef) {
+    return getResDefinitions(prop.originalRef, jsonObject)
+  }
+  if (prop.type == 'array') {
+    return getResDefinitions(prop['items']['originalRef'], jsonObject)
+  }
+  return creatMock(prop)
+}
+
+// 创建返回数据
+const creatResData = function (option) {
+  return {
+    code: option.success ? 200 : -999999,
+    msg: option.success ? '' : option.msg,
+    data: option.success && option.data ? option.data : null
+  }
+}
+
 app.use(async (ctx, next) => {
   const realRequestUrl = cleanEmptyInArray(ctx.request.url.split("?"))[0]
   const pathArr = cleanEmptyInArray(realRequestUrl.split("/"))
@@ -271,15 +353,34 @@ app.use(async (ctx, next) => {
       const checkData = checkRequest(ctx, paths[matchedPath])
       if (!checkData.valid) {
         console.log(checkData.msg)
+        ctx.response.body = creatResData({
+          success: false,
+          msg: checkData.msg
+        })
+      } else {
+        // 接口检查符合，开始处理返回的数据
+        console.log('接口检查通过')
+        const schema = checkData.data.responses['200'].schema
+        const res = parseProp(schema, JSON.parse(fileContent))
+        ctx.response.body = creatResData({
+          success: true,
+          data: res
+        })
       }
-      // 接口检查符合，开始处理返回的数据
     } else {
       console.log('接口不存在')
+      ctx.response.body = creatResData({
+        success: false,
+        msg: '接口不存在'
+      })
     }
   } else {
     console.log('项目不存在')
+    ctx.response.body = creatResData({
+      success: false,
+      msg: '项目不存在'
+    })
   }
-  console.log(ctx.request.method)
   await next()
 })
 
