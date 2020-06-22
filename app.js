@@ -12,6 +12,8 @@ const path = require('path')
 const fs = require('fs')
 const mockMiddleware = require('./middleware/mock')
 const viewsMiddleware = require('./middleware/views')
+const viewsRoute = require('./routes/views')
+const apiRoute = require('./routes/api')
 
 // error handler
 onerror(app)
@@ -23,6 +25,7 @@ app.use(koaBody({
 app.use(json())
 app.use(logger())
 app.use(require('koa-static')(__dirname + '/public'))
+app.use(require('koa-less')(__dirname + '/public'))
 
 // logger
 app.use(async (ctx, next) => {
@@ -74,7 +77,7 @@ app.on('error', (err, ctx) => {
 });
 
 app.use(mockMiddleware)
-
-app.use(viewsMiddleware)
+app.use(viewsRoute.routes(), viewsRoute.allowedMethods())
+app.use(apiRoute.routes(), apiRoute.allowedMethods())
 
 module.exports = app
