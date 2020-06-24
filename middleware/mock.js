@@ -146,11 +146,13 @@ const transformDataForSwagger3 = function (data) {
             item.list.forEach(api => {
                 // 提取header中的Content-Type
                 if (Array.isArray(api.req_headers)) {
-                    api.req_headers.forEach(header => {
+                    for (let i = 0; i < api.req_headers.length; i++) {
+                        const header = api.req_headers[i]
                         if (header.name === 'Content-Type') {
                             api['Content-Type'] = header.value
+                            break
                         }
-                    })
+                    }
                 }
             })
         }
@@ -207,7 +209,7 @@ const matchUrl = function (path, apis) {
         // 命中计数和urlItemsNoRestQuery长度一致，意味着完全匹配
         if (urlItemsNoRestQuery.length === matchNum) {
             matchedObject = item
-            return
+            break
         }
     }
 
