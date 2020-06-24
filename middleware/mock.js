@@ -154,6 +154,21 @@ const transformDataForSwagger3 = function (data) {
                         }
                     }
                 }
+                // 处理入参
+                const parameters = []
+                if (Array.isArray(api.req_query)) {
+                    api.req_query.forEach(query => {
+                        parameters.push({
+                            name: query.name,
+                            in: "query",
+                            description: query.desc,
+                            required: query.required === '1',
+                            type: !query.type || query.type === 'text' || query.type === '' ? 'string' : query.type,
+                            default: query.example || ''
+                        })
+                    })
+                }
+
             })
         }
         apisArr.push(...item.list)
