@@ -71,32 +71,31 @@ const checkParameters = function (ctx, parameters) {
 
 // 检测请求体是否符合接口要求
 const checkRequest = function (ctx, requestInfo) {
-    const method = ctx.request.method.toLowerCase()
+    const requestObject = ctx.request
 
     const checkInfo = {
         valid: false,
         msg: '',
         data: null
     }
-
-    const requestData = requestInfo[method]
-    if (!requestData) {
+    if (requestInfo.method !== requestObject.method.toLowerCase()) {
         checkInfo.msg = '方法不匹配'
         return checkInfo
     }
-    if (requestData.consumes[0] !== ctx.request.header['content-type']) {
+    console.log(requestObject.header['content-type'])
+    if (requestInfo['Content-Type'] !== requestObject.header['content-type']) {
         checkInfo.msg = 'content-type不匹配'
         return checkInfo
     }
 
-    const checkResult = checkParameters(ctx, requestData.parameters)
+    const checkResult = checkParameters(ctx, requestInfo.parameters)
     console.log(checkResult)
     if (!checkResult.valid) {
         return checkResult
     }
 
     checkInfo.valid = true
-    checkInfo.data = requestData
+    checkInfo.data = requestInfo
     return checkInfo
 }
 
@@ -106,71 +105,113 @@ const checkRequest = function (ctx, requestInfo) {
  * @returns { Object } 转换后的数据
  */
 const transformDataBySwaggerVersion = function (data) {
-    let apisArr = []
     if (data.swagger === '2.0') {
-        // swagger2
-        // 转换对象数据为数组数据
-        for (const path in data.paths) {
-            const item = data.paths[path]
-            for (const method in item) {
-                apisArr.push({
-                    path,
-                    method,
-                    ...item[method]
-                })
-            }
-        }
-    } else {
-        // swagger3
-        data.forEach(item => {
-            apisArr.push(...item.list)
-        })
+        return transformDataForSwagger2(data)
     }
 
+    return transformDataForSwagger3(data)
+}
+
+/**
+ * 转换swagger2数据
+ * @param { Object } data 
+ * @returns { Object } 转换后的数据
+ */
+const transformDataForSwagger2 = function (data) {
+    let apisArr = []
+    for (const path in data.paths) {
+        const item = data.paths[path]
+        for (const method in item) {
+            item[method].title = item[method].summary
+            item[method]['Content-Type'] = item[method].consumes[0]
+            apisArr.push({
+                path,
+                method,
+                ...item[method]
+            })
+        }
+    }
     return apisArr
 }
 
-// 匹配restful接口
-const matchRestfulUrl = function (path, jsonObject) {
+/**
+ * 转换swagger3数据
+ * @param { Object } data 
+ * @returns { Object } 转换后的数据
+ */
+const transformDataForSwagger3 = function (data) {
+    let apisArr = []
+    data.forEach(item => {
+        if (Array.isArray(item.list)) {
+            item.list.forEach(api => {
+                // 提取header中的Content-Type
+                if (Array.isArray(api.req_headers)) {
+                    api.req_headers.forEach(header => {
+                        if (header.name === 'Content-Type') {
+                            api['Content-Type'] = header.value
+                        }
+                    })
+                }
+            })
+        }
+        apisArr.push(...item.list)
+    })
+    return apisArr
+}
+
+// 匹配restful接口，返回匹配的对象
+const matchUrl = function (path, apis) {
+    // 直接匹配
+    let matchedObjects = apis.filter(item => {
+        return item.path === path
+    })
+    if (matchedObjects.length > 0) {
+        return matchedObjects[0]
+    }
+
+    // restful匹配
     const pathArr = cleanEmptyInArray(path.split("/"))
-    let paths = transformDataBySwaggerVersion(jsonObject)
 
     // 过滤出符合条件的接口
-    paths = paths.filter(item => {
-        return item.path.indexOf(`/${pathArr[0]}/`) == 0
+    let paths = apis.filter(item => {
+        const urlArr = cleanEmptyInArray(item.path.split("/"))
+        return item.path.indexOf(`/${pathArr[0]}/`) == 0 && item.path.includes('{') && pathArr.length === urlArr.length
     })
 
-    let maxMatchArr = []
-    let maxMatchNum = 0
+    let matchedObject = null
 
     // 遍历出符合的url
-    paths.forEach((item, index) => {
+    for (let i = 0; i < paths.length; i++) {
+        const item = paths[i]
+        // 接口的path分割数组
         const urlArr = cleanEmptyInArray(item.path.split("/"))
+        // 不带rest参数部分的数组
+        const urlItemsNoRestQuery = []
+        // 筛选出非rest参数的数组
+        urlArr.forEach((urlitem, index) => {
+            if (!urlitem.includes('{')) {
+                urlItemsNoRestQuery.push({
+                    name: urlitem,
+                    index
+                })
+            }
+        })
         let matchNum = 0
-        const matchArr = []
-        urlArr.forEach((item, index) => {
-            if (item == pathArr[index]) {
+        // 匹配每部分，命中增加计数
+        urlItemsNoRestQuery.forEach((urlitem) => {
+            if (urlitem.name == pathArr[urlitem.index]) {
                 matchNum++
             }
-            matchArr.push(item)
         })
-        if (matchNum > maxMatchNum) {
-            maxMatchArr = matchArr
-            maxMatchNum = matchNum
-        }
-        if (matchNum == maxMatchNum && matchArr.length > maxMatchArr.length) {
-            maxMatchArr = matchArr
-            maxMatchNum = matchNum
-        }
-    })
 
-    // 检测是否是符合restful风格
-    const matchedUrl = maxMatchArr.join("/")
-    if (matchedUrl.includes('{') && matchedUrl.includes('}')) {
-        return `/${matchedUrl}`
-    } else {
-        return null
+        // 命中计数和urlItemsNoRestQuery长度一致，意味着完全匹配
+        if (urlItemsNoRestQuery.length === matchNum) {
+            matchedObject = item
+            return
+        }
     }
+
+    return matchedObject
 }
 
 // 创建mock数据
@@ -276,19 +317,18 @@ module.exports = async (ctx, next) => {
     let fileContent = fs.readFileSync(projectApiFilePath, 'utf-8');
 
     // 项目的全部接口
-    const paths = JSON.parse(fileContent).paths
+    const apis = transformDataBySwaggerVersion(JSON.parse(fileContent))
 
     // 传入的路由
     const routerPath = `/${projectApiPath.join("/")}`
 
     // 匹配接口是否存在
-    let matchedPath = paths[routerPath] ? routerPath : ''
-    // 如果没有直接匹配的接口，则检查restful接口
-    if (!matchedPath) {
-        matchedPath = matchRestfulUrl(routerPath, JSON.parse(fileContent)) || ''
-    }
+    let matchedApiData = matchUrl(routerPath, apis) || null
+
+    console.log(matchedApiData)
+
     // 接口真的不存在
-    if (!matchedPath) {
+    if (!matchedApiData) {
         console.log('接口不存在')
         ctx.response.body = creatResData({
             success: false,
@@ -297,7 +337,7 @@ module.exports = async (ctx, next) => {
         return
     }
     // 接口存在, 检查请求内容
-    const checkData = checkRequest(ctx, paths[matchedPath])
+    const checkData = checkRequest(ctx, matchedApiData)
     if (!checkData.valid) {
         console.log(checkData.msg)
         ctx.response.body = creatResData({
