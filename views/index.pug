@@ -2,6 +2,14 @@ extends layout
 
 block content
   h1 项目列表
-  div.project-list-wrapper 
-    div.project-list-item
-      div.project-list-item-name pc
+  div.project-list-wrapper.container-fluid 
+    div.project-list-item.row.project-list-itemMain
+        div.project-list-item-name.col-sm-4 项目名
+        div.project-list-item-desc.col-sm-4 项目描述
+        div.project-list-item-operate.col-sm-4 操作
+    each item in list
+      div.project-list-item.row
+        div.project-list-item-name.col-sm-4= item.name
+        div.project-list-item-desc.col-sm-4= item.describe
+        div.project-list-item-operate.col-sm-4 编辑 删除
+    

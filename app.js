@@ -11,7 +11,6 @@ const redisStore = require('koa-redis')
 const path = require('path')
 const fs = require('fs')
 const mockMiddleware = require('./middleware/mock')
-const viewsMiddleware = require('./middleware/views')
 const viewsRoute = require('./routes/views')
 const apiRoute = require('./routes/api')
 
