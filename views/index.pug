@@ -1,7 +1,10 @@
 extends layout
 
 block content
-  h1 项目列表
+  div.project-head
+    div.project-head-title 项目列表
+    div.project-head-right
+      button.btn.btn-primary 添加项目
   div.project-list-wrapper.container-fluid 
     div.project-list-item.row.project-list-itemMain
         div.project-list-item-name.col-sm-4 项目名
@@ -12,4 +15,15 @@ block content
         div.project-list-item-name.col-sm-4= item.name
         div.project-list-item-desc.col-sm-4= item.describe
         div.project-list-item-operate.col-sm-4 编辑 删除
-    
+  #staticBackdrop.modal.fade(data-backdrop='static', data-keyboard='false', tabindex='-1', role='dialog', aria-labelledby='staticBackdropLabel', aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5#staticBackdropLabel.modal-title Modal title
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          span(aria-hidden='true') ×
+      .modal-body
+        | ...
+      .modal-footer
+        button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+        button.btn.btn-primary(type='button') Understood
