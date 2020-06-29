@@ -2,9 +2,9 @@
     "swagger": "2.0",
     "info": {
       "version": "1.0",
-      "title": "浙江贵仁信息科技有限公司模型云门户网站接口文档"
+      "title": "xx信息科技有限公司模型云门户网站接口文档"
     },
-    "host": "dev.cloud.keepsoft.net:30090",
+    "host": "xxx.xxx.com:30090",
     "basePath": "/",
     "tags": [{
       "name": "menu-controller",
