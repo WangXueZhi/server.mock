@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
       "version": "1.0",
-      "title": "xx信息科技有限公司模型云门户网站接口文档"
+      "title": "xx信息科技有限公司云门户网站接口文档"
     },
     "host": "xxx.xxx.com:30090",
     "basePath": "/",
@@ -384,12 +384,12 @@
             "200": {
               "description": "OK",
               "schema": {
-                "$ref": "#/definitions/开通产品和资源监控的对象模型",
-                "originalRef": "开通产品和资源监控的对象模型"
+                "$ref": "#/definitions/开通产品和资源监控的对象",
+                "originalRef": "开通产品和资源监控的对象"
               },
               "responseSchema": {
-                "$ref": "#/definitions/开通产品和资源监控的对象模型",
-                "originalRef": "开通产品和资源监控的对象模型"
+                "$ref": "#/definitions/开通产品和资源监控的对象",
+                "originalRef": "开通产品和资源监控的对象"
               }
             },
             "401": {
@@ -425,8 +425,8 @@
             "description": "model",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/order支付的对象模型",
-              "originalRef": "order支付的对象模型"
+              "$ref": "#/definitions/order支付的对象",
+              "originalRef": "order支付的对象"
             }
           }],
           "responses": {
@@ -743,8 +743,8 @@
             "description": "model",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/orders取消操作的对象模型",
-              "originalRef": "orders取消操作的对象模型"
+              "$ref": "#/definitions/orders取消操作的对象",
+              "originalRef": "orders取消操作的对象"
             }
           }],
           "responses": {
@@ -1578,8 +1578,8 @@
             "description": "getCodeInfo",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/忘记密码修改时获取短信验证码的对象模型",
-              "originalRef": "忘记密码修改时获取短信验证码的对象模型"
+              "$ref": "#/definitions/忘记密码修改时获取短信验证码的对象",
+              "originalRef": "忘记密码修改时获取短信验证码的对象"
             }
           }],
           "responses": {
@@ -1769,7 +1769,7 @@
           }, {
             "name": "specs",
             "in": "query",
-            "description": "规格codes，逗号隔开，例如：1,2, 逗号结尾，无须切掉末位逗号，只有模型存在该参数",
+            "description": "规格codes，逗号隔开，例如：1,2, 逗号结尾，无须切掉末位逗号，只有存在该参数",
             "required": false,
             "type": "string"
           }, {
@@ -2243,8 +2243,8 @@
             "description": "info",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/忘记密码修改时的对象模型",
-              "originalRef": "忘记密码修改时的对象模型"
+              "$ref": "#/definitions/忘记密码修改时的对象",
+              "originalRef": "忘记密码修改时的对象"
             }
           }],
           "responses": {
@@ -2732,15 +2732,15 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/definitions/存储管理中的对象模型",
-                  "originalRef": "存储管理中的对象模型"
+                  "$ref": "#/definitions/存储管理中的对象",
+                  "originalRef": "存储管理中的对象"
                 }
               },
               "responseSchema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/definitions/存储管理中的对象模型",
-                  "originalRef": "存储管理中的对象模型"
+                  "$ref": "#/definitions/存储管理中的对象",
+                  "originalRef": "存储管理中的对象"
                 }
               }
             },
@@ -2821,8 +2821,8 @@
             "description": "info",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/修改密码时的对象模型",
-              "originalRef": "修改密码时的对象模型"
+              "$ref": "#/definitions/修改密码时的对象",
+              "originalRef": "修改密码时的对象"
             }
           }],
           "responses": {
@@ -2873,8 +2873,8 @@
             "description": "register",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/H5注册用户时的对象模型",
-              "originalRef": "H5注册用户时的对象模型"
+              "$ref": "#/definitions/H5注册用户时的对象",
+              "originalRef": "H5注册用户时的对象"
             }
           }],
           "responses": {
@@ -3060,8 +3060,8 @@
             "description": "resources",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/修改用户信息的对象模型",
-              "originalRef": "修改用户信息的对象模型"
+              "$ref": "#/definitions/修改用户信息的对象",
+              "originalRef": "修改用户信息的对象"
             }
           }],
           "responses": {
@@ -3133,12 +3133,12 @@
             "200": {
               "description": "OK",
               "schema": {
-                "$ref": "#/definitions/Page«任务记录的对象模型»",
-                "originalRef": "Page«任务记录的对象模型»"
+                "$ref": "#/definitions/Page«任务记录的对象»",
+                "originalRef": "Page«任务记录的对象»"
               },
               "responseSchema": {
-                "$ref": "#/definitions/Page«任务记录的对象模型»",
-                "originalRef": "Page«任务记录的对象模型»"
+                "$ref": "#/definitions/Page«任务记录的对象»",
+                "originalRef": "Page«任务记录的对象»"
               }
             },
             "401": {
@@ -3175,15 +3175,15 @@
               "schema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/definitions/首页任务监控的对象模型",
-                  "originalRef": "首页任务监控的对象模型"
+                  "$ref": "#/definitions/首页任务监控的对象",
+                  "originalRef": "首页任务监控的对象"
                 }
               },
               "responseSchema": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/definitions/首页任务监控的对象模型",
-                  "originalRef": "首页任务监控的对象模型"
+                  "$ref": "#/definitions/首页任务监控的对象",
+                  "originalRef": "首页任务监控的对象"
                 }
               }
             },
@@ -3408,8 +3408,8 @@
             "description": "register",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/注册用户时的对象模型",
-              "originalRef": "注册用户时的对象模型"
+              "$ref": "#/definitions/注册用户时的对象",
+              "originalRef": "注册用户时的对象"
             }
           }],
           "responses": {
@@ -3506,8 +3506,8 @@
             "description": "ordersConfirmModel",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/orders确认操作的对象模型",
-              "originalRef": "orders确认操作的对象模型"
+              "$ref": "#/definitions/orders确认操作的对象",
+              "originalRef": "orders确认操作的对象"
             }
           }],
           "responses": {
@@ -3603,7 +3603,7 @@
           }, {
             "name": "specs",
             "in": "query",
-            "description": "规格IDs，逗号隔开。只有模型存在该参数",
+            "description": "规格IDs，逗号隔开。只有存在该参数",
             "required": false,
             "type": "string"
           }, {
@@ -3681,12 +3681,12 @@
             "200": {
               "description": "OK",
               "schema": {
-                "$ref": "#/definitions/Page«存储管理中的对象模型»",
-                "originalRef": "Page«存储管理中的对象模型»"
+                "$ref": "#/definitions/Page«存储管理中的对象»",
+                "originalRef": "Page«存储管理中的对象»"
               },
               "responseSchema": {
-                "$ref": "#/definitions/Page«存储管理中的对象模型»",
-                "originalRef": "Page«存储管理中的对象模型»"
+                "$ref": "#/definitions/Page«存储管理中的对象»",
+                "originalRef": "Page«存储管理中的对象»"
               }
             },
             "401": {
@@ -3762,7 +3762,7 @@
         "properties": {
           "content": {
             "type": "string",
-            "description": "[{type:1,value:1},{type:2,value:2},{type:3,value:1},{type:4,value:72}] Type 1:cpu;2:memory;3:storage;4:GPU;91:model Value单位: cpu核，内存Gi,存储 M,模型 模型应用ID"
+            "description": "[{type:1,value:1},{type:2,value:2},{type:3,value:1},{type:4,value:72}] Type 1:cpu;2:memory;3:storage;4:GPU;91:model Value单位: cpu核，内存Gi,存储 M, 应用ID"
           },
           "createTime": {
             "type": "string",
@@ -3821,14 +3821,14 @@
           "type": {
             "type": "integer",
             "format": "int32",
-            "description": "1：云计算；2：云存储；3：云模型"
+            "description": "1：云计算；2：云存储；3：云"
           },
           "uid": {
             "type": "string"
           }
         }
       },
-      "Page«任务记录的对象模型»": {
+      "Page«任务记录的对象»": {
         "type": "object",
         "properties": {
           "current": {
@@ -3849,8 +3849,8 @@
           "records": {
             "type": "array",
             "items": {
-              "$ref": "#/definitions/任务记录的对象模型",
-              "originalRef": "任务记录的对象模型"
+              "$ref": "#/definitions/任务记录的对象",
+              "originalRef": "任务记录的对象"
             }
           },
           "searchCount": {
@@ -3897,7 +3897,7 @@
           }
         }
       },
-      "修改用户信息的对象模型": {
+      "修改用户信息的对象": {
         "type": "object",
         "properties": {
           "city": {
@@ -3974,7 +3974,7 @@
           }
         }
       },
-      "order支付的对象模型": {
+      "order支付的对象": {
         "type": "object",
         "properties": {
           "orderNo": {
@@ -3982,7 +3982,7 @@
           }
         }
       },
-      "忘记密码修改时的对象模型": {
+      "忘记密码修改时的对象": {
         "type": "object",
         "properties": {
           "password": {
@@ -4139,7 +4139,7 @@
           },
           "models": {
             "type": "string",
-            "description": "试用时的模型，用逗号隔开"
+            "description": "试用时的，用逗号隔开"
           },
           "nextTime": {
             "type": "string",
@@ -4178,7 +4178,7 @@
           }
         }
       },
-      "忘记密码修改时获取短信验证码的对象模型": {
+      "忘记密码修改时获取短信验证码的对象": {
         "type": "object",
         "properties": {
           "userAccount": {
@@ -4267,7 +4267,7 @@
           }
         }
       },
-      "存储管理中的对象模型": {
+      "存储管理中的对象": {
         "type": "object",
         "properties": {
           "beginDate": {
@@ -4308,7 +4308,7 @@
           }
         }
       },
-      "Page«存储管理中的对象模型»": {
+      "Page«存储管理中的对象»": {
         "type": "object",
         "properties": {
           "current": {
@@ -4329,8 +4329,8 @@
           "records": {
             "type": "array",
             "items": {
-              "$ref": "#/definitions/存储管理中的对象模型",
-              "originalRef": "存储管理中的对象模型"
+              "$ref": "#/definitions/存储管理中的对象",
+              "originalRef": "存储管理中的对象"
             }
           },
           "searchCount": {
@@ -4357,7 +4357,7 @@
           }
         }
       },
-      "首页任务监控的对象模型": {
+      "首页任务监控的对象": {
         "type": "object",
         "properties": {
           "idx": {
@@ -4405,7 +4405,7 @@
           }
         }
       },
-      "任务记录的对象模型": {
+      "任务记录的对象": {
         "type": "object",
         "properties": {
           "ctime": {
@@ -4529,7 +4529,7 @@
           }
         }
       },
-      "orders取消操作的对象模型": {
+      "orders取消操作的对象": {
         "type": "object",
         "properties": {
           "orderNo": {
@@ -4547,7 +4547,7 @@
           },
           "content": {
             "type": "string",
-            "description": "[{type:1,time:1,timeUnit:’m’,value:1},{type:2,time:15,timeUnit:’d’,value:2},{type:3,time:1,timeUnit:’y’,value:1},{type:4,time:1,timeUnit:’y’,value:72}] Type 1:cpu;2:memory;3:storage;4:GPU;91:model timeUnit：d/m/y 日/月/年 Value单位: cpu核，内存Gi,存储 M,模型 模型应用ID"
+            "description": "[{type:1,time:1,timeUnit:’m’,value:1},{type:2,time:15,timeUnit:’d’,value:2},{type:3,time:1,timeUnit:’y’,value:1},{type:4,time:1,timeUnit:’y’,value:72}] Type 1:cpu;2:memory;3:storage;4:GPU;91:model timeUnit：d/m/y 日/月/年 Value单位: cpu核，内存Gi,存储 M, 应用ID"
           },
           "createTime": {
             "type": "string",
@@ -4598,7 +4598,7 @@
           "type": {
             "type": "integer",
             "format": "int64",
-            "description": "1：云计算；2：云存储；3：云模型"
+            "description": "1：云计算；2：云存储；3：云"
           },
           "updateTime": {
             "type": "string",
@@ -4606,11 +4606,11 @@
           },
           "version": {
             "type": "string",
-            "description": "商品的版本，当前只有模型有"
+            "description": "商品的版本，当前只有有"
           }
         }
       },
-      "orders确认操作的对象模型": {
+      "orders确认操作的对象": {
         "type": "object",
         "properties": {
           "cpu": {
@@ -4649,7 +4649,7 @@
           },
           "specs": {
             "type": "string",
-            "description": "模型的功能模块。"
+            "description": "的功能模块。"
           },
           "storage": {
             "type": "integer",
@@ -4659,7 +4659,7 @@
           "type": {
             "type": "integer",
             "format": "int32",
-            "description": "1：云计算；2：云存储；3：云模型"
+            "description": "1：云计算；2：云存储；3：云"
           }
         }
       },
@@ -4679,7 +4679,7 @@
           }
         }
       },
-      "修改密码时的对象模型": {
+      "修改密码时的对象": {
         "type": "object",
         "properties": {
           "oldPassword": {
@@ -4715,7 +4715,7 @@
           "originalRef": "Link"
         }
       },
-      "开通产品和资源监控的对象模型": {
+      "开通产品和资源监控的对象": {
         "type": "object",
         "properties": {
           "cpu": {
@@ -5049,7 +5049,7 @@
           }
         }
       },
-      "H5注册用户时的对象模型": {
+      "H5注册用户时的对象": {
         "type": "object",
         "properties": {
           "code": {
@@ -5066,7 +5066,7 @@
           }
         }
       },
-      "注册用户时的对象模型": {
+      "注册用户时的对象": {
         "type": "object",
         "properties": {
           "city": {
