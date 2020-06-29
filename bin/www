@@ -85,5 +85,7 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
-  console.log(`服务启动：http://127.0.0.1:${addr.port}`)
+  console.log(`服务启动成功`)
+  console.log(`view：http://127.0.0.1:${addr.port}/view`)
+  console.log(`mock：http://127.0.0.1:${addr.port}/mock`)
 }
