@@ -9,7 +9,8 @@ router.get('/', async (ctx, next) => {
     files.forEach(item=>{
         projectList.push({
             name: item.replace('.json',''),
-            describe: item.replace('.json','')
+            describe: item.replace('.json',''),
+            mockBaseUrl: `/mock/${item.replace('.json','')}`
         })
     })
     console.log(files)
