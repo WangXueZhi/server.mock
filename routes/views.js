@@ -13,7 +13,6 @@ router.get('/', async (ctx, next) => {
             mockBaseUrl: `/mock/${item.replace('.json','')}`
         })
     })
-    console.log(files)
     await ctx.render('index', {
         title: '项目列表',
         list: projectList

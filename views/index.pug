@@ -11,56 +11,48 @@ block content
         div.project-list-item-desc.col-sm-3 项目描述
         div.project-list-item-desc.col-sm-3 mock地址前缀
         div.project-list-item-operate.col-sm-3 操作
-    each item,index in list
-      div.project-list-item.row
-        div.project-list-item-name.col-sm-3= item.name
-        div.project-list-item-desc.col-sm-3= item.describe
-        div.project-list-item-desc.col-sm-3= item.mockBaseUrl
-        div.project-list-item-operate.col-sm-3 
-          button.project-edit-modal.btn.btn-primary.btn-sm(type='button', data-index=index) 编辑 
-          button.project-delete.btn.btn-danger.btn-sm(type='button', data-index=index) 删除
+    div.project-list-box
   #staticBackdrop.modal.fade(data-backdrop='static', data-keyboard='false', tabindex='-1', role='dialog', aria-labelledby='staticBackdropLabel', aria-hidden='true')
     .modal-dialog
       .modal-content
         .modal-header
           h5#projectModalTitle.modal-title 添加项目
-          button.close(type='button', data-dismiss='modal', aria-label='Close')
+          button.close.close-project-modal(type='button', aria-label='Close')
             span(aria-hidden='true') ×
         .modal-body
-          .form-group
-            label(for='exampleInputEmail1') 项目名
-            input#projectModalInputName.form-control(type='text', aria-describedby='emailHelp')
-            small#emailHelp.form-text.text-muted 必须是英文，将会作为文件名保存
-          .form-group
-            label(for='exampleInputPassword1') 项目描述
-            input#projectModalInputDesc.form-control(type='text')
-          .form-group
-            label 数据类型
-            div
-              .form-check.form-check-inline
-                input.form-check-input#inlineRadio1(type='radio', name='inlineRadioOptions', value='code')
-                label.form-check-label(for='inlineRadio1') 代码
-              .form-check.form-check-inline
-                input.form-check-input#inlineRadio2(type='radio', name='inlineRadioOptions', value='file')
-                label.form-check-label(for='inlineRadio2') 文件
-              .form-check.form-check-inline
-                input.form-check-input#inlineRadio3(type='radio', name='inlineRadioOptions', value='link')
-                label.form-check-label(for='inlineRadio3') 链接
-          #dataTypefile.dataType.form-group(style='display:none')
-            label(for='exampleInputPassword1') 选择文件
-            input.form-control-file(type='file')
-          #dataTypecode.dataType.form-group(style='display:none')
-            label(for='exampleInputPassword1') 填写代码
-            textarea.form-control(rows='3')
-          #dataTypelink.dataType.form-group(style='display:none')
-            label(for='exampleInputPassword1') 填写链接
-            input.form-control
+          form#form
+            .form-group
+              label(for='exampleInputEmail1') 项目名
+              input#projectModalInputName.form-control(type='text', aria-describedby='emailHelp', name='name')
+              small#emailHelp.form-text.text-muted 必须是英文，将会作为文件名保存
+            .form-group
+              label(for='exampleInputPassword1') 项目描述
+              input#projectModalInputDesc.form-control(type='text', name='desc')
+            .form-group
+              label 数据类型
+              div
+                .form-check.form-check-inline
+                  input.dataType.form-check-input#inlineRadio1(type='radio', name='dataType', value='code')
+                  label.form-check-label(for='inlineRadio1') 代码
+                .form-check.form-check-inline
+                  input.dataType.form-check-input#inlineRadio2(type='radio', name='dataType', value='file')
+                  label.form-check-label(for='inlineRadio2') 文件
+                .form-check.form-check-inline
+                  input.dataType.form-check-input#inlineRadio3(type='radio', name='dataType', value='link')
+                  label.form-check-label(for='inlineRadio3') 链接
+            #dataSourcefile.dataSource.form-group(style='display:none')
+              label(for='exampleInputPassword1') 选择文件
+              input.form-control-file(type='file', name='dataSourcefile')
+            #dataSourcecode.dataSource.form-group(style='display:none')
+              label(for='exampleInputPassword1') 填写代码
+              textarea.form-control(rows='3', name='dataSourcecode')
+            #dataSourcelink.dataSource.form-group(style='display:none')
+              label(for='exampleInputPassword1') 填写链接
+              input.form-control(name='dataSourcelink')
         .modal-footer
-          button.btn.btn-secondary(type='button', data-dismiss='modal') 关闭
+          button.btn.btn-secondary.close-project-modal(type='button', data-dismiss='modal') 关闭
           button#sureBtn.btn.btn-primary(type='button') 确定
   script(src='//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js', crossorigin="anonymous")
   script(src='//cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo", crossorigin="anonymous")
   script(src='//cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js', integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI", crossorigin="anonymous")
   script(src="/js/index.js")
-  script.
-    window.projectList = !{JSON.stringify(list)}
