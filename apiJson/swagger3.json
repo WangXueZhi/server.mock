@@ -1,14 +1,14 @@
 [
   {
     "index": 0,
-    "name": "审批人相关业务接口",
+    "name": "动作人相关业务接口",
     "desc": "",
     "add_time": 1586962734,
     "up_time": 1586962734,
     "list": [
       {
         "query_path": {
-          "path": "/worker/listPageMyPendingItem",
+          "path": "/todo/listPageMyPendingItem",
           "params": []
         },
         "edit_uid": 0,
@@ -35,7 +35,7 @@
             "required": "0",
             "_id": "5e99713bdbaf696592afb4a8",
             "type": "text",
-            "desc": "业务单据号",
+            "desc": "业务号",
             "example": "@string",
             "name": "businessCode"
           },
@@ -43,7 +43,7 @@
             "required": "0",
             "_id": "5e99713bdbaf696592afb4a7",
             "type": "text",
-            "desc": "提交时间起",
+            "desc": "开始提交时间",
             "example": "1587114311682",
             "name": "submitBeginDate"
           },
@@ -51,7 +51,7 @@
             "required": "0",
             "_id": "5e99713bdbaf696592afb4a6",
             "type": "text",
-            "desc": "提交时间止",
+            "desc": "结束提交时间",
             "example": "1587114311682",
             "name": "submitEndDate"
           },
@@ -113,11 +113,11 @@
           }
         ],
         "req_body_other": "",
-        "title": "POST 查询 待我审批 事项列表",
+        "title": "POST 查询 待我动作 事项列表",
         "catid": 32,
-        "path": "/worker/listPageMyPendingItem",
+        "path": "/todo/listPageMyPendingItem",
         "res_body_type": "json",
-        "res_body": "{\n  \"success\": false,\n  \"data\": {\n    \"approveTypeCode\": \"@string\",//单据类型，即审批类型代码\n    \"approveTypeName\": \"@string\",//单据类型，即审批类型名称\n    \"approveContent\": \"@string\",//主题\n    \"businessKey\": \"@string\",//业务单据id\n    \"businessCode\": \"@string\",//业务单据号\n    \"submitDate\": {//发起日期\n      \"MIN\": {},\n      \"MAX\": {},\n      \"date\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"EPOCH\": {},\n        \"DAYS_PER_CYCLE\": 1,\n        \"DAYS_0000_TO_1970\": 1,\n        \"year\": 1,\n        \"month\": 1,\n        \"day\": 1\n      },\n      \"time\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"MIDNIGHT\": {},\n        \"NOON\": {},\n        \"HOURS_PER_DAY\": 1,\n        \"MINUTES_PER_HOUR\": 1,\n        \"MINUTES_PER_DAY\": 1,\n        \"SECONDS_PER_MINUTE\": 1,\n        \"SECONDS_PER_HOUR\": 1,\n        \"SECONDS_PER_DAY\": 1,\n        \"MILLIS_PER_DAY\": 1,\n        \"MICROS_PER_DAY\": 1,\n        \"NANOS_PER_MILLI\": 1,\n        \"NANOS_PER_SECOND\": 1,\n        \"NANOS_PER_MINUTE\": 1,\n        \"NANOS_PER_HOUR\": 1,\n        \"NANOS_PER_DAY\": 1,\n        \"hour\": 1,\n        \"minute\": 1,\n        \"second\": 1,\n        \"nano\": 1\n      }\n    },\n    \"submitter\": \"@string\",\n    \"processHeadId\": \"@string\",//提交人\n    \"informationForm\": \"@string\",//审批历史头id\n    \"processInstanceId\": \"@string\",//请求地址，如pompcpurchaseContractAgenda?purchaseContractHeadId=       详见数据库表business.activiti_wf_approve_type中的配置\n    \"taskId\": \"@string\",//流程实例id\n    \"lastProcessDate\": {//任务id\n      \"MIN\": {},//最近处理时间\n      \"MAX\": {},\n      \"date\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"EPOCH\": {},\n        \"DAYS_PER_CYCLE\": 1,\n        \"DAYS_0000_TO_1970\": 1,\n        \"year\": 1,\n        \"month\": 1,\n        \"day\": 1\n      },\n      \"time\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"MIDNIGHT\": {},\n        \"NOON\": {},\n        \"HOURS_PER_DAY\": 1,\n        \"MINUTES_PER_HOUR\": 1,\n        \"MINUTES_PER_DAY\": 1,\n        \"SECONDS_PER_MINUTE\": 1,\n        \"SECONDS_PER_HOUR\": 1,\n        \"SECONDS_PER_DAY\": 1,\n        \"MILLIS_PER_DAY\": 1,\n        \"MICROS_PER_DAY\": 1,\n        \"NANOS_PER_MILLI\": 1,\n        \"NANOS_PER_SECOND\": 1,\n        \"NANOS_PER_MINUTE\": 1,\n        \"NANOS_PER_HOUR\": 1,\n        \"NANOS_PER_DAY\": 1,\n        \"hour\": 1,\n        \"minute\": 1,\n        \"second\": 1,\n        \"nano\": 1\n      }\n    },\n    \"processStatus\": \"@string\"\n  },\n  \"code\": 0,\n  \"message\": \"@string\"//当前审批状态\n}\n",
+        "res_body": "{\n  \"success\": false,\n  \"data\": {\n    \"approveTypeCode\": \"@string\",//单据类型，即动作类型代码\n    \"approveTypeName\": \"@string\",//单据类型，即动作类型名称\n    \"approveContent\": \"@string\",//主题\n    \"businessKey\": \"@string\",//业务单据id\n    \"businessCode\": \"@string\",//业务号\n    \"submitDate\": {//发起日期\n      \"MIN\": {},\n      \"MAX\": {},\n      \"date\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"EPOCH\": {},\n        \"DAYS_PER_CYCLE\": 1,\n        \"DAYS_0000_TO_1970\": 1,\n        \"year\": 1,\n        \"month\": 1,\n        \"day\": 1\n      },\n      \"time\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"MIDNIGHT\": {},\n        \"NOON\": {},\n        \"HOURS_PER_DAY\": 1,\n        \"MINUTES_PER_HOUR\": 1,\n        \"MINUTES_PER_DAY\": 1,\n        \"SECONDS_PER_MINUTE\": 1,\n        \"SECONDS_PER_HOUR\": 1,\n        \"SECONDS_PER_DAY\": 1,\n        \"MILLIS_PER_DAY\": 1,\n        \"MICROS_PER_DAY\": 1,\n        \"NANOS_PER_MILLI\": 1,\n        \"NANOS_PER_SECOND\": 1,\n        \"NANOS_PER_MINUTE\": 1,\n        \"NANOS_PER_HOUR\": 1,\n        \"NANOS_PER_DAY\": 1,\n        \"hour\": 1,\n        \"minute\": 1,\n        \"second\": 1,\n        \"nano\": 1\n      }\n    },\n    \"submitter\": \"@string\",\n    \"processHeadId\": \"@string\",//提交人\n    \"informationForm\": \"@string\",//动作历史头id\n    \"processInstanceId\": \"@string\",//请求地址，如pompcpurchaseContractAgenda?purchaseContractHeadId=       详见数据库表business.activiti_wf_approve_type中的配置\n    \"taskId\": \"@string\",//流程实例id\n    \"lastProcessDate\": {//任务id\n      \"MIN\": {},//最近处理时间\n      \"MAX\": {},\n      \"date\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"EPOCH\": {},\n        \"DAYS_PER_CYCLE\": 1,\n        \"DAYS_0000_TO_1970\": 1,\n        \"year\": 1,\n        \"month\": 1,\n        \"day\": 1\n      },\n      \"time\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"MIDNIGHT\": {},\n        \"NOON\": {},\n        \"HOURS_PER_DAY\": 1,\n        \"MINUTES_PER_HOUR\": 1,\n        \"MINUTES_PER_DAY\": 1,\n        \"SECONDS_PER_MINUTE\": 1,\n        \"SECONDS_PER_HOUR\": 1,\n        \"SECONDS_PER_DAY\": 1,\n        \"MILLIS_PER_DAY\": 1,\n        \"MICROS_PER_DAY\": 1,\n        \"NANOS_PER_MILLI\": 1,\n        \"NANOS_PER_SECOND\": 1,\n        \"NANOS_PER_MINUTE\": 1,\n        \"NANOS_PER_HOUR\": 1,\n        \"NANOS_PER_DAY\": 1,\n        \"hour\": 1,\n        \"minute\": 1,\n        \"second\": 1,\n        \"nano\": 1\n      }\n    },\n    \"processStatus\": \"@string\"\n  },\n  \"code\": 0,\n  \"message\": \"@string\"//当前动作状态\n}\n",
         "desc": "",
         "method": "POST",
         "req_params": [],
@@ -130,7 +130,7 @@
       },
       {
         "query_path": {
-          "path": "/worker/listPageMySubmittedItem",
+          "path": "/todo/listPageMySubmittedItem",
           "params": []
         },
         "edit_uid": 0,
@@ -157,7 +157,7 @@
             "required": "0",
             "_id": "5e99713bdbaf696592afb4be",
             "type": "text",
-            "desc": "业务单据号",
+            "desc": "业务号",
             "example": "@string",
             "name": "businessCode"
           },
@@ -165,7 +165,7 @@
             "required": "0",
             "_id": "5e99713bdbaf696592afb4bd",
             "type": "text",
-            "desc": "提交时间起",
+            "desc": "开始提交时间",
             "example": "1587114311682",
             "name": "submitBeginDate"
           },
@@ -173,7 +173,7 @@
             "required": "0",
             "_id": "5e99713bdbaf696592afb4bc",
             "type": "text",
-            "desc": "提交时间止",
+            "desc": "结束提交时间",
             "example": "1587114311682",
             "name": "submitEndDate"
           },
@@ -235,11 +235,11 @@
           }
         ],
         "req_body_other": "",
-        "title": "POST 查询 我发起的审批 事项列表",
+        "title": "POST 查询 我发起的动作 事项列表",
         "catid": 32,
-        "path": "/worker/listPageMySubmittedItem",
+        "path": "/todo/listPageMySubmittedItem",
         "res_body_type": "json",
-        "res_body": "{\n  \"success\": false,\n  \"data\": {\n    \"approveTypeCode\": \"@string\",//单据类型，即审批类型代码\n    \"approveTypeName\": \"@string\",//单据类型，即审批类型名称\n    \"approveContent\": \"@string\",//主题\n    \"businessKey\": \"@string\",//业务单据id\n    \"businessCode\": \"@string\",//业务单据号\n    \"submitDate\": {//发起日期\n      \"MIN\": {},\n      \"MAX\": {},\n      \"date\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"EPOCH\": {},\n        \"DAYS_PER_CYCLE\": 1,\n        \"DAYS_0000_TO_1970\": 1,\n        \"year\": 1,\n        \"month\": 1,\n        \"day\": 1\n      },\n      \"time\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"MIDNIGHT\": {},\n        \"NOON\": {},\n        \"HOURS_PER_DAY\": 1,\n        \"MINUTES_PER_HOUR\": 1,\n        \"MINUTES_PER_DAY\": 1,\n        \"SECONDS_PER_MINUTE\": 1,\n        \"SECONDS_PER_HOUR\": 1,\n        \"SECONDS_PER_DAY\": 1,\n        \"MILLIS_PER_DAY\": 1,\n        \"MICROS_PER_DAY\": 1,\n        \"NANOS_PER_MILLI\": 1,\n        \"NANOS_PER_SECOND\": 1,\n        \"NANOS_PER_MINUTE\": 1,\n        \"NANOS_PER_HOUR\": 1,\n        \"NANOS_PER_DAY\": 1,\n        \"hour\": 1,\n        \"minute\": 1,\n        \"second\": 1,\n        \"nano\": 1\n      }\n    },\n    \"submitter\": \"@string\",\n    \"processHeadId\": \"@string\",//提交人\n    \"informationForm\": \"@string\",//审批历史头id\n    \"processInstanceId\": \"@string\",//请求地址，如pompcpurchaseContractAgenda?purchaseContractHeadId=       详见数据库表business.activiti_wf_approve_type中的配置\n    \"taskId\": \"@string\",//流程实例id\n    \"lastProcessDate\": {//任务id\n      \"MIN\": {},//最近处理时间\n      \"MAX\": {},\n      \"date\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"EPOCH\": {},\n        \"DAYS_PER_CYCLE\": 1,\n        \"DAYS_0000_TO_1970\": 1,\n        \"year\": 1,\n        \"month\": 1,\n        \"day\": 1\n      },\n      \"time\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"MIDNIGHT\": {},\n        \"NOON\": {},\n        \"HOURS_PER_DAY\": 1,\n        \"MINUTES_PER_HOUR\": 1,\n        \"MINUTES_PER_DAY\": 1,\n        \"SECONDS_PER_MINUTE\": 1,\n        \"SECONDS_PER_HOUR\": 1,\n        \"SECONDS_PER_DAY\": 1,\n        \"MILLIS_PER_DAY\": 1,\n        \"MICROS_PER_DAY\": 1,\n        \"NANOS_PER_MILLI\": 1,\n        \"NANOS_PER_SECOND\": 1,\n        \"NANOS_PER_MINUTE\": 1,\n        \"NANOS_PER_HOUR\": 1,\n        \"NANOS_PER_DAY\": 1,\n        \"hour\": 1,\n        \"minute\": 1,\n        \"second\": 1,\n        \"nano\": 1\n      }\n    },\n    \"processStatus\": \"@string\"\n  },\n  \"code\": 0,\n  \"message\": \"@string\"//当前审批状态\n}\n",
+        "res_body": "{\n  \"success\": false,\n  \"data\": {\n    \"approveTypeCode\": \"@string\",//单据类型，即动作类型代码\n    \"approveTypeName\": \"@string\",//单据类型，即动作类型名称\n    \"approveContent\": \"@string\",//主题\n    \"businessKey\": \"@string\",//业务单据id\n    \"businessCode\": \"@string\",//业务号\n    \"submitDate\": {//发起日期\n      \"MIN\": {},\n      \"MAX\": {},\n      \"date\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"EPOCH\": {},\n        \"DAYS_PER_CYCLE\": 1,\n        \"DAYS_0000_TO_1970\": 1,\n        \"year\": 1,\n        \"month\": 1,\n        \"day\": 1\n      },\n      \"time\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"MIDNIGHT\": {},\n        \"NOON\": {},\n        \"HOURS_PER_DAY\": 1,\n        \"MINUTES_PER_HOUR\": 1,\n        \"MINUTES_PER_DAY\": 1,\n        \"SECONDS_PER_MINUTE\": 1,\n        \"SECONDS_PER_HOUR\": 1,\n        \"SECONDS_PER_DAY\": 1,\n        \"MILLIS_PER_DAY\": 1,\n        \"MICROS_PER_DAY\": 1,\n        \"NANOS_PER_MILLI\": 1,\n        \"NANOS_PER_SECOND\": 1,\n        \"NANOS_PER_MINUTE\": 1,\n        \"NANOS_PER_HOUR\": 1,\n        \"NANOS_PER_DAY\": 1,\n        \"hour\": 1,\n        \"minute\": 1,\n        \"second\": 1,\n        \"nano\": 1\n      }\n    },\n    \"submitter\": \"@string\",\n    \"processHeadId\": \"@string\",//提交人\n    \"informationForm\": \"@string\",//动作历史头id\n    \"processInstanceId\": \"@string\",//请求地址，如pompcpurchaseContractAgenda?purchaseContractHeadId=       详见数据库表business.activiti_wf_approve_type中的配置\n    \"taskId\": \"@string\",//流程实例id\n    \"lastProcessDate\": {//任务id\n      \"MIN\": {},//最近处理时间\n      \"MAX\": {},\n      \"date\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"EPOCH\": {},\n        \"DAYS_PER_CYCLE\": 1,\n        \"DAYS_0000_TO_1970\": 1,\n        \"year\": 1,\n        \"month\": 1,\n        \"day\": 1\n      },\n      \"time\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"MIDNIGHT\": {},\n        \"NOON\": {},\n        \"HOURS_PER_DAY\": 1,\n        \"MINUTES_PER_HOUR\": 1,\n        \"MINUTES_PER_DAY\": 1,\n        \"SECONDS_PER_MINUTE\": 1,\n        \"SECONDS_PER_HOUR\": 1,\n        \"SECONDS_PER_DAY\": 1,\n        \"MILLIS_PER_DAY\": 1,\n        \"MICROS_PER_DAY\": 1,\n        \"NANOS_PER_MILLI\": 1,\n        \"NANOS_PER_SECOND\": 1,\n        \"NANOS_PER_MINUTE\": 1,\n        \"NANOS_PER_HOUR\": 1,\n        \"NANOS_PER_DAY\": 1,\n        \"hour\": 1,\n        \"minute\": 1,\n        \"second\": 1,\n        \"nano\": 1\n      }\n    },\n    \"processStatus\": \"@string\"\n  },\n  \"code\": 0,\n  \"message\": \"@string\"//当前动作状态\n}\n",
         "desc": "",
         "method": "POST",
         "req_params": [],
@@ -252,7 +252,7 @@
       },
       {
         "query_path": {
-          "path": "/worker/listPageMyApprovedItem",
+          "path": "/todo/listPageMyApprovedItem",
           "params": []
         },
         "edit_uid": 0,
@@ -279,7 +279,7 @@
             "required": "0",
             "_id": "5e99713bdbaf696592afb4b3",
             "type": "text",
-            "desc": "业务单据号",
+            "desc": "业务号",
             "example": "@string",
             "name": "businessCode"
           },
@@ -287,7 +287,7 @@
             "required": "0",
             "_id": "5e99713bdbaf696592afb4b2",
             "type": "text",
-            "desc": "提交时间起",
+            "desc": "开始提交时间",
             "example": "1587114311682",
             "name": "submitBeginDate"
           },
@@ -295,7 +295,7 @@
             "required": "0",
             "_id": "5e99713bdbaf696592afb4b1",
             "type": "text",
-            "desc": "提交时间止",
+            "desc": "结束提交时间",
             "example": "1587114311682",
             "name": "submitEndDate"
           },
@@ -357,11 +357,11 @@
           }
         ],
         "req_body_other": "",
-        "title": "POST 查询 我已审批 事项列表",
+        "title": "POST 查询 我已动作 事项列表",
         "catid": 32,
-        "path": "/worker/listPageMyApprovedItem",
+        "path": "/todo/listPageMyApprovedItem",
         "res_body_type": "json",
-        "res_body": "{\n  \"success\": false,\n  \"data\": {\n    \"approveTypeCode\": \"@string\",//单据类型，即审批类型代码\n    \"approveTypeName\": \"@string\",//单据类型，即审批类型名称\n    \"approveContent\": \"@string\",//主题\n    \"businessKey\": \"@string\",//业务单据id\n    \"businessCode\": \"@string\",//业务单据号\n    \"submitDate\": {//发起日期\n      \"MIN\": {},\n      \"MAX\": {},\n      \"date\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"EPOCH\": {},\n        \"DAYS_PER_CYCLE\": 1,\n        \"DAYS_0000_TO_1970\": 1,\n        \"year\": 1,\n        \"month\": 1,\n        \"day\": 1\n      },\n      \"time\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"MIDNIGHT\": {},\n        \"NOON\": {},\n        \"HOURS_PER_DAY\": 1,\n        \"MINUTES_PER_HOUR\": 1,\n        \"MINUTES_PER_DAY\": 1,\n        \"SECONDS_PER_MINUTE\": 1,\n        \"SECONDS_PER_HOUR\": 1,\n        \"SECONDS_PER_DAY\": 1,\n        \"MILLIS_PER_DAY\": 1,\n        \"MICROS_PER_DAY\": 1,\n        \"NANOS_PER_MILLI\": 1,\n        \"NANOS_PER_SECOND\": 1,\n        \"NANOS_PER_MINUTE\": 1,\n        \"NANOS_PER_HOUR\": 1,\n        \"NANOS_PER_DAY\": 1,\n        \"hour\": 1,\n        \"minute\": 1,\n        \"second\": 1,\n        \"nano\": 1\n      }\n    },\n    \"submitter\": \"@string\",\n    \"processHeadId\": \"@string\",//提交人\n    \"informationForm\": \"@string\",//审批历史头id\n    \"processInstanceId\": \"@string\",//请求地址，如pompcpurchaseContractAgenda?purchaseContractHeadId=       详见数据库表business.activiti_wf_approve_type中的配置\n    \"taskId\": \"@string\",//流程实例id\n    \"lastProcessDate\": {//任务id\n      \"MIN\": {},//最近处理时间\n      \"MAX\": {},\n      \"date\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"EPOCH\": {},\n        \"DAYS_PER_CYCLE\": 1,\n        \"DAYS_0000_TO_1970\": 1,\n        \"year\": 1,\n        \"month\": 1,\n        \"day\": 1\n      },\n      \"time\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"MIDNIGHT\": {},\n        \"NOON\": {},\n        \"HOURS_PER_DAY\": 1,\n        \"MINUTES_PER_HOUR\": 1,\n        \"MINUTES_PER_DAY\": 1,\n        \"SECONDS_PER_MINUTE\": 1,\n        \"SECONDS_PER_HOUR\": 1,\n        \"SECONDS_PER_DAY\": 1,\n        \"MILLIS_PER_DAY\": 1,\n        \"MICROS_PER_DAY\": 1,\n        \"NANOS_PER_MILLI\": 1,\n        \"NANOS_PER_SECOND\": 1,\n        \"NANOS_PER_MINUTE\": 1,\n        \"NANOS_PER_HOUR\": 1,\n        \"NANOS_PER_DAY\": 1,\n        \"hour\": 1,\n        \"minute\": 1,\n        \"second\": 1,\n        \"nano\": 1\n      }\n    },\n    \"processStatus\": \"@string\"\n  },\n  \"code\": 0,\n  \"message\": \"@string\"//当前审批状态\n}\n",
+        "res_body": "{\n  \"success\": false,\n  \"data\": {\n    \"approveTypeCode\": \"@string\",//单据类型，即动作类型代码\n    \"approveTypeName\": \"@string\",//单据类型，即动作类型名称\n    \"approveContent\": \"@string\",//主题\n    \"businessKey\": \"@string\",//业务单据id\n    \"businessCode\": \"@string\",//业务号\n    \"submitDate\": {//发起日期\n      \"MIN\": {},\n      \"MAX\": {},\n      \"date\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"EPOCH\": {},\n        \"DAYS_PER_CYCLE\": 1,\n        \"DAYS_0000_TO_1970\": 1,\n        \"year\": 1,\n        \"month\": 1,\n        \"day\": 1\n      },\n      \"time\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"MIDNIGHT\": {},\n        \"NOON\": {},\n        \"HOURS_PER_DAY\": 1,\n        \"MINUTES_PER_HOUR\": 1,\n        \"MINUTES_PER_DAY\": 1,\n        \"SECONDS_PER_MINUTE\": 1,\n        \"SECONDS_PER_HOUR\": 1,\n        \"SECONDS_PER_DAY\": 1,\n        \"MILLIS_PER_DAY\": 1,\n        \"MICROS_PER_DAY\": 1,\n        \"NANOS_PER_MILLI\": 1,\n        \"NANOS_PER_SECOND\": 1,\n        \"NANOS_PER_MINUTE\": 1,\n        \"NANOS_PER_HOUR\": 1,\n        \"NANOS_PER_DAY\": 1,\n        \"hour\": 1,\n        \"minute\": 1,\n        \"second\": 1,\n        \"nano\": 1\n      }\n    },\n    \"submitter\": \"@string\",\n    \"processHeadId\": \"@string\",//提交人\n    \"informationForm\": \"@string\",//动作历史头id\n    \"processInstanceId\": \"@string\",//请求地址，如pompcpurchaseContractAgenda?purchaseContractHeadId=       详见数据库表business.activiti_wf_approve_type中的配置\n    \"taskId\": \"@string\",//流程实例id\n    \"lastProcessDate\": {//任务id\n      \"MIN\": {},//最近处理时间\n      \"MAX\": {},\n      \"date\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"EPOCH\": {},\n        \"DAYS_PER_CYCLE\": 1,\n        \"DAYS_0000_TO_1970\": 1,\n        \"year\": 1,\n        \"month\": 1,\n        \"day\": 1\n      },\n      \"time\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"MIDNIGHT\": {},\n        \"NOON\": {},\n        \"HOURS_PER_DAY\": 1,\n        \"MINUTES_PER_HOUR\": 1,\n        \"MINUTES_PER_DAY\": 1,\n        \"SECONDS_PER_MINUTE\": 1,\n        \"SECONDS_PER_HOUR\": 1,\n        \"SECONDS_PER_DAY\": 1,\n        \"MILLIS_PER_DAY\": 1,\n        \"MICROS_PER_DAY\": 1,\n        \"NANOS_PER_MILLI\": 1,\n        \"NANOS_PER_SECOND\": 1,\n        \"NANOS_PER_MINUTE\": 1,\n        \"NANOS_PER_HOUR\": 1,\n        \"NANOS_PER_DAY\": 1,\n        \"hour\": 1,\n        \"minute\": 1,\n        \"second\": 1,\n        \"nano\": 1\n      }\n    },\n    \"processStatus\": \"@string\"\n  },\n  \"code\": 0,\n  \"message\": \"@string\"//当前动作状态\n}\n",
         "desc": "",
         "method": "POST",
         "req_params": [],
@@ -374,7 +374,7 @@
       },
       {
         "query_path": {
-          "path": "/worker/listPageApprovedBizBill",
+          "path": "/todo/listPageApprovedBizBill",
           "params": []
         },
         "edit_uid": 0,
@@ -401,7 +401,7 @@
             "required": "0",
             "_id": "5e99713bdbaf696592afb49d",
             "type": "text",
-            "desc": "审批类型",
+            "desc": "动作类型",
             "example": "@string",
             "name": "approveTypeCode"
           },
@@ -409,7 +409,7 @@
             "required": "0",
             "_id": "5e99713bdbaf696592afb49c",
             "type": "text",
-            "desc": "单据号",
+            "desc": "号",
             "example": "@string",
             "name": "originCode"
           },
@@ -471,11 +471,11 @@
           }
         ],
         "req_body_other": "",
-        "title": "POST 查询已审批业务单据",
+        "title": "POST 查询已动作业务单据",
         "catid": 32,
-        "path": "/worker/listPageApprovedBizBill",
+        "path": "/todo/listPageApprovedBizBill",
         "res_body_type": "json",
-        "res_body": "{\n  \"success\": false,\n  \"data\": {\n    \"queryDoneForm\": \"@string\",//已审批页面\n    \"originId\": \"@string\",//来源单据ID  ORIGIN_ID\n    \"originCode\": \"@string\",//来源单据显示CODE  ORIGIN_CODE\n    \"processStartUserId\": \"@string\",//流程启动用户ID  PROCESS_START_USER_ID\n    \"processStartUserCode\": \"@string\",//流程启动用户代码  PROCESS_START_USER_CODE\n    \"processStartUserName\": \"@string\",//流程启动用户名称  PROCESS_START_USER_NAME\n    \"departmentId\": \"@string\",//部门ID  DEPARTMENT_ID\n    \"departmentCode\": \"@string\",//部门Code  DEPARTMENT_CODE\n    \"departmentName\": \"@string\",//部门Name  DEPARTMENT_NAME\n    \"processStartDate\": {//流程提交时间  PROCESS_START_DATE\n      \"MIN\": {},\n      \"MAX\": {},\n      \"date\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"EPOCH\": {},\n        \"DAYS_PER_CYCLE\": 1,\n        \"DAYS_0000_TO_1970\": 1,\n        \"year\": 1,\n        \"month\": 1,\n        \"day\": 1\n      },\n      \"time\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"MIDNIGHT\": {},\n        \"NOON\": {},\n        \"HOURS_PER_DAY\": 1,\n        \"MINUTES_PER_HOUR\": 1,\n        \"MINUTES_PER_DAY\": 1,\n        \"SECONDS_PER_MINUTE\": 1,\n        \"SECONDS_PER_HOUR\": 1,\n        \"SECONDS_PER_DAY\": 1,\n        \"MILLIS_PER_DAY\": 1,\n        \"MICROS_PER_DAY\": 1,\n        \"NANOS_PER_MILLI\": 1,\n        \"NANOS_PER_SECOND\": 1,\n        \"NANOS_PER_MINUTE\": 1,\n        \"NANOS_PER_HOUR\": 1,\n        \"NANOS_PER_DAY\": 1,\n        \"hour\": 1,\n        \"minute\": 1,\n        \"second\": 1,\n        \"nano\": 1\n      }\n    },\n    \"processApproveContent\": \"@string\"\n  },\n  \"code\": 0,//流程审批内容  PROCESS_APPROVE_CONTENT\n  \"message\": \"@string\"\n}\n",
+        "res_body": "{\n  \"success\": false,\n  \"data\": {\n    \"queryDoneForm\": \"@string\",//已动作页面\n    \"originId\": \"@string\",//来源单据ID  ORIGIN_ID\n    \"originCode\": \"@string\",//来源单据显示CODE  ORIGIN_CODE\n    \"processStartUserId\": \"@string\",//流程启动用户ID  PROCESS_START_USER_ID\n    \"processStartUserCode\": \"@string\",//流程启动用户代码  PROCESS_START_USER_CODE\n    \"processStartUserName\": \"@string\",//流程启动用户名称  PROCESS_START_USER_NAME\n    \"departmentId\": \"@string\",//部门ID  DEPARTMENT_ID\n    \"departmentCode\": \"@string\",//部门Code  DEPARTMENT_CODE\n    \"departmentName\": \"@string\",//部门Name  DEPARTMENT_NAME\n    \"processStartDate\": {//流程提交时间  PROCESS_START_DATE\n      \"MIN\": {},\n      \"MAX\": {},\n      \"date\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"EPOCH\": {},\n        \"DAYS_PER_CYCLE\": 1,\n        \"DAYS_0000_TO_1970\": 1,\n        \"year\": 1,\n        \"month\": 1,\n        \"day\": 1\n      },\n      \"time\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"MIDNIGHT\": {},\n        \"NOON\": {},\n        \"HOURS_PER_DAY\": 1,\n        \"MINUTES_PER_HOUR\": 1,\n        \"MINUTES_PER_DAY\": 1,\n        \"SECONDS_PER_MINUTE\": 1,\n        \"SECONDS_PER_HOUR\": 1,\n        \"SECONDS_PER_DAY\": 1,\n        \"MILLIS_PER_DAY\": 1,\n        \"MICROS_PER_DAY\": 1,\n        \"NANOS_PER_MILLI\": 1,\n        \"NANOS_PER_SECOND\": 1,\n        \"NANOS_PER_MINUTE\": 1,\n        \"NANOS_PER_HOUR\": 1,\n        \"NANOS_PER_DAY\": 1,\n        \"hour\": 1,\n        \"minute\": 1,\n        \"second\": 1,\n        \"nano\": 1\n      }\n    },\n    \"processApproveContent\": \"@string\"\n  },\n  \"code\": 0,//流程动作内容  PROCESS_APPROVE_CONTENT\n  \"message\": \"@string\"\n}\n",
         "desc": "",
         "method": "POST",
         "req_params": [],
@@ -485,143 +485,12 @@
         "add_time": 1586962791,
         "up_time": 1587114299,
         "__v": 0
-      },
-      {
-        "query_path": {
-          "path": "/worker/listApprovalTask",
-          "params": []
-        },
-        "edit_uid": 0,
-        "status": "undone",
-        "type": "static",
-        "req_body_is_json_schema": false,
-        "res_body_is_json_schema": false,
-        "api_opened": false,
-        "index": 0,
-        "tag": [],
-        "_id": 219,
-        "req_query": [],
-        "req_headers": [
-          {
-            "required": "1",
-            "_id": "5e99713bdbaf696592afb48d",
-            "name": "Content-Type",
-            "value": "application/x-www-form-urlencoded"
-          }
-        ],
-        "req_body_type": "form",
-        "req_body_form": [
-          {
-            "required": "1",
-            "_id": "5e99713bdbaf696592afb493",
-            "type": "text",
-            "desc": "审批类型Code",
-            "example": "@string",
-            "name": "approveTypeCode"
-          },
-          {
-            "required": "0",
-            "_id": "5e99713bdbaf696592afb492",
-            "type": "text",
-            "desc": "提交人",
-            "example": "@string",
-            "name": "processStartUserName"
-          },
-          {
-            "required": "0",
-            "_id": "5e99713bdbaf696592afb491",
-            "type": "text",
-            "desc": "单据号",
-            "example": "@string",
-            "name": "originCode"
-          },
-          {
-            "required": "0",
-            "_id": "5e99713bdbaf696592afb490",
-            "type": "text",
-            "desc": "",
-            "example": "@string",
-            "name": "uid"
-          },
-          {
-            "required": "0",
-            "_id": "5e99713bdbaf696592afb48f",
-            "type": "text",
-            "desc": "",
-            "example": "@string",
-            "name": "clientId"
-          },
-          {
-            "required": "0",
-            "_id": "5e99713bdbaf696592afb48e",
-            "type": "text",
-            "desc": "",
-            "example": "@string",
-            "name": "channel"
-          }
-        ],
-        "req_body_other": "",
-        "title": "POST 查询当前用户审批任务列表",
-        "catid": 32,
-        "path": "/worker/listApprovalTask",
-        "res_body_type": "json",
-        "res_body": "{\n  \"success\": false,\n  \"data\": [\n    {\n      \"procInstId\": \"@string\",//实例ID\n      \"taskId\": \"@string\",//任务ID\n      \"assignee\": \"@string\",//当前审批人\n      \"originId\": \"@string\",//单据ID\n      \"originCode\": \"@string\",//单据Code\n      \"informationForm\": \"@string\",//链接详细情况页面\n      \"departmentId\": \"@string\",//部门ID\n      \"departmentCode\": \"@string\",//部门Code\n      \"departmentName\": \"@string\",//部门Name\n      \"processStartUserId\": \"@string\",//提交人ID\n      \"processStartUserName\": \"@string\",//提交人Name\n      \"processStartDate\": {//提交时间\n        \"MIN\": {},\n        \"MAX\": {},\n        \"date\": {\n          \"MIN\": {},\n          \"MAX\": {},\n          \"EPOCH\": {},\n          \"DAYS_PER_CYCLE\": 1,\n          \"DAYS_0000_TO_1970\": 1,\n          \"year\": 1,\n          \"month\": 1,\n          \"day\": 1\n        },\n        \"time\": {\n          \"MIN\": {},\n          \"MAX\": {},\n          \"MIDNIGHT\": {},\n          \"NOON\": {},\n          \"HOURS_PER_DAY\": 1,\n          \"MINUTES_PER_HOUR\": 1,\n          \"MINUTES_PER_DAY\": 1,\n          \"SECONDS_PER_MINUTE\": 1,\n          \"SECONDS_PER_HOUR\": 1,\n          \"SECONDS_PER_DAY\": 1,\n          \"MILLIS_PER_DAY\": 1,\n          \"MICROS_PER_DAY\": 1,\n          \"NANOS_PER_MILLI\": 1,\n          \"NANOS_PER_SECOND\": 1,\n          \"NANOS_PER_MINUTE\": 1,\n          \"NANOS_PER_HOUR\": 1,\n          \"NANOS_PER_DAY\": 1,\n          \"hour\": 1,\n          \"minute\": 1,\n          \"second\": 1,\n          \"nano\": 1\n        }\n      },\n      \"processApproveContent\": \"@string\"\n    }\n  ],\n  \"code\": 0,//审批内容\n  \"message\": \"@string\"\n}\n",
-        "desc": "",
-        "method": "POST",
-        "req_params": [],
-        "markdown": "",
-        "project_id": 33,
-        "uid": 31,
-        "add_time": 1586962791,
-        "up_time": 1587114299,
-        "__v": 0
-      },
-      {
-        "query_path": {
-          "path": "/worker/listApprovalBusiness",
-          "params": []
-        },
-        "edit_uid": 0,
-        "status": "undone",
-        "type": "static",
-        "req_body_is_json_schema": false,
-        "res_body_is_json_schema": false,
-        "api_opened": false,
-        "index": 0,
-        "tag": [],
-        "_id": 213,
-        "req_query": [],
-        "req_headers": [
-          {
-            "required": "1",
-            "_id": "5e99713adbaf696592afb48c",
-            "name": "Content-Type",
-            "value": "application/x-www-form-urlencoded"
-          }
-        ],
-        "req_body_type": "form",
-        "req_body_form": [],
-        "req_body_other": "",
-        "title": "POST 查询首页审批事项列表",
-        "catid": 32,
-        "path": "/worker/listApprovalBusiness",
-        "res_body_type": "json",
-        "res_body": "{\n  \"success\": false,\n  \"data\": [\n    {\n      \"approveTypeCode\": \"@string\",//审批类型Code\n      \"approveTypeName\": \"@string\",//审批类型Name\n      \"pendingTaskCount\": 0,//待办任务数量\n      \"iconInfo\": \"@string\"//图标样式\n    }\n  ],\n  \"code\": 0,\n  \"message\": \"@string\"\n}\n",
-        "desc": "",
-        "method": "POST",
-        "req_params": [],
-        "markdown": "",
-        "project_id": 33,
-        "uid": 31,
-        "add_time": 1586962791,
-        "up_time": 1587114298,
-        "__v": 0
-      }
+
     ]
   },
   {
     "index": 0,
-    "name": "审批历史",
+    "name": "动作历史",
     "desc": null,
     "add_time": 1587050591,
     "up_time": 1587050668,
@@ -795,7 +664,7 @@
         ],
         "req_body_form": [],
         "req_body_other": "",
-        "title": "GET 获取操作人的最近10条审批意见",
+        "title": "GET 获取操作人的最近10条动作意见",
         "catid": 134,
         "path": "/history/recentNoteList",
         "res_body_type": "json",
@@ -877,11 +746,11 @@
           }
         ],
         "req_body_other": "",
-        "title": "POST 查询审批流程节点图",
+        "title": "POST 查询动作流程节点图",
         "catid": 134,
         "path": "/history/listApprovalNodeInfo",
         "res_body_type": "json",
-        "res_body": "{\n  \"success\": false,\n  \"data\": [\n    {\n      \"nodeId\": \"@string\",//节点ID（唯一值）  taskDefinitionKey\n      \"nodeName\": \"@string\",//节点名称\n      \"nodeType\": \"@string\",//节点类型       Case1：排他网关Gateway; 非排他网关 Non_Gateway --> 获取下一节点审批人API使用       Case2：排他网关ExclusiveGateway; 并行网关 ParallelGateway; 用户节点 UserTask; --> 获取所有节API使用\n      \"orderCount\": 0,//节点顺序\n      \"approveStatus\": 0,//节点审批状态       0：未审批；1：已审批\n      \"approveName\": \"@string\",//审批人Name\n      \"multiInstanceType\": \"@string\"//None 非会签节点；Parallel 多实例节点\n    }\n  ],\n  \"code\": 0,\n  \"message\": \"@string\"\n}\n",
+        "res_body": "{\n  \"success\": false,\n  \"data\": [\n    {\n      \"nodeId\": \"@string\",//节点ID（唯一值）  taskDefinitionKey\n      \"nodeName\": \"@string\",//节点名称\n      \"nodeType\": \"@string\",//节点类型       Case1：排他网关Gateway; 非排他网关 Non_Gateway --> 获取下一节点动作人API使用       Case2：排他网关ExclusiveGateway; 并行网关 ParallelGateway; 用户节点 UserTask; --> 获取所有节API使用\n      \"orderCount\": 0,//节点顺序\n      \"approveStatus\": 0,//节点动作状态       0：未动作；1：已动作\n      \"approveName\": \"@string\",//动作人Name\n      \"multiInstanceType\": \"@string\"//None 非会签节点；Parallel 多实例节点\n    }\n  ],\n  \"code\": 0,\n  \"message\": \"@string\"\n}\n",
         "desc": "",
         "method": "POST",
         "req_params": [],
@@ -890,919 +759,6 @@
         "uid": 31,
         "add_time": 1587050591,
         "up_time": 1587050591,
-        "__v": 0
-      },
-      {
-        "query_path": {
-          "path": "/history/listPageApprovedBizBill",
-          "params": []
-        },
-        "edit_uid": 0,
-        "status": "undone",
-        "type": "static",
-        "req_body_is_json_schema": false,
-        "res_body_is_json_schema": false,
-        "api_opened": false,
-        "index": 0,
-        "tag": [],
-        "_id": 327,
-        "req_query": [],
-        "req_headers": [
-          {
-            "required": "1",
-            "_id": "5e98785fdbaf696592afb473",
-            "name": "Content-Type",
-            "value": "application/x-www-form-urlencoded"
-          }
-        ],
-        "req_body_type": "form",
-        "req_body_form": [
-          {
-            "required": "0",
-            "_id": "5e98785fdbaf696592afb47c",
-            "type": "text",
-            "desc": "审批类型",
-            "example": "@string",
-            "name": "approveTypeCode"
-          },
-          {
-            "required": "0",
-            "_id": "5e98785fdbaf696592afb47b",
-            "type": "text",
-            "desc": "单据号",
-            "example": "@string",
-            "name": "originCode"
-          },
-          {
-            "required": "0",
-            "_id": "5e98785fdbaf696592afb47a",
-            "type": "text",
-            "desc": "提交人",
-            "example": "@string",
-            "name": "processStartUserName"
-          },
-          {
-            "required": "0",
-            "_id": "5e98785fdbaf696592afb479",
-            "type": "text",
-            "desc": "提交部门",
-            "example": "@string",
-            "name": "departmentName"
-          },
-          {
-            "required": "0",
-            "_id": "5e98785fdbaf696592afb478",
-            "type": "text",
-            "desc": "",
-            "example": "0",
-            "name": "pageNum"
-          },
-          {
-            "required": "0",
-            "_id": "5e98785fdbaf696592afb477",
-            "type": "text",
-            "desc": "",
-            "example": "0",
-            "name": "pageSize"
-          },
-          {
-            "required": "0",
-            "_id": "5e98785fdbaf696592afb476",
-            "type": "text",
-            "desc": "",
-            "example": "@string",
-            "name": "uid"
-          },
-          {
-            "required": "0",
-            "_id": "5e98785fdbaf696592afb475",
-            "type": "text",
-            "desc": "",
-            "example": "@string",
-            "name": "clientId"
-          },
-          {
-            "required": "0",
-            "_id": "5e98785fdbaf696592afb474",
-            "type": "text",
-            "desc": "",
-            "example": "@string",
-            "name": "channel"
-          }
-        ],
-        "req_body_other": "",
-        "title": "POST 查询已审批业务单据",
-        "catid": 134,
-        "path": "/history/listPageApprovedBizBill",
-        "res_body_type": "json",
-        "res_body": "{\n  \"success\": false,\n  \"data\": {\n    \"queryDoneForm\": \"@string\",//已审批页面\n    \"originId\": \"@string\",//来源单据ID  ORIGIN_ID\n    \"originCode\": \"@string\",//来源单据显示CODE  ORIGIN_CODE\n    \"processStartUserId\": \"@string\",//流程启动用户ID  PROCESS_START_USER_ID\n    \"processStartUserCode\": \"@string\",//流程启动用户代码  PROCESS_START_USER_CODE\n    \"processStartUserName\": \"@string\",//流程启动用户名称  PROCESS_START_USER_NAME\n    \"departmentId\": \"@string\",//部门ID  DEPARTMENT_ID\n    \"departmentCode\": \"@string\",//部门Code  DEPARTMENT_CODE\n    \"departmentName\": \"@string\",//部门Name  DEPARTMENT_NAME\n    \"processStartDate\": {//流程提交时间  PROCESS_START_DATE\n      \"MIN\": {},\n      \"MAX\": {},\n      \"date\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"EPOCH\": {},\n        \"DAYS_PER_CYCLE\": 1,\n        \"DAYS_0000_TO_1970\": 1,\n        \"year\": 1,\n        \"month\": 1,\n        \"day\": 1\n      },\n      \"time\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"MIDNIGHT\": {},\n        \"NOON\": {},\n        \"HOURS_PER_DAY\": 1,\n        \"MINUTES_PER_HOUR\": 1,\n        \"MINUTES_PER_DAY\": 1,\n        \"SECONDS_PER_MINUTE\": 1,\n        \"SECONDS_PER_HOUR\": 1,\n        \"SECONDS_PER_DAY\": 1,\n        \"MILLIS_PER_DAY\": 1,\n        \"MICROS_PER_DAY\": 1,\n        \"NANOS_PER_MILLI\": 1,\n        \"NANOS_PER_SECOND\": 1,\n        \"NANOS_PER_MINUTE\": 1,\n        \"NANOS_PER_HOUR\": 1,\n        \"NANOS_PER_DAY\": 1,\n        \"hour\": 1,\n        \"minute\": 1,\n        \"second\": 1,\n        \"nano\": 1\n      }\n    },\n    \"processApproveContent\": \"@string\"\n  },\n  \"code\": 0,//流程审批内容  PROCESS_APPROVE_CONTENT\n  \"message\": \"@string\"\n}\n",
-        "desc": "",
-        "method": "POST",
-        "req_params": [],
-        "markdown": "",
-        "project_id": 33,
-        "uid": 31,
-        "add_time": 1587050591,
-        "up_time": 1587050591,
-        "__v": 0
-      },
-      {
-        "query_path": {
-          "path": "/history/listApprovalProcess",
-          "params": []
-        },
-        "edit_uid": 0,
-        "status": "undone",
-        "type": "static",
-        "req_body_is_json_schema": false,
-        "res_body_is_json_schema": false,
-        "api_opened": false,
-        "index": 0,
-        "tag": [],
-        "_id": 315,
-        "req_query": [],
-        "req_headers": [
-          {
-            "required": "1",
-            "_id": "5e98785fdbaf696592afb466",
-            "name": "Content-Type",
-            "value": "application/x-www-form-urlencoded"
-          }
-        ],
-        "req_body_type": "form",
-        "req_body_form": [
-          {
-            "required": "0",
-            "_id": "5e98785fdbaf696592afb46c",
-            "type": "text",
-            "desc": "系统别  SYSTEM_CODE",
-            "example": "@string",
-            "name": "systemCode"
-          },
-          {
-            "required": "1",
-            "_id": "5e98785fdbaf696592afb46b",
-            "type": "text",
-            "desc": "审批类型",
-            "example": "@string",
-            "name": "approveTypeCode"
-          },
-          {
-            "required": "1",
-            "_id": "5e98785fdbaf696592afb46a",
-            "type": "text",
-            "desc": "来源单据ID  ORIGIN_ID",
-            "example": "@string",
-            "name": "originId"
-          },
-          {
-            "required": "0",
-            "_id": "5e98785fdbaf696592afb469",
-            "type": "text",
-            "desc": "",
-            "example": "@string",
-            "name": "uid"
-          },
-          {
-            "required": "0",
-            "_id": "5e98785fdbaf696592afb468",
-            "type": "text",
-            "desc": "",
-            "example": "@string",
-            "name": "clientId"
-          },
-          {
-            "required": "0",
-            "_id": "5e98785fdbaf696592afb467",
-            "type": "text",
-            "desc": "",
-            "example": "@string",
-            "name": "channel"
-          }
-        ],
-        "req_body_other": "",
-        "title": "POST 根据来源ID查询所有审批意见",
-        "catid": 134,
-        "path": "/history/listApprovalProcess",
-        "res_body_type": "json",
-        "res_body": "{\n  \"success\": false,\n  \"data\": {\n    \"systemCode\": \"@string\",//系统别  SYSTEM_CODE\n    \"processHeadId\": \"@string\",//流程实例主ID  PROCESS_HEAD_ID\n    \"approveTypeCode\": \"@string\",//流程类型  APPROVE_TYPE_CODE\n    \"processStatus\": \"@string\",//流程实例状态：同工作流  PROCESS_STATUS\n    \"originId\": \"@string\",//来源单据ID  ORIGIN_ID\n    \"originCode\": \"@string\",//来源单据显示CODE  ORIGIN_CODE\n    \"originDesc\": \"@string\",//来源单据显示描述信息  ORIGIN_DESC\n    \"originOperator\": \"@string\",//来源单据显示制单人  ORIGIN_OPERATOR\n    \"list\": [//审批意见\n      {\n        \"opPostId\": \"@string\",//岗位ID  OP_POST_ID\n        \"opPostCode\": \"@string\",//岗位代码  OP_POST_CODE\n        \"opPostName\": \"@string\",//岗位名称  OP_POST_NAME\n        \"opStaffId\": \"@string\",//员工ID  OP_STAFF_ID\n        \"opStaffCode\": \"@string\",//员工代码  OP_STAFF_CODE\n        \"opStaffName\": \"@string\",//员工名称  OP_STAFF_NAME\n        \"processOption\": \"@string\",//流程节点类型：       ActivitiBizConstants.PROCESS_OPTION\n        \"elementType\": 0,//None 非会签节点；Parallel 多实例会签节点\n        \"processNodeNotice\": \"@string\",//审批意见  PROCESS_NODE_NOTICE\n        \"submitDate\": {//发起时间\n          \"MIN\": {},\n          \"MAX\": {},\n          \"date\": {\n            \"MIN\": {},\n            \"MAX\": {},\n            \"EPOCH\": {},\n            \"DAYS_PER_CYCLE\": 1,\n            \"DAYS_0000_TO_1970\": 1,\n            \"year\": 1,\n            \"month\": 1,\n            \"day\": 1\n          },\n          \"time\": {\n            \"MIN\": {},\n            \"MAX\": {},\n            \"MIDNIGHT\": {},\n            \"NOON\": {},\n            \"HOURS_PER_DAY\": 1,\n            \"MINUTES_PER_HOUR\": 1,\n            \"MINUTES_PER_DAY\": 1,\n            \"SECONDS_PER_MINUTE\": 1,\n            \"SECONDS_PER_HOUR\": 1,\n            \"SECONDS_PER_DAY\": 1,\n            \"MILLIS_PER_DAY\": 1,\n            \"MICROS_PER_DAY\": 1,\n            \"NANOS_PER_MILLI\": 1,\n            \"NANOS_PER_SECOND\": 1,\n            \"NANOS_PER_MINUTE\": 1,\n            \"NANOS_PER_HOUR\": 1,\n            \"NANOS_PER_DAY\": 1,\n            \"hour\": 1,\n            \"minute\": 1,\n            \"second\": 1,\n            \"nano\": 1\n          }\n        },\n        \"approveDate\": {\n          \"MIN\": {},//审批时间\n          \"MAX\": {},\n          \"date\": {\n            \"MIN\": {},\n            \"MAX\": {},\n            \"EPOCH\": {},\n            \"DAYS_PER_CYCLE\": 1,\n            \"DAYS_0000_TO_1970\": 1,\n            \"year\": 1,\n            \"month\": 1,\n            \"day\": 1\n          },\n          \"time\": {\n            \"MIN\": {},\n            \"MAX\": {},\n            \"MIDNIGHT\": {},\n            \"NOON\": {},\n            \"HOURS_PER_DAY\": 1,\n            \"MINUTES_PER_HOUR\": 1,\n            \"MINUTES_PER_DAY\": 1,\n            \"SECONDS_PER_MINUTE\": 1,\n            \"SECONDS_PER_HOUR\": 1,\n            \"SECONDS_PER_DAY\": 1,\n            \"MILLIS_PER_DAY\": 1,\n            \"MICROS_PER_DAY\": 1,\n            \"NANOS_PER_MILLI\": 1,\n            \"NANOS_PER_SECOND\": 1,\n            \"NANOS_PER_MINUTE\": 1,\n            \"NANOS_PER_HOUR\": 1,\n            \"NANOS_PER_DAY\": 1,\n            \"hour\": 1,\n            \"minute\": 1,\n            \"second\": 1,\n            \"nano\": 1\n          }\n        }\n      }\n    ],\n    \"isMyPending\": false\n  },\n  \"code\": 0,\n  \"message\": \"@string\"//下个节点的审批人是否包含我\n}\n",
-        "desc": "",
-        "method": "POST",
-        "req_params": [],
-        "markdown": "",
-        "project_id": 33,
-        "uid": 31,
-        "add_time": 1587050591,
-        "up_time": 1587050591,
-        "__v": 0
-      },
-      {
-        "query_path": {
-          "path": "/history/listApproveProcessApp",
-          "params": []
-        },
-        "edit_uid": 0,
-        "status": "undone",
-        "type": "static",
-        "req_body_is_json_schema": false,
-        "res_body_is_json_schema": false,
-        "api_opened": false,
-        "index": 0,
-        "tag": [],
-        "_id": 321,
-        "req_query": [],
-        "req_headers": [
-          {
-            "required": "1",
-            "_id": "5e98785fdbaf696592afb46d",
-            "name": "Content-Type",
-            "value": "application/x-www-form-urlencoded"
-          }
-        ],
-        "req_body_type": "form",
-        "req_body_form": [
-          {
-            "required": "1",
-            "_id": "5e98785fdbaf696592afb472",
-            "type": "text",
-            "desc": "单据类型 code",
-            "example": "@string",
-            "name": "approveTypeCode"
-          },
-          {
-            "required": "1",
-            "_id": "5e98785fdbaf696592afb471",
-            "type": "text",
-            "desc": "业务单据 id",
-            "example": "@string",
-            "name": "businessKey"
-          },
-          {
-            "required": "0",
-            "_id": "5e98785fdbaf696592afb470",
-            "type": "text",
-            "desc": "",
-            "example": "@string",
-            "name": "uid"
-          },
-          {
-            "required": "0",
-            "_id": "5e98785fdbaf696592afb46f",
-            "type": "text",
-            "desc": "",
-            "example": "@string",
-            "name": "clientId"
-          },
-          {
-            "required": "0",
-            "_id": "5e98785fdbaf696592afb46e",
-            "type": "text",
-            "desc": "",
-            "example": "@string",
-            "name": "channel"
-          }
-        ],
-        "req_body_other": "",
-        "title": "POST 移动端 查询审批进度，包括已审批节点和未审批节点",
-        "catid": 134,
-        "path": "/history/listApproveProcessApp",
-        "res_body_type": "json",
-        "res_body": "{\n  \"success\": false,\n  \"data\": {\n    \"approvedProcessList\": [//审批意见\n      {\n        \"opPostId\": \"@string\",//岗位ID  OP_POST_ID\n        \"opPostCode\": \"@string\",//岗位代码  OP_POST_CODE\n        \"opPostName\": \"@string\",//岗位名称  OP_POST_NAME\n        \"opStaffId\": \"@string\",//员工ID  OP_STAFF_ID\n        \"opStaffCode\": \"@string\",//员工代码  OP_STAFF_CODE\n        \"opStaffName\": \"@string\",//员工名称  OP_STAFF_NAME\n        \"processOption\": \"@string\",//流程节点类型：       ActivitiBizConstants.PROCESS_OPTION\n        \"elementType\": 0,//None 非会签节点；Parallel 多实例会签节点\n        \"processNodeNotice\": \"@string\",//审批意见  PROCESS_NODE_NOTICE\n        \"submitDate\": {//发起时间\n          \"MIN\": {},\n          \"MAX\": {},\n          \"date\": {\n            \"MIN\": {},\n            \"MAX\": {},\n            \"EPOCH\": {},\n            \"DAYS_PER_CYCLE\": 1,\n            \"DAYS_0000_TO_1970\": 1,\n            \"year\": 1,\n            \"month\": 1,\n            \"day\": 1\n          },\n          \"time\": {\n            \"MIN\": {},\n            \"MAX\": {},\n            \"MIDNIGHT\": {},\n            \"NOON\": {},\n            \"HOURS_PER_DAY\": 1,\n            \"MINUTES_PER_HOUR\": 1,\n            \"MINUTES_PER_DAY\": 1,\n            \"SECONDS_PER_MINUTE\": 1,\n            \"SECONDS_PER_HOUR\": 1,\n            \"SECONDS_PER_DAY\": 1,\n            \"MILLIS_PER_DAY\": 1,\n            \"MICROS_PER_DAY\": 1,\n            \"NANOS_PER_MILLI\": 1,\n            \"NANOS_PER_SECOND\": 1,\n            \"NANOS_PER_MINUTE\": 1,\n            \"NANOS_PER_HOUR\": 1,\n            \"NANOS_PER_DAY\": 1,\n            \"hour\": 1,\n            \"minute\": 1,\n            \"second\": 1,\n            \"nano\": 1\n          }\n        },\n        \"approveDate\": {\n          \"MIN\": {},//审批时间\n          \"MAX\": {},\n          \"date\": {\n            \"MIN\": {},\n            \"MAX\": {},\n            \"EPOCH\": {},\n            \"DAYS_PER_CYCLE\": 1,\n            \"DAYS_0000_TO_1970\": 1,\n            \"year\": 1,\n            \"month\": 1,\n            \"day\": 1\n          },\n          \"time\": {\n            \"MIN\": {},\n            \"MAX\": {},\n            \"MIDNIGHT\": {},\n            \"NOON\": {},\n            \"HOURS_PER_DAY\": 1,\n            \"MINUTES_PER_HOUR\": 1,\n            \"MINUTES_PER_DAY\": 1,\n            \"SECONDS_PER_MINUTE\": 1,\n            \"SECONDS_PER_HOUR\": 1,\n            \"SECONDS_PER_DAY\": 1,\n            \"MILLIS_PER_DAY\": 1,\n            \"MICROS_PER_DAY\": 1,\n            \"NANOS_PER_MILLI\": 1,\n            \"NANOS_PER_SECOND\": 1,\n            \"NANOS_PER_MINUTE\": 1,\n            \"NANOS_PER_HOUR\": 1,\n            \"NANOS_PER_DAY\": 1,\n            \"hour\": 1,\n            \"minute\": 1,\n            \"second\": 1,\n            \"nano\": 1\n          }\n        }\n      }\n    ],\n    \"unapprovedProcessList\": [\n      {\n        \"nodeId\": \"@string\",\n        \"nodeName\": \"@string\",//未审批历史节点\n        \"nodeType\": \"@string\",//节点ID（唯一值）  taskDefinitionKey\n        \"orderCount\": 0,//节点名称\n        \"approveStatus\": 0,//节点类型       Case1：排他网关Gateway; 非排他网关 Non_Gateway --> 获取下一节点审批人API使用       Case2：排他网关ExclusiveGateway; 并行网关 ParallelGateway; 用户节点 UserTask; --> 获取所有节API使用\n        \"approveName\": \"@string\",//节点顺序\n        \"multiInstanceType\": \"@string\"//节点审批状态       0：未审批；1：已审批\n      }\n    ],\n    \"isMyPending\": false//审批人Name\n  },\n  \"code\": 0,//None 非会签节点；Parallel 多实例节点\n  \"message\": \"@string\"//下个节点的审批人是否包含我\n}\n",
-        "desc": "",
-        "method": "POST",
-        "req_params": [],
-        "markdown": "",
-        "project_id": 33,
-        "uid": 31,
-        "add_time": 1587050591,
-        "up_time": 1587050591,
-        "__v": 0
-      },
-      {
-        "query_path": {
-          "path": "/history/listPageHistoryTaskInstByAssignee",
-          "params": []
-        },
-        "edit_uid": 0,
-        "status": "undone",
-        "type": "static",
-        "req_body_is_json_schema": false,
-        "res_body_is_json_schema": false,
-        "api_opened": false,
-        "index": 0,
-        "tag": [],
-        "_id": 351,
-        "req_query": [],
-        "req_headers": [
-          {
-            "required": "1",
-            "_id": "5e987860dbaf696592afb483",
-            "name": "Content-Type",
-            "value": "application/x-www-form-urlencoded"
-          }
-        ],
-        "req_body_type": "form",
-        "req_body_form": [
-          {
-            "required": "0",
-            "_id": "5e987860dbaf696592afb489",
-            "type": "text",
-            "desc": "任务负责人或角色",
-            "example": "@string",
-            "name": "assignee"
-          },
-          {
-            "required": "0",
-            "_id": "5e987860dbaf696592afb488",
-            "type": "text",
-            "desc": "",
-            "example": "0",
-            "name": "pageNum"
-          },
-          {
-            "required": "0",
-            "_id": "5e987860dbaf696592afb487",
-            "type": "text",
-            "desc": "",
-            "example": "0",
-            "name": "pageSize"
-          },
-          {
-            "required": "0",
-            "_id": "5e987860dbaf696592afb486",
-            "type": "text",
-            "desc": "",
-            "example": "@string",
-            "name": "uid"
-          },
-          {
-            "required": "0",
-            "_id": "5e987860dbaf696592afb485",
-            "type": "text",
-            "desc": "",
-            "example": "@string",
-            "name": "clientId"
-          },
-          {
-            "required": "0",
-            "_id": "5e987860dbaf696592afb484",
-            "type": "text",
-            "desc": "",
-            "example": "@string",
-            "name": "channel"
-          }
-        ],
-        "req_body_other": "",
-        "title": "POST 获取指派的历史任务列表(分页)",
-        "catid": 134,
-        "path": "/history/listPageHistoryTaskInstByAssignee",
-        "res_body_type": "json",
-        "res_body": "{\n  \"success\": false,\n  \"data\": {\n    \"taskId\": \"@string\",\n    \"taskName\": \"@string\",\n    \"procInstId\": \"@string\",\n    \"taskDefKey\": \"@string\",\n    \"taskDescription\": \"@string\",\n    \"procDefId\": \"@string\",\n    \"assignee\": \"@string\",\n    \"createTime\": {\n      \"MIN\": {},\n      \"MAX\": {},\n      \"date\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"EPOCH\": {},\n        \"DAYS_PER_CYCLE\": 1,\n        \"DAYS_0000_TO_1970\": 1,\n        \"year\": 1,\n        \"month\": 1,\n        \"day\": 1\n      },\n      \"time\": {\n        \"MIN\": {},\n        \"MAX\": {},\n        \"MIDNIGHT\": {},\n        \"NOON\": {},\n        \"HOURS_PER_DAY\": 1,\n        \"MINUTES_PER_HOUR\": 1,\n        \"MINUTES_PER_DAY\": 1,\n        \"SECONDS_PER_MINUTE\": 1,\n        \"SECONDS_PER_HOUR\": 1,\n        \"SECONDS_PER_DAY\": 1,\n        \"MILLIS_PER_DAY\": 1,\n        \"MICROS_PER_DAY\": 1,\n        \"NANOS_PER_MILLI\": 1,\n        \"NANOS_PER_SECOND\": 1,\n        \"NANOS_PER_MINUTE\": 1,\n        \"NANOS_PER_HOUR\": 1,\n        \"NANOS_PER_DAY\": 1,\n        \"hour\": 1,\n        \"minute\": 1,\n        \"second\": 1,\n        \"nano\": 1\n      }\n    },\n    \"deleteReason\": \"@string\",\n    \"variables\": {}\n  },\n  \"code\": 0,\n  \"message\": \"@string\"\n}\n",
-        "desc": "",
-        "method": "POST",
-        "req_params": [],
-        "markdown": "",
-        "project_id": 33,
-        "uid": 31,
-        "add_time": 1587050592,
-        "up_time": 1587050592,
-        "__v": 0
-      }
-    ]
-  },
-  {
-    "index": 0,
-    "name": "流程图操作",
-    "desc": "",
-    "add_time": 1587222006,
-    "up_time": 1587222006,
-    "list": [
-      {
-        "query_path": {
-          "path": "/diagram/getDigestInfo/{diagramId}",
-          "params": []
-        },
-        "edit_uid": 0,
-        "status": "undone",
-        "type": "var",
-        "req_body_is_json_schema": false,
-        "res_body_is_json_schema": false,
-        "api_opened": false,
-        "index": 0,
-        "tag": [],
-        "_id": 417,
-        "req_query": [],
-        "req_headers": [
-          {
-            "required": "1",
-            "_id": "5e9b15f7dbaf696592afb4d6",
-            "name": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "req_body_form": [],
-        "req_body_other": "",
-        "title": "GET 获取 流程图摘要信息",
-        "catid": 185,
-        "path": "/diagram/getDigestInfo/{diagramId}",
-        "res_body_type": "json",
-        "res_body": "{\n  \"success\": false,\n  \"data\": {\n    \"diagramId\": \"@string\",//流程图 id\n    \"diagramName\": \"@string\",//流程图名称\n    \"diagramStatus\": 0,//流程图状态 10 待发布 40 已部署\n    \"approveTypeCode\": \"@string\",//单据类型code\n    \"approveTypeName\": \"@string\",//单据类型名称\n    \"initiatorList\": [//发起人信息列表\n      {\n        \"postId\": \"@string\",//岗位id,必填\n        \"postCode\": \"@string\",//岗位code,必填\n        \"postName\": \"@string\"//岗位名称,必填\n      }\n    ],\n    \"firstElementType\": 0//发起人是否需主管审批 1 直接主管 2 普通审批元素\n  },\n  \"code\": 0,\n  \"message\": \"@string\"\n}\n",
-        "desc": "",
-        "method": "GET",
-        "req_params": [
-          {
-            "_id": "5e9b15f7dbaf696592afb4d7",
-            "desc": "",
-            "example": "@string",
-            "name": "diagramId"
-          }
-        ],
-        "markdown": "",
-        "project_id": 33,
-        "uid": 31,
-        "add_time": 1587222007,
-        "up_time": 1587222042,
-        "__v": 0
-      },
-      {
-        "query_path": {
-          "path": "/diagram/saveDigest",
-          "params": []
-        },
-        "edit_uid": 0,
-        "status": "undone",
-        "type": "static",
-        "req_body_is_json_schema": false,
-        "res_body_is_json_schema": false,
-        "api_opened": false,
-        "index": 0,
-        "tag": [],
-        "_id": 459,
-        "req_query": [],
-        "req_headers": [
-          {
-            "required": "1",
-            "_id": "5e9b15f7dbaf696592afb4e1",
-            "name": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "req_body_type": "json",
-        "req_body_form": [],
-        "req_body_other": "{\n  \"diagramId\": \"@string\",//流程图Id\n  \"diagramName\": \"@string\",//流程图名称,必填\n  \"firstElementType\": 0,//首个审批元素 类型\n  \"initiator\": [//流程图发起人,必填\n    {\n      \"postId\": \"@string\",//岗位id,必填\n      \"postCode\": \"@string\",//岗位code,必填\n      \"postName\": \"@string\"//岗位名称,必填\n    }\n  ],\n  \"approveTypeCode\": \"@string\",//单据类型编码,必填\n  \"approveTypeName\": \"@string\",//单据类型名称,必填\n  \"uid\": \"@string\",\n  \"clientId\": \"@string\",\n  \"channel\": \"@string\"\n}\n",
-        "title": "POST 保存流程图 主信息 发起人",
-        "catid": 185,
-        "path": "/diagram/saveDigest",
-        "res_body_type": "json",
-        "res_body": "{\n  \"success\": false,\n  \"data\": {\n    \"diagramId\": \"@string\"\n  },\n  \"code\": 0,\n  \"message\": \"@string\"\n}\n",
-        "desc": "",
-        "method": "POST",
-        "req_params": [],
-        "markdown": "",
-        "project_id": 33,
-        "uid": 31,
-        "add_time": 1587222007,
-        "up_time": 1587222089,
-        "__v": 0
-      },
-      {
-        "query_path": {
-          "path": "/diagram/saveSettings",
-          "params": []
-        },
-        "edit_uid": 0,
-        "status": "undone",
-        "type": "static",
-        "req_body_is_json_schema": false,
-        "res_body_is_json_schema": false,
-        "api_opened": false,
-        "index": 0,
-        "tag": [],
-        "_id": 465,
-        "req_query": [],
-        "req_headers": [
-          {
-            "required": "1",
-            "_id": "5e9b15f8dbaf696592afb4e2",
-            "name": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "req_body_type": "json",
-        "req_body_form": [],
-        "req_body_other": "{\n  \"diagramId\": \"@string\",//必填\n  \"approveTypeCode\": \"@string\",//必填\n  \"removeDuplication\": \"@string\",//必填\n  \"uid\": \"@string\",\n  \"clientId\": \"@string\",\n  \"channel\": \"@string\"\n}\n",
-        "title": "POST 保存流程图 主信息 设置信息( 审批去重)",
-        "catid": 185,
-        "path": "/diagram/saveSettings",
-        "res_body_type": "json",
-        "res_body": "{\n  \"success\": false,\n  \"data\": {\n    \"diagramId\": \"@string\"\n  },\n  \"code\": 0,\n  \"message\": \"@string\"\n}\n",
-        "desc": "",
-        "method": "POST",
-        "req_params": [],
-        "markdown": "",
-        "project_id": 33,
-        "uid": 31,
-        "add_time": 1587222008,
-        "up_time": 1587222093,
-        "__v": 0
-      },
-      {
-        "query_path": {
-          "path": "/diagram/saveDefinition",
-          "params": []
-        },
-        "edit_uid": 0,
-        "status": "undone",
-        "type": "static",
-        "req_body_is_json_schema": false,
-        "res_body_is_json_schema": false,
-        "api_opened": false,
-        "index": 0,
-        "tag": [],
-        "_id": 405,
-        "req_query": [],
-        "req_headers": [
-          {
-            "required": "1",
-            "_id": "5e9b15f6dbaf696592afb4d3",
-            "name": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "req_body_type": "json",
-        "req_body_form": [],
-        "req_body_other": "{\n  \"diagramId\": \"@string\",//流程图ID,必填\n  \"definition\": \"@string\",//流程图定义,必填\n  \"uid\": \"@string\",\n  \"clientId\": \"@string\",\n  \"channel\": \"@string\"\n}\n",
-        "title": "POST 保存流程图定义 表达式校验 数据结构",
-        "catid": 185,
-        "path": "/diagram/saveDefinition",
-        "res_body_type": "json",
-        "res_body": "{\n  \"success\": false,\n  \"code\": 0,\n  \"message\": \"@string\"\n}\n",
-        "desc": "",
-        "method": "POST",
-        "req_params": [],
-        "markdown": "",
-        "project_id": 33,
-        "uid": 31,
-        "add_time": 1587222006,
-        "up_time": 1587222046,
-        "__v": 0
-      },
-      {
-        "query_path": {
-          "path": "/diagram/deactivate/{diagramId}",
-          "params": []
-        },
-        "edit_uid": 0,
-        "status": "undone",
-        "type": "var",
-        "req_body_is_json_schema": false,
-        "res_body_is_json_schema": false,
-        "api_opened": false,
-        "index": 0,
-        "tag": [],
-        "_id": 441,
-        "req_query": [],
-        "req_headers": [
-          {
-            "required": "1",
-            "_id": "5e9b15f7dbaf696592afb4dc",
-            "name": "Content-Type",
-            "value": "application/x-www-form-urlencoded"
-          }
-        ],
-        "req_body_type": "form",
-        "req_body_form": [],
-        "req_body_other": "",
-        "title": "POST 停用流程图",
-        "catid": 185,
-        "path": "/diagram/deactivate/{diagramId}",
-        "res_body_type": "json",
-        "res_body": "{\n  \"success\": false,\n  \"code\": 0,\n  \"message\": \"@string\"\n}\n",
-        "desc": "",
-        "method": "POST",
-        "req_params": [
-          {
-            "_id": "5e9b15f7dbaf696592afb4dd",
-            "desc": "",
-            "example": "@string",
-            "name": "diagramId"
-          }
-        ],
-        "markdown": "",
-        "project_id": 33,
-        "uid": 31,
-        "add_time": 1587222007,
-        "up_time": 1587222076,
-        "__v": 0
-      },
-      {
-        "query_path": {
-          "path": "/diagram/activate",
-          "params": []
-        },
-        "edit_uid": 0,
-        "status": "undone",
-        "type": "static",
-        "req_body_is_json_schema": false,
-        "res_body_is_json_schema": false,
-        "api_opened": false,
-        "index": 0,
-        "tag": [],
-        "_id": 435,
-        "req_query": [],
-        "req_headers": [
-          {
-            "required": "1",
-            "_id": "5e9b15f7dbaf696592afb4db",
-            "name": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "req_body_type": "json",
-        "req_body_form": [],
-        "req_body_other": "{\n  \"diagramId\": \"@string\",//必填\n  \"approveTypeCode\": \"@string\",//必填\n  \"uid\": \"@string\",\n  \"clientId\": \"@string\",\n  \"channel\": \"@string\"\n}\n",
-        "title": "POST 启用审批流 激活",
-        "catid": 185,
-        "path": "/diagram/activate",
-        "res_body_type": "json",
-        "res_body": "{\n  \"success\": false,\n  \"code\": 0,\n  \"message\": \"@string\"\n}\n",
-        "desc": "",
-        "method": "POST",
-        "req_params": [],
-        "markdown": "",
-        "project_id": 33,
-        "uid": 31,
-        "add_time": 1587222007,
-        "up_time": 1587222073,
-        "__v": 0
-      },
-      {
-        "query_path": {
-          "path": "/diagram/listAll",
-          "params": []
-        },
-        "edit_uid": 0,
-        "status": "undone",
-        "type": "static",
-        "req_body_is_json_schema": false,
-        "res_body_is_json_schema": false,
-        "api_opened": false,
-        "index": 0,
-        "tag": [],
-        "_id": 429,
-        "req_query": [],
-        "req_headers": [
-          {
-            "required": "1",
-            "_id": "5e9b15f7dbaf696592afb4da",
-            "name": "Content-Type",
-            "value": "application/x-www-form-urlencoded"
-          }
-        ],
-        "req_body_type": "form",
-        "req_body_form": [],
-        "req_body_other": "",
-        "title": "POST 审批流 图 信息列表",
-        "catid": 185,
-        "path": "/diagram/listAll",
-        "res_body_type": "json",
-        "res_body": "{\n  \"success\": false,\n  \"data\": [\n    {\n      \"diagramId\": \"@string\",//标识列  diagram_id\n      \"diagramName\": \"@string\",//显示名称  diagram_name\n      \"diagramStatus\": 1,//审批流图状态 10 待发布 40 已发布  diagram_status\n      \"activated\": false,//激活的 0 未启用 1 已启用  activated\n      \"procDefKey\": \"@string\",//A 流程定义key\n      \"procInstId\": \"@string\",//A 当前流程实例ID\n      \"resourceName\": \"@string\",//A bpmn资源名称\n      \"approveTypeCode\": \"@string\",//approve_type_code\n      \"approveTypeName\": \"@string\",//单据类型名称\n      \"workflowCode\": \"@string\",//工作流 code  workflow_code\n      \"modelId\": \"@string\",//act_re_model id\n      \"sourceId\": \"@string\",//act_ge_bytearray.id xml 未部署json 记录id  source_id\n      \"sourceExtId\": \"@string\",\n      \"procDefId\": \"@string\",//proc_def_id\n      \"deploymentId\": \"@string\",//部署id re  deployment_id\n      \"deploymentTime\": {//deployment_time\n        \"MIN\": {},\n        \"MAX\": {},\n        \"date\": {\n          \"MIN\": {},\n          \"MAX\": {},\n          \"EPOCH\": {},\n          \"DAYS_PER_CYCLE\": 1,\n          \"DAYS_0000_TO_1970\": 1,\n          \"year\": 1,\n          \"month\": 1,\n          \"day\": 1\n        },\n        \"time\": {\n          \"MIN\": {},\n          \"MAX\": {},\n          \"MIDNIGHT\": {},\n          \"NOON\": {},\n          \"HOURS_PER_DAY\": 1,\n          \"MINUTES_PER_HOUR\": 1,\n          \"MINUTES_PER_DAY\": 1,\n          \"SECONDS_PER_MINUTE\": 1,\n          \"SECONDS_PER_HOUR\": 1,\n          \"SECONDS_PER_DAY\": 1,\n          \"MILLIS_PER_DAY\": 1,\n          \"MICROS_PER_DAY\": 1,\n          \"NANOS_PER_MILLI\": 1,\n          \"NANOS_PER_SECOND\": 1,\n          \"NANOS_PER_MINUTE\": 1,\n          \"NANOS_PER_HOUR\": 1,\n          \"NANOS_PER_DAY\": 1,\n          \"hour\": 1,\n          \"minute\": 1,\n          \"second\": 1,\n          \"nano\": 1\n        }\n      },\n      \"firstElementType\": 0,\n      \"initiator\": \"@string\",//首个审批元素类型 1 直接主管 2 普通审批元素  first_element_type\n      \"diagramSource\": \"@string\",//发起人json  initiator\n      \"deleted\": false,//source json 数据结构与bytearray一致~  diagram_source\n      \"removeDuplication\": 1//逻辑删除标志  deleted\n    }\n  ],\n  \"code\": 0,//是否审批去重（连续非会签节点）\n  \"message\": \"@string\"\n}\n",
-        "desc": "",
-        "method": "POST",
-        "req_params": [],
-        "markdown": "",
-        "project_id": 33,
-        "uid": 31,
-        "add_time": 1587222007,
-        "up_time": 1587222069,
-        "__v": 0
-      },
-      {
-        "query_path": {
-          "path": "/diagram/listExpressionInfo/{approveTypeCode}",
-          "params": []
-        },
-        "edit_uid": 0,
-        "status": "undone",
-        "type": "var",
-        "req_body_is_json_schema": false,
-        "res_body_is_json_schema": false,
-        "api_opened": false,
-        "index": 0,
-        "tag": [],
-        "_id": 423,
-        "req_query": [],
-        "req_headers": [
-          {
-            "required": "1",
-            "_id": "5e9b15f7dbaf696592afb4d8",
-            "name": "Content-Type",
-            "value": "application/x-www-form-urlencoded"
-          }
-        ],
-        "req_body_type": "form",
-        "req_body_form": [],
-        "req_body_other": "",
-        "title": "POST 获取单据类型 表达式可选条件 列表",
-        "catid": 185,
-        "path": "/diagram/listExpressionInfo/{approveTypeCode}",
-        "res_body_type": "json",
-        "res_body": "{\n  \"success\": false,\n  \"data\": [\n    {\n      \"name\": \"@string\",//表达式 字段显示名称\n      \"key\": \"@string\"//表达式 key 如：订单类型 contractType\n    }\n  ],\n  \"code\": 0,\n  \"message\": \"@string\"\n}\n",
-        "desc": "",
-        "method": "POST",
-        "req_params": [
-          {
-            "_id": "5e9b15f7dbaf696592afb4d9",
-            "desc": "",
-            "example": "@string",
-            "name": "approveTypeCode"
-          }
-        ],
-        "markdown": "",
-        "project_id": 33,
-        "uid": 31,
-        "add_time": 1587222007,
-        "up_time": 1587222065,
-        "__v": 0
-      },
-      {
-        "query_path": {
-          "path": "/diagram/listApproveTypeInfo",
-          "params": []
-        },
-        "edit_uid": 0,
-        "status": "undone",
-        "type": "static",
-        "req_body_is_json_schema": false,
-        "res_body_is_json_schema": false,
-        "api_opened": false,
-        "index": 0,
-        "tag": [],
-        "_id": 399,
-        "req_query": [],
-        "req_headers": [
-          {
-            "required": "1",
-            "_id": "5e9b15f6dbaf696592afb4d2",
-            "name": "Content-Type",
-            "value": "application/x-www-form-urlencoded"
-          }
-        ],
-        "req_body_type": "form",
-        "req_body_form": [],
-        "req_body_other": "",
-        "title": "POST 获取审批流单据类型列表",
-        "catid": 185,
-        "path": "/diagram/listApproveTypeInfo",
-        "res_body_type": "json",
-        "res_body": "{\n  \"success\": false,\n  \"data\": [\n    {\n      \"approveTypeId\": \"@string\",//approve_type_id 流程类型id\n      \"approveModule\": \"@string\",\n      \"approveTypeCode\": \"@string\",//approve_type_code 流程类型\n      \"approveTypeName\": \"@string\",//approve_type_name 类型名称\n      \"subtypeFlag\": \"@string\",//subtype_flag 是否有子类型：y-是；n-否\n      \"subtypeDefine\": \"@string\",//subtype_define 子类型：对应单据的java字段\n      \"iconInfo\": \"@string\",\n      \"informationForm\": \"@string\",//information_form 链接详细情况页面\n      \"informationMethod\": \"@string\",//information_method 链接详细情况页面跳转方法\n      \"queryDoneForm\": \"@string\",//query_done_form 已处理跳转页面\n      \"queryDoneMethod\": \"@string\",//query_done_method 已处理跳转方法\n      \"queryDoingForm\": \"@string\",//query_doing_form 处理中跳转页面\n      \"queryDoingMethod\": \"@string\",//query_doing_method 处理中跳转方法\n      \"queryTodoForm\": \"@string\",//query_todo_form 待处理跳转页面\n      \"queryTodoMethod\": \"@string\",//query_todo_method 待处理跳转方法\n      \"typeOrder\": 0,//type_order 类型排序\n      \"deptId\": \"@string\",//dept_id 数据权限 部门id\n      \"channel\": \"@string\"//channel  client channel\n    }\n  ],\n  \"code\": 0,\n  \"message\": \"@string\"\n}\n",
-        "desc": "",
-        "method": "POST",
-        "req_params": [],
-        "markdown": "",
-        "project_id": 33,
-        "uid": 31,
-        "add_time": 1587222006,
-        "up_time": 1587222049,
-        "__v": 0
-      },
-      {
-        "query_path": {
-          "path": "/diagram/getDefinition",
-          "params": []
-        },
-        "edit_uid": 0,
-        "status": "undone",
-        "type": "static",
-        "req_body_is_json_schema": false,
-        "res_body_is_json_schema": false,
-        "api_opened": false,
-        "index": 0,
-        "tag": [],
-        "_id": 411,
-        "req_query": [],
-        "req_headers": [
-          {
-            "required": "1",
-            "_id": "5e9b15f7dbaf696592afb4d4",
-            "name": "Content-Type",
-            "value": "application/x-www-form-urlencoded"
-          }
-        ],
-        "req_body_type": "form",
-        "req_body_form": [
-          {
-            "required": "1",
-            "_id": "5e9b15f7dbaf696592afb4d5",
-            "type": "text",
-            "desc": "",
-            "example": "@string",
-            "name": "diagramId"
-          }
-        ],
-        "req_body_other": "",
-        "title": "POST 获取流程图定义",
-        "catid": 185,
-        "path": "/diagram/getDefinition",
-        "res_body_type": "json",
-        "res_body": "{\n  \"success\": false,\n  \"data\": {\n    \"diagramId\": \"@string\",//流程图ID,必填\n    \"definition\": {//流程图定义,必填\n      \"defaultTimeZone\": {\n        \"SHORT\": 1,\n        \"LONG\": 1,\n        \"ONE_MINUTE\": 1,\n        \"ONE_HOUR\": 1,\n        \"ONE_DAY\": 1,\n        \"NO_TIMEZONE\": {},\n        \"zoneId\": {\n          \"SHORT_IDS\": {}\n        },\n        \"defaultTimeZone\": {},\n        \"GMT_ID\": \"@string\",\n        \"GMT_ID_LENGTH\": 1\n      },\n      \"defaultLocale\": {\n        \"LOCALECACHE\": {\n          \"queue\": {\n            \"NULL\": {\n              \"NULL\": {},\n              \"ENQUEUED\": {},\n              \"queueLength\": 1\n            },\n            \"ENQUEUED\": {\n              \"NULL\": {},\n              \"ENQUEUED\": {},\n              \"queueLength\": 1\n            },\n            \"queueLength\": 1\n          }\n        },\n        \"ENGLISH\": {},\n        \"FRENCH\": {},\n        \"GERMAN\": {},\n        \"ITALIAN\": {},\n        \"JAPANESE\": {},\n        \"KOREAN\": {},\n        \"CHINESE\": {},\n        \"SIMPLIFIED_CHINESE\": {},\n        \"TRADITIONAL_CHINESE\": {},\n        \"FRANCE\": {},\n        \"GERMANY\": {},\n        \"ITALY\": {},\n        \"JAPAN\": {},\n        \"KOREA\": {},\n        \"CHINA\": {},\n        \"PRC\": {},\n        \"TAIWAN\": {},\n        \"UK\": {},\n        \"US\": {},\n        \"CANADA\": {},\n        \"CANADA_FRENCH\": {},\n        \"ROOT\": {},\n        \"PRIVATE_USE_EXTENSION\": \"a\",\n        \"UNICODE_LOCALE_EXTENSION\": \"a\",\n        \"DISPLAY_LANGUAGE\": 1,\n        \"DISPLAY_COUNTRY\": 1,\n        \"DISPLAY_VARIANT\": 1,\n        \"DISPLAY_SCRIPT\": 1,\n        \"DISPLAY_UEXT_KEY\": 1,\n        \"DISPLAY_UEXT_TYPE\": 1,\n        \"baseLocale\": {\n          \"SEP\": \"@string\",\n          \"CACHE\": {\n            \"queue\": {\n              \"NULL\": {\n                \"NULL\": {},\n                \"ENQUEUED\": {},\n                \"queueLength\": 1\n              },\n              \"ENQUEUED\": {\n                \"NULL\": {},\n                \"ENQUEUED\": {},\n                \"queueLength\": 1\n              },\n              \"queueLength\": 1\n            }\n          },\n          \"language\": \"@string\",\n          \"script\": \"@string\",\n          \"region\": \"@string\",\n          \"variant\": \"@string\",\n          \"hash\": 1\n        },\n        \"localeExtensions\": {\n          \"extensionMap\": {},\n          \"id\": \"@string\",\n          \"CALENDAR_JAPANESE\": {},\n          \"NUMBER_THAI\": {}\n        },\n        \"hashCodeValue\": 1,\n        \"defaultLocale\": {},\n        \"defaultDisplayLocale\": {},\n        \"defaultFormatLocale\": {},\n        \"languageTag\": \"@string\"\n      },\n      \"DEFAULT_TYPE_KEY\": \"@string\",\n      \"DEFFAULT_DATE_FORMAT\": \"@string\",\n      \"DEFAULT_PARSER_FEATURE\": 1,\n      \"DEFAULT_GENERATE_FEATURE\": 1,\n      \"mixInsMapper\": {\n        \"MAXIMUM_CAPACITY\": 1,\n        \"DEFAULT_CAPACITY\": 1,\n        \"MAX_ARRAY_SIZE\": 1,\n        \"DEFAULT_CONCURRENCY_LEVEL\": 1,\n        \"LOAD_FACTOR\": 1.0,\n        \"TREEIFY_THRESHOLD\": 1,\n        \"UNTREEIFY_THRESHOLD\": 1,\n        \"MIN_TREEIFY_CAPACITY\": 1,\n        \"MIN_TRANSFER_STRIDE\": 1,\n        \"RESIZE_STAMP_BITS\": 1,\n        \"MAX_RESIZERS\": 1,\n        \"RESIZE_STAMP_SHIFT\": 1,\n        \"MOVED\": 1,\n        \"TREEBIN\": 1,\n        \"RESERVED\": 1,\n        \"HASH_BITS\": 1,\n        \"NCPU\": 1,\n        \"baseCount\": 1,\n        \"sizeCtl\": 1,\n        \"transferIndex\": 1,\n        \"cellsBusy\": 1,\n        \"SIZECTL\": 1,\n        \"TRANSFERINDEX\": 1,\n        \"BASECOUNT\": 1,\n        \"CELLSBUSY\": 1,\n        \"CELLVALUE\": 1,\n        \"ABASE\": 1,\n        \"ASHIFT\": 1\n      },\n      \"bytesLocal\": {\n        \"threadLocalHashCode\": 1,\n        \"nextHashCode\": {\n          \"VALUE\": 1,\n          \"value\": 1\n        },\n        \"HASH_INCREMENT\": 1\n      },\n      \"charsLocal\": {\n        \"threadLocalHashCode\": 1,\n        \"nextHashCode\": {\n          \"VALUE\": 1,\n          \"value\": 1\n        },\n        \"HASH_INCREMENT\": 1\n      },\n      \"VERSION\": \"@string\"\n    }\n  },\n  \"code\": 0,\n  \"message\": \"@string\"\n}\n",
-        "desc": "",
-        "method": "POST",
-        "req_params": [],
-        "markdown": "",
-        "project_id": 33,
-        "uid": 31,
-        "add_time": 1587222007,
-        "up_time": 1587222007,
-        "__v": 0
-      },
-      {
-        "query_path": {
-          "path": "/diagram/deploy",
-          "params": []
-        },
-        "edit_uid": 0,
-        "status": "undone",
-        "type": "static",
-        "req_body_is_json_schema": false,
-        "res_body_is_json_schema": false,
-        "api_opened": false,
-        "index": 0,
-        "tag": [],
-        "_id": 453,
-        "req_query": [],
-        "req_headers": [
-          {
-            "required": "1",
-            "_id": "5e9b15f7dbaf696592afb4e0",
-            "name": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "req_body_type": "json",
-        "req_body_form": [],
-        "req_body_other": "{\n  \"diagramId\": \"@string\",//必填\n  \"approveTypeCode\": \"@string\",//必填\n  \"uid\": \"@string\",\n  \"clientId\": \"@string\",\n  \"channel\": \"@string\"\n}\n",
-        "title": "POST 部署发布流程图 发布成功 自动启用       \n       调用activiti内部发布接口发布       更新相关",
-        "catid": 185,
-        "path": "/diagram/deploy",
-        "res_body_type": "json",
-        "res_body": "{\n  \"success\": false,\n  \"code\": 0,\n  \"message\": \"@string\"\n}\n",
-        "desc": "",
-        "method": "POST",
-        "req_params": [],
-        "markdown": "",
-        "project_id": 33,
-        "uid": 31,
-        "add_time": 1587222007,
-        "up_time": 1587222085,
-        "__v": 0
-      },
-      {
-        "query_path": {
-          "path": "/diagram/verifyStatus/{approveTypeCode}",
-          "params": []
-        },
-        "edit_uid": 0,
-        "status": "undone",
-        "type": "var",
-        "req_body_is_json_schema": false,
-        "res_body_is_json_schema": false,
-        "api_opened": false,
-        "index": 0,
-        "tag": [],
-        "_id": 447,
-        "req_query": [],
-        "req_headers": [
-          {
-            "required": "1",
-            "_id": "5e9b15f7dbaf696592afb4de",
-            "name": "Content-Type",
-            "value": "application/x-www-form-urlencoded"
-          }
-        ],
-        "req_body_type": "form",
-        "req_body_form": [],
-        "req_body_other": "",
-        "title": "POST 验证流程图发布状态",
-        "catid": 185,
-        "path": "/diagram/verifyStatus/{approveTypeCode}",
-        "res_body_type": "json",
-        "res_body": "{\n  \"success\": false,\n  \"data\": {\n    \"diagramId\": \"@string\",\n    \"verifyStatus\": false\n  },\n  \"code\": 0,\n  \"message\": \"@string\"\n}\n",
-        "desc": "",
-        "method": "POST",
-        "req_params": [
-          {
-            "_id": "5e9b15f7dbaf696592afb4df",
-            "desc": "",
-            "example": "@string",
-            "name": "approveTypeCode"
-          }
-        ],
-        "markdown": "",
-        "project_id": 33,
-        "uid": 31,
-        "add_time": 1587222007,
-        "up_time": 1587222080,
         "__v": 0
       }
     ]
