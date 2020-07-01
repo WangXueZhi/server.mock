@@ -18,6 +18,10 @@ const nameList = function () {
 
 // 创建apiJson
 const creatApiJson = function (name, dataSource) {
+    const apiJsonPath = path.resolve(__dirname, `../apiJson/`)
+    if (!fs.existsSync(apiJsonPath)) {
+        fs.mkdirSync(apiJsonPath)
+    }
     fs.openSync(path.resolve(__dirname, `../apiJson/${name}.json`), 'w')
     fs.writeFileSync(path.resolve(__dirname, `../apiJson/${name}.json`), JSON.stringify(dataSource))
 }
@@ -49,7 +53,7 @@ const dataFromCode = async function (ctx) {
             return;
         } else {
             // 创建json
-            project.creatApiJson(ctx.request.body['name'], jsonData)
+            creatApiJson(ctx.request.body['name'], jsonData)
             return true
         }
     } catch (err) {
@@ -67,7 +71,7 @@ const dataFromLink = async function (ctx) {
             return;
         } else {
             // 创建json
-            project.creatApiJson(ctx.request.body['name'], jsonData)
+            creatApiJson(ctx.request.body['name'], jsonData)
             return true
         }
     } catch (err) {

@@ -1,9 +1,9 @@
 {
   "name": "rayx-mockserver",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "start": "node bin/index",
-    "dev": "cross-env NODE_ENV=dev PORT=8011 ./node_modules/.bin/nodemon bin/index",
+    "dev": "cross-env NODE_ENV=dev ./node_modules/.bin/nodemon bin/index",
     "prd": "cross-env NODE_ENV=production pm2 start bin/index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
