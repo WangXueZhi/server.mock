@@ -1,16 +1,16 @@
 // new | edit
-let formType = 'new'
-
-// 请求前缀
-let fetchBaseUrl = 'http://127.0.0.1:3000/api'
+let formType = 'add'
 
 // 请求封装
 const _fetch = function (option) {
+    // 请求前缀
+    let fetchBaseUrl = `http://127.0.0.1:${window.serverPort}/api`
     return new Promise((resolve, reject) => {
         $.ajax({
             url: `${fetchBaseUrl}${option.url}`,
             type: option.method,
             data: option.data,
+            dataType: 'json',
             contentType: false,
             processData: false,
             success: function (res) {
@@ -29,13 +29,13 @@ const _fetch = function (option) {
 
 // 添加窗口
 const openNewModal = function () {
-    formType = 'new'
+    formType = 'add'
     $('#staticBackdrop').modal('show')
     $('#projectModalTitle').text('添加项目')
     clearModalForm()
 }
 
-// 清楚窗口信息
+// 清除窗口信息
 const clearModalForm = function () {
     $('#projectModalInputName').val('')
     $('#projectModalInputDesc').val('')
@@ -44,6 +44,7 @@ const clearModalForm = function () {
     $('#dataSourcelink input').val('')
     $('.dataSource').hide()
     $('input.dataType:checked').prop("checked", false);
+    $('#projectModalInputName').prop("readonly", false);
 }
 
 // 编辑窗口
@@ -53,9 +54,15 @@ const editModal = function (data) {
     $('#projectModalTitle').text('编辑项目')
     $('#projectModalInputName').val(data.name)
     $('#projectModalInputDesc').val(data.desc)
+    $('#projectModalInputName').prop("readonly", true);
 }
 
-
+// 删除窗口
+const deleteModal = function (data) {
+    $('#confirmDelete').modal('show')
+    $('#deleteBody span').text(data.name)
+    $('#sureDeleteBtn').data('projectName', data.name)
+}
 
 // 获取项目列表
 const getProjectList = function () {
@@ -109,12 +116,18 @@ $(document).ready(function () {
         var formdata = new FormData(form);
         window.fd = formdata
         _fetch({
-            url: '/project/add',
+            url: `/project/${formType}`,
             method: 'post',
             data: formdata
         }).then(res => {
-            alert('创建成功')
+            if (formType === 'add') {
+                alert('创建成功')
+            } else {
+                alert('保存成功')
+            }
+
             $('#staticBackdrop').modal('hide')
+            clearModalForm()
             loadProjectList()
         }).catch(res => {
             console.log(res)
@@ -134,5 +147,28 @@ $(document).ready(function () {
     $(document).on('click', '.close-project-modal', function () {
         $('#staticBackdrop').modal('hide')
         clearModalForm()
+    })
+
+    // 删除项目
+    $(document).on('click', '.project-delete', function () {
+        deleteModal(window.projectList[$(this).data('index')])
+    })
+    $('#sureDeleteBtn').click(function () {
+        const thisBtn = $(this)
+        var fd = new FormData();
+        fd.append("name", thisBtn.data('projectName'))
+        _fetch({
+            url: `/project/delete`,
+            method: 'post',
+            data: fd
+        }).then(res => {
+            alert('删除成功')
+            $('#confirmDelete').modal('hide')
+            thisBtn.data('projectName', '')
+            loadProjectList()
+        }).catch(res => {
+            console.log(res)
+            alert(res.message)
+        })
     })
 });

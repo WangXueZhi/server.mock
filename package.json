@@ -1,14 +1,19 @@
 {
-  "name": "koa2-test",
-  "version": "0.1.0",
+  "name": "rayx-mockserver",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node bin/www",
-    "dev": "cross-env NODE_ENV=dev ./node_modules/.bin/nodemon bin/www",
-    "prd": "cross-env NODE_ENV=production pm2 start bin/www",
+    "start": "node bin/index",
+    "dev": "cross-env NODE_ENV=dev PORT=8011 ./node_modules/.bin/nodemon bin/index",
+    "prd": "cross-env NODE_ENV=production pm2 start bin/index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "author": "wangxuezhi",
+  "bin": {
+    "rayx-mockserver": "./bin/cli.js"
+  },
   "dependencies": {
+    "commander": "^5.1.0",
     "debug": "^4.1.1",
     "koa": "^2.7.0",
     "koa-body": "^4.2.0",

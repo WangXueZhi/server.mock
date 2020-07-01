@@ -4,18 +4,10 @@ const path = require('path')
 router.prefix('/view')
 
 router.get('/', async (ctx, next) => {
-    const files = fs.readdirSync(path.resolve(__dirname, `../apiJson`))
-    const projectList = []
-    files.forEach(item=>{
-        projectList.push({
-            name: item.replace('.json',''),
-            describe: item.replace('.json',''),
-            mockBaseUrl: `/mock/${item.replace('.json','')}`
-        })
-    })
+    console.log(ctx)
     await ctx.render('index', {
         title: '项目列表',
-        list: projectList
+        serverPort: ctx.request.header.host.split(':')[1]
     });
 })
 
