@@ -1,7 +1,6 @@
 {
   "name": "rayx-mockserver",
   "version": "0.0.1",
-  "private": true,
   "scripts": {
     "start": "node bin/index",
     "dev": "cross-env NODE_ENV=dev PORT=8011 ./node_modules/.bin/nodemon bin/index",
@@ -9,6 +8,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "wangxuezhi",
+  "homepage": "https://github.com/WangXueZhi/server.mock#readme",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WangXueZhi/server.mock.git"
+  },
+  "bugs": {
+    "url": "https://github.com/WangXueZhi/server.mock.git"
+  },
   "bin": {
     "rayx-mockserver": "./bin/cli.js"
   },
