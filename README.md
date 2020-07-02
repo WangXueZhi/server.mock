@@ -28,7 +28,7 @@ rayx-mockserver --p=[port]
 
 ## 使用
 
-以swagger官方的demo为例 [demo](https://petstore.swagger.io/v2/swagger.json)
+以swagger官方的demo中的json为例 [json](https://petstore.swagger.io/v2/swagger.json)，如果图片不能正常显示，可以看[这里](https://shimo.im/docs/x8wwyJQgtPpCgvrT/read)
 
 添加项目
 
