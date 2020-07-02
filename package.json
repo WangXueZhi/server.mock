@@ -1,6 +1,6 @@
 {
   "name": "rayx-mockserver",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "scripts": {
     "start": "node bin/index",
     "dev": "cross-env NODE_ENV=dev ./node_modules/.bin/nodemon bin/index",
