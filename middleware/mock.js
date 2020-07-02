@@ -235,6 +235,10 @@ const matchUrl = function (path, apis) {
 
 // 创建mock数据
 const creatMock = function (prop) {
+    // 优先使用example
+    if(prop.example){
+        return prop.example
+    }
     if (prop.type == 'object') {
         return {}
     }
@@ -276,12 +280,21 @@ const creatMock = function (prop) {
             'key|1-2147483647': 1
         })['key']
     }
+
+    // 数组个数1-5
+    if (prop.type == 'array') {
+        const arr = []
+        for (let i = 0; i < (Math.random() * 4 + 1); i++) {
+            arr.push(creatMock(prop.items))
+        }
+        return arr
+    }
     return "未匹配数据类型"
 }
 
 // 获取属性定义并解析prop
-const getResDefinitions = function (originalRef, jsonObject) {
-    const propertiesList = jsonObject.definitions[originalRef].properties
+const getResDefinitions = function (ref, jsonObject) {
+    const propertiesList = jsonObject.definitions[ref].properties
     let properties = {}
     for (let key in propertiesList) {
         properties[key] = parseProp(propertiesList[key], jsonObject)
@@ -291,12 +304,16 @@ const getResDefinitions = function (originalRef, jsonObject) {
 
 // 解析prop
 const parseProp = function (prop, jsonObject) {
-    if (prop.originalRef) {
-        return getResDefinitions(prop.originalRef, jsonObject)
+    if (prop['$ref']) {
+        return getResDefinitions(prop['$ref'].replace('#/definitions/', ''), jsonObject)
     }
-    if (prop.type == 'array') {
-        return getResDefinitions(prop['items']['originalRef'], jsonObject)
+    if (prop.type == 'array' && prop['items']['$ref']) {
+        return getResDefinitions(prop['items']['$ref'].replace('#/definitions/', ''), jsonObject)
     }
+    if (prop.type == 'array' && !prop['items']['$ref']) {
+        console.log(prop)
+    }
+
     return creatMock(prop)
 }
 
