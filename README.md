@@ -32,7 +32,7 @@ rayx-mockserver --p=[port]
 
 添加项目
 
-![添加项目](https://images-cdn.shimo.im/6weHomK1hCO9houn.jpg__thumbnail)
+![添加项目](https://uploader.shimo.im/f/6weHomK1hCO9houn.jpg!thumbnail)
 
 ![添加项目](https://uploader.shimo.im/f/aFM3L1DTTo8ovwVa.jpg!thumbnail)
 
