@@ -28,15 +28,17 @@ rayx-mockserver --p=[port]
 
 ## 使用
 
+以swagger官方的demo为例 [demo](https://petstore.swagger.io/v2/swagger.json)
+
 添加项目
 
-![添加项目](https://uploader.shimo.im/f/mcj1kAQuYBzWnAko.jpg!thumbnail)
+![添加项目](https://images-cdn.shimo.im/6weHomK1hCO9houn.jpg__thumbnail)
 
-![添加项目](https://uploader.shimo.im/f/JB8EdmfH2ivrShzr.jpg!thumbnail)
+![添加项目](https://uploader.shimo.im/f/aFM3L1DTTo8ovwVa.jpg!thumbnail)
 
 mock地址前缀
 
-![mock地址前缀](https://uploader.shimo.im/f/3duzRx08VjWjygrg.jpg!thumbnail)
+![mock地址前缀](https://uploader.shimo.im/f/X9O62y6VMG1FYoJu.jpg!thumbnail)
 
 找一个接口地址
 
