@@ -28,9 +28,20 @@ rayx-mockserver --p=[port]
 
 ## 使用
 
-1. 添加项目
+添加项目
 
+![添加项目](https://uploader.shimo.im/f/mcj1kAQuYBzWnAko.jpg!thumbnail)
 
+![添加项目](https://uploader.shimo.im/f/JB8EdmfH2ivrShzr.jpg!thumbnail)
 
+mock地址前缀
 
+![mock地址前缀](https://uploader.shimo.im/f/3duzRx08VjWjygrg.jpg!thumbnail)
 
+找一个接口地址
+
+![找一个接口地址](https://uploader.shimo.im/f/oh6vens2sofzeNs9.jpg!thumbnail)
+
+请求mock数据
+
+![请求mock数据](https://uploader.shimo.im/f/vBSRb2BcIRxfe4HP.jpg!thumbnail)
