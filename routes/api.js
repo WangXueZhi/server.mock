@@ -64,7 +64,7 @@ router.post('/project/add', async (ctx, next) => {
 
     // 写入项目列表
     try {
-        fs.writeFileSync(path.resolve(__dirname, `../database/projectList.json`), JSON.stringify(projectlist))
+        fs.writeFileSync(path.resolve(__mockserverPath, `./database/projectList.json`), JSON.stringify(projectlist))
         ctx.body = new SuccessModel(null, '创建成功')
     } catch (err) {
         ctx.body = new ErrorModel(null, err)
@@ -112,7 +112,7 @@ router.post('/project/edit', async (ctx, next) => {
 
     // 写入项目列表
     try {
-        fs.writeFileSync(path.resolve(__dirname, `../database/projectList.json`), JSON.stringify(projectlist))
+        fs.writeFileSync(path.resolve(__mockserverPath, `./database/projectList.json`), JSON.stringify(projectlist))
         ctx.body = new SuccessModel(null, '更新成功')
     } catch (err) {
         ctx.body = new ErrorModel(null, err)
@@ -133,8 +133,8 @@ router.post('/project/delete', async (ctx, next) => {
 
     // 写入项目列表
     try {
-        fs.unlinkSync(path.resolve(__dirname, `../apiJson/${reqBody['name']}.json`)) // 删除json文件
-        fs.writeFileSync(path.resolve(__dirname, `../database/projectList.json`), JSON.stringify(projectlist)) // 列表中删除
+        fs.unlinkSync(path.resolve(__mockserverPath, `./apiJson/${reqBody['name']}.json`)) // 删除json文件
+        fs.writeFileSync(path.resolve(__mockserverPath, `./database/projectList.json`), JSON.stringify(projectlist)) // 列表中删除
         ctx.body = new SuccessModel(null, '删除成功')
     } catch (err) {
         ctx.body = new ErrorModel(null, err)

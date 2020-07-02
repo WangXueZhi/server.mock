@@ -1,6 +1,6 @@
 {
   "name": "rayx-mockserver",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "scripts": {
     "start": "node bin/index",
     "dev": "cross-env NODE_ENV=dev ./node_modules/.bin/nodemon bin/index",
@@ -20,6 +20,19 @@
   "bin": {
     "rayx-mockserver": "./bin/cli.js"
   },
+  "files": [
+    "bin",
+    "controller",
+    "middleware",
+    "model",
+    "public",
+    "routes",
+    "utils",
+    "views",
+    "app.js",
+    "package.json",
+    "README.md"
+  ],
   "dependencies": {
     "commander": "^5.1.0",
     "debug": "^4.1.1",

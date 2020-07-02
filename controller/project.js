@@ -8,7 +8,7 @@ const {
 
 // 获取项目列表
 const list = function () {
-    return JSON.parse(fs.readFileSync(path.resolve(__dirname, `../database/projectList.json`)));
+    return JSON.parse(fs.readFileSync(path.resolve(__mockserverPath, `./database/projectList.json`)));
 }
 
 // 获取项目名称列表
@@ -18,12 +18,8 @@ const nameList = function () {
 
 // 创建apiJson
 const creatApiJson = function (name, dataSource) {
-    const apiJsonPath = path.resolve(__dirname, `../apiJson/`)
-    if (!fs.existsSync(apiJsonPath)) {
-        fs.mkdirSync(apiJsonPath)
-    }
-    fs.openSync(path.resolve(__dirname, `../apiJson/${name}.json`), 'w')
-    fs.writeFileSync(path.resolve(__dirname, `../apiJson/${name}.json`), JSON.stringify(dataSource))
+    fs.openSync(path.resolve(__mockserverPath, `./apiJson/${name}.json`), 'w')
+    fs.writeFileSync(path.resolve(__mockserverPath, `./apiJson/${name}.json`), JSON.stringify(dataSource))
 }
 
 // 处理文件来源数据

@@ -83,7 +83,7 @@ const checkRequest = function (ctx, requestInfo) {
         return checkInfo
     }
     console.log(requestObject.header['content-type'])
-    if (requestInfo['Content-Type'] !== requestObject.header['content-type']) {
+    if (requestInfo['Content-Type'] && (requestInfo['Content-Type'] !== requestObject.header['content-type'])) {
         checkInfo.msg = 'content-type不匹配'
         return checkInfo
     }
@@ -123,7 +123,9 @@ const transformDataForSwagger2 = function (data) {
         const item = data.paths[path]
         for (const method in item) {
             item[method].title = item[method].summary
-            item[method]['Content-Type'] = item[method].consumes[0]
+            if (item[method].consumes && item[method].consumes[0]) {
+                item[method]['Content-Type'] = item[method].consumes[0]
+            }
             apisArr.push({
                 path,
                 method,
@@ -317,7 +319,7 @@ module.exports = async (ctx, next) => {
         return
     }
 
-    const projectApiFilePath = path.resolve(__dirname, `../apiJson/${projectName}.json`);
+    const projectApiFilePath = path.resolve(__mockserverPath, `./apiJson/${projectName}.json`);
 
     if (!fs.existsSync(projectApiFilePath)) {
         console.log('项目不存在')

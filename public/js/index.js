@@ -4,7 +4,7 @@ let formType = 'add'
 // 请求封装
 const _fetch = function (option) {
     // 请求前缀
-    let fetchBaseUrl = `http://127.0.0.1:${window.serverPort}/api`
+    let fetchBaseUrl = `${location.origin}/api`
     return new Promise((resolve, reject) => {
         $.ajax({
             url: `${fetchBaseUrl}${option.url}`,
