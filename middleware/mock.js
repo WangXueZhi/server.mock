@@ -78,18 +78,19 @@ const checkRequest = function (ctx, requestInfo) {
         msg: '',
         data: null
     }
-    if (requestInfo.method !== requestObject.method.toLowerCase()) {
+    // console.log(requestInfo.method)
+    if (requestInfo.method.toLowerCase() !== requestObject.method.toLowerCase()) {
         checkInfo.msg = '方法不匹配'
         return checkInfo
     }
-    console.log(requestObject.header['content-type'])
+    // console.log(requestObject.header['content-type'])
     if (requestInfo['Content-Type'] && (requestInfo['Content-Type'] !== requestObject.header['content-type'])) {
         checkInfo.msg = 'content-type不匹配'
         return checkInfo
     }
 
     const checkResult = checkParameters(ctx, requestInfo.parameters)
-    console.log(checkResult)
+    // console.log(checkResult)
     if (!checkResult.valid) {
         return checkResult
     }
@@ -170,7 +171,19 @@ const transformDataForSwagger3 = function (data) {
                         })
                     })
                 }
-
+                if (Array.isArray(api.req_body_form)) {
+                    api.req_body_form.forEach(reqParame => {
+                        parameters.push({
+                            name: reqParame.name,
+                            in: "body",
+                            description: reqParame.desc,
+                            required: reqParame.required === '1',
+                            type: !reqParame.type || reqParame.type === 'text' || reqParame.type === '' ? 'string' : reqParame.type,
+                            default: reqParame.example || ''
+                        })
+                    })
+                }
+                api.parameters = parameters
             })
         }
         apisArr.push(...item.list)
@@ -236,7 +249,7 @@ const matchUrl = function (path, apis) {
 // 创建mock数据
 const creatMock = function (prop) {
     // 优先使用example
-    if(prop.example){
+    if (prop.example) {
         return prop.example
     }
     if (prop.type == 'object') {
@@ -361,7 +374,7 @@ module.exports = async (ctx, next) => {
     // 匹配接口是否存在
     let matchedApiData = matchUrl(routerPath, apis) || null
 
-    console.log(matchedApiData)
+    // console.log(matchedApiData)
 
     // 接口真的不存在
     if (!matchedApiData) {
@@ -383,11 +396,16 @@ module.exports = async (ctx, next) => {
     } else {
         // 接口检查符合，开始处理返回的数据
         console.log('接口检查通过')
-        const schema = checkData.data.responses['200'].schema
-        const res = parseProp(schema, JSON.parse(fileContent))
-        ctx.response.body = creatResData({
-            success: true,
-            data: res
-        })
+        // console.log(JSON.parse(`'${checkData.data.res_body}'`))
+        if (JSON.parse(fileContent).swagger === '2.0') {
+            const schema = checkData.data.responses['200'].schema
+            const res = parseProp(schema, JSON.parse(fileContent))
+            ctx.response.body = creatResData({
+                success: true,
+                data: res
+            })
+        } else {
+            ctx.response.body = JSON.parse(checkData.data.res_body.replace(/\/\/(.*)/g, ''))
+        }
     }
 }

@@ -1,5 +1,5 @@
 # rayx-mockserver
-一键mock，帮助前端团队快速搭建mock服务，上传由swagger导出的json文件即可使用
+一键mock，帮助前端团队快速搭建mock服务，上传由swagger导出的json文件即可使用，`目前仅支持swagger2`，swagger3将尽快支持
 
 ## 能干什么
 1. 在后端开发完成接口之前，前端可以使用假数据进行界面模拟
