@@ -1,11 +1,22 @@
 # rayx-mockserver
-一键mock，帮助前端团队快速搭建mock服务，上传由swagger导出的json文件即可使用，`目前仅支持swagger2`，swagger3将尽快支持
+一键mock，帮助前端团队快速搭建mock服务，上传由swagger导出的json文件即可使用
 
 ## 能干什么
 1. 在后端开发完成接口之前，前端可以使用假数据进行界面模拟
 2. 支持多项目
 3. 支持接口数据源覆盖
 4. 支持接口检查包括：路径，入参，content-type，在开发阶段尽量减少前端业务的基本错误
+
+## 更新记录
+#### 0.0.6
+1. swagger3支持，因为找不到swagger3详细的配置文档，所以mock数据会直接返回json文件中的res_body
+
+#### 0.0.5
+1. 修复和优化：解析res数据时的bug和逻辑
+
+#### 0.0.4
+1. 解决永久存储问题，数据会保存在用户目录下的`.rayx-mockserver`目录内
+2. 修复没有consumes导致检查报错，现在没有consumes会忽略检查`Content-Type`
 
 ## 安装
 ```
